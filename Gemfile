@@ -1,15 +1,17 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
+gem "rake", "0.8.7"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '~> 0.2.6'
+gem 'mysql2', '0.2.6'
 gem 'nokogiri'
 gem 'will_paginate'
 gem 'twitter'
 gem 'koala'
+gem 'thinking-sphinx', '2.0.10'
 
 # Use unicorn as the web server
 # gem 'unicorn'

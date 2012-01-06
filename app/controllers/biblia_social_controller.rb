@@ -41,7 +41,8 @@ class BibliaSocialController < ApplicationController
         redirect_to "/#{livro.permalink}?keywords=#{CGI::escape(params[:keywords])}"
       end
     end
-    @versiculos = Versiculo.search(params[:keywords]).paginate(:page => params[:page], :per_page => 10)
+	#@versiculos = Versiculo.buscar(params[:keywords]).paginate(:page => params[:page], :per_page => 10)
+	@versiculos = Versiculo.search(params[:keywords], :rank_mode => :proximity , :match_mode => :extended, :page => params[:page], :per_page => 10)
   end
   
   protected

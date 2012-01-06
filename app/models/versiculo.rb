@@ -15,7 +15,12 @@ class Versiculo < ActiveRecord::Base
   
   scope :default_includes, includes(:capitulo, :livro)
   
-  def self.search(keywords)
+  define_index do
+    # fields
+    indexes texto
+  end
+  
+  def self.buscar(keywords)
     Versiculo.default_includes.where(['MATCH (texto) AGAINST (?)', keywords])
 #	select match(texto) against('"venha a mim"' in boolean mode) * 10 + match(texto) against('venha a mim')  peso,versiculos.*  from versiculos where match(texto) against("venha a mim") order by peso desc
   end

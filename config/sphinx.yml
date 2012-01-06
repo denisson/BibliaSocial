@@ -1,0 +1,5 @@
+development:
+  bin_path: C:\Sphinx\bin
+  searchd_binary_name: searchd.exe
+  indexer_binary_name: indexer.exe
+  sort_mode: SPH_SORT_RELEVANCE
