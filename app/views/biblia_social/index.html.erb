@@ -1,0 +1,20 @@
+<div id="content" class="index">
+    <h2>Últimos Versículos Comentados</h2>
+    <%= render :partial => 'biblia_social/comentarios' %>
+
+    <h2>Livros</h2>
+    <%= render :partial => 'partials/livros' %>
+</div>
+<div id="sidebar">
+    <h3 class="special">Facebook</h3>
+    <div id="sidebar_window">
+        <div class="title"><div class="text"></div><span>fechar <b>x</b></span></div>
+        <p id="buttons"></p>
+        <div id="facebook"></div>
+    </div>
+    <div id="sidebar_window2">
+        <div class="title"><div class="text"><b>Comentários:</b> Bíblia</div><span>fechar <b>x</b></span></div>
+        <div id="facebook2"><fb:comments href="<%= "http://www.bibliasocial.com" %>" num_posts="3" width="360"></fb:comments></div>
+        <div style="padding: 10px"><fb:like-box href="http://www.facebook.com/pages/B%C3%ADblia-Social/133077516773700" width="360" height="260" show_faces="true" border_color="" stream="false" header="false"></fb:like-box></div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+$('#loading').hide();
+$('#comentarios').replaceWith('<%= escape_javascript render(:partial => 'biblia_social/comentarios') %>');
+$('#comentarios').processReady();

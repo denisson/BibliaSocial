@@ -1,0 +1,38 @@
+<%= title "#{@livro.nome} #{@capitulo.numero}:#{@versiculo.numero} - BíbliaSocial.com" %>
+<%= description @versiculo.texto %>
+
+<div id="content">
+    <%= breadcrumb [['Bíblia', '/'],[@livro.nome, "/#{@livro.permalink}"],["Capítulo #{@capitulo.numero}", "/#{@livro.permalink}/#{@capitulo.numero}"],["Versículo #{@versiculo.numero}", "/#{@livro.permalink}/#{@capitulo.numero}/#{@versiculo.numero}"]] %>
+    <h2 class="titulo clear" data-nome="<%= "#{@livro.nome} #{@capitulo.numero}:#{@versiculo.numero}" %>" data-url="<%= "http://www.bibliasocial.com/#{@livro.permalink}/#{@capitulo.numero}/#{@versiculo.numero}" %>"><span class="comment_count"></span><%= "#{@livro.nome} #{@capitulo.numero}:#{@versiculo.numero}" %></h2>
+    <%= render :partial => 'partials/versiculo', :locals => { :versiculo => @versiculo, :i => 0 } %>
+
+    <p class="previous_and_next">
+        <%= link_to "Anterior", "/#{@versiculo.anterior.capitulo.livro.permalink}/#{@versiculo.anterior.capitulo.numero}/#{@versiculo.anterior.numero}" if @versiculo.anterior %> 
+        « Capítulo <%= @capitulo.numero %> »
+        <%= link_to "Próximo", "/#{@versiculo.proximo.capitulo.livro.permalink}/#{@versiculo.proximo.capitulo.numero}/#{@versiculo.proximo.numero}" if @versiculo.proximo %>
+    </p>
+
+    <h2>Livros</h2>
+    <%= render :partial => 'partials/livros' %>
+</div>
+<div id="sidebar">
+    <h3>Versículos</h3>
+    <%= render :partial => 'partials/versiculos' %>
+
+    <h3>Facebook</h3>
+    <div id="sidebar_window">
+        <div class="title"><div class="text"></div><span>fechar <b>x</b></span></div>
+        <p id="buttons"></p>
+        <div id="facebook"></div>
+    </div>
+    <div id="sidebar_window2">
+        <div class="title"><div class="text"><b>Comentários:</b> <%= "#{@livro.nome} #{@capitulo.numero}:#{@versiculo.numero}" %></div><span>fechar <b>x</b></span></div>
+        <p id="buttons">
+            <% text = @versiculo.texto %>
+            <% text = text[0..117] if text.length > 120 %>
+            <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url=<%= "http://www.bibliasocial.com/#{@livro.permalink}/#{@capitulo.numero}/#{@versiculo.numero}" %>&text=<%= text %>" style="width:100px; height:20px;"></iframe>
+            <fb:like href="<%= "http://www.bibliasocial.com/#{@livro.permalink}/#{@capitulo.numero}/#{@versiculo.numero}" %>" send="true" width="100" height="20" show_faces="false" layout="button_count" font="arial" style="vertical-align: top"></fb:like>
+        </p>
+        <div id="facebook2"><fb:comments href="<%= "http://www.bibliasocial.com/#{@livro.permalink}/#{@capitulo.numero}/#{@versiculo.numero}"%>" num_posts="10" width="360"></fb:comments></div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" xml:lang="pt-br" lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns" xmlns:fb="http://www.facebook.com/2008/fbml">
+    <head>
+        <title><%= (title = yield(:title)).blank? ? 'BíbliaSocial.com' : title %></title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>" name="description" /> 
+        <meta property="fb:app_id" content="200389373346541"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="http://www.bibliasocial.com/images/icon2.png"/>
+        <meta property="og:site_name" content="Bíblia Social"/>
+        <meta property="og:title" content="<%= (title = yield(:title)).blank? ? 'BíbliaSocial.com' : title %>"/>
+        <meta property="og:url" content="<%= request.url %>"/>
+        <meta property="og:description" content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>"/> 
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <%= stylesheet_link_tag 'jquery_ui', 'application' %>
+        <% if ENV['RAILS_ENV'] == 'production' %>
+            <%= javascript_include_tag 'all' %>
+        <% else %>
+            <%= javascript_include_tag 'jquery', 'jquery_ui', 'rails', 'secret' %>
+        <% end %>
+        <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+    </head>
+    <body>
+        <div id="loading"><span class="text">Carregando...</span></div>
+        <div id="fb-root"></div>
+        <div id="top">
+            <div class="wrapper clear">
+                <div id="search">
+                    <%= form_tag '/search', :method => 'get' do |f| %>
+                        <%= text_field_tag 'keywords', 'Busca' %><%= submit_tag '' %>
+                    <% end %>
+                </div>
+                <h1><a href="/">BibliaSocial.com</a></h1>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div id="window" class="clear">
+                <%= yield %>
+            </div>
+        </div>
+        <%= yield :ready %>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var livros = <%= Livro.order('nome ASC').map(&:nome).to_json.html_safe %>;
+
+                var accentMap = {
+                    'á': 'a',
+                    'ã': 'a',
+                    'é': 'e',
+                    'ê': 'e',
+                    'í': 'i',
+                    'ó': 'o',
+                    'ô': 'o',
+                    'õ': 'o',
+                    'ú': 'u'
+                };
+                var normalize = function(term) {
+                    var ret = "";
+                    for (var i = 0; i < term.length; i++) {
+                        ret += accentMap[term.charAt(i)] || term.charAt(i);
+                    }
+                    return ret;
+                };
+
+                $("#search input[type=text]").autocomplete({
+                    source: function(request, response) {
+                        var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+                        response($.grep(livros, function(value) {
+                            value = value.label || value.value || value;
+                            return matcher.test(value) || matcher.test(normalize(value));
+                        }));
+                    }
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+            FB.Event.subscribe('comment.create', function(response) {
+                $.post('/comentarios', { 
+                    'comentario[comment_id]': response.commentID, 
+                    'comentario[href]': response.href, 
+                    'comentario[parent_comment_id]': response.parentCommentID 
+                });
+            });
+            FB.Event.subscribe('comment.remove', function(response) {
+                $.post('/comentarios/' + response.commentID, { _method: 'delete' });
+            });
+        </script>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-24443328-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </body>
+</html>
+

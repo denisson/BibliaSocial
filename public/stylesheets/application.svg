@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="application.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3810">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.39215687;"
+         offset="0"
+         id="stop3812" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.19607843;"
+         offset="1"
+         id="stop3814" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3767">
+      <stop
+         style="stop-color:#30487a;stop-opacity:1;"
+         offset="0"
+         id="stop3769" />
+      <stop
+         style="stop-color:#4467af;stop-opacity:1;"
+         offset="1"
+         id="stop3771" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3767"
+       id="linearGradient3773"
+       x1="221.42857"
+       y1="276.64789"
+       x2="221.42857"
+       y2="436.64948"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3767-5"
+       id="linearGradient3773-5"
+       x1="221.42857"
+       y1="276.64789"
+       x2="221.42857"
+       y2="436.64948"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient3767-5">
+      <stop
+         style="stop-color:#3e3e3e;stop-opacity:1;"
+         offset="0"
+         id="stop3769-2" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="1"
+         id="stop3771-5" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(-167.14286,20.714292)"
+       y2="436.64948"
+       x2="221.42857"
+       y1="276.64789"
+       x1="221.42857"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient3790"
+       xlink:href="#linearGradient3767-5"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3810"
+       id="linearGradient3816"
+       x1="211.42857"
+       y1="401.57663"
+       x2="211.42857"
+       y2="430.4411"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-4.0406102)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3767"
+       id="linearGradient3840"
+       gradientUnits="userSpaceOnUse"
+       x1="221.42857"
+       y1="276.64789"
+       x2="221.42857"
+       y2="436.64948" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3810"
+       id="linearGradient3053"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-4.0406102)"
+       x1="211.42857"
+       y1="401.57663"
+       x2="211.42857"
+       y2="430.4411" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3767"
+       id="linearGradient3838"
+       x1="221.42857"
+       y1="276.80927"
+       x2="221.42857"
+       y2="437.57437"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2"
+     inkscape:cx="350.17644"
+     inkscape:cy="712.76087"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="988"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3840"
+       inkscape:export-filename="D:\Programming\projects-ruby\bibliasocial\public\images\icon.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         rx="32"
+         ry="32"
+         y="276.64789"
+         x="61.42857"
+         height="160"
+         width="160"
+         id="rect2997"
+         style="fill:url(#linearGradient3838);fill-opacity:1;stroke:none" />
+      <text
+         transform="scale(0.96071823,1.0408879)"
+         sodipodi:linespacing="125%"
+         id="text3818"
+         y="398.5032"
+         x="123.40788"
+         style="font-size:154.92771912px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
+         xml:space="preserve"><tspan
+           y="398.5032"
+           x="123.40788"
+           id="tspan3820"
+           sodipodi:role="line">b</tspan></text>
+      <path
+         sodipodi:nodetypes="csscc"
+         inkscape:connector-curvature="0"
+         id="rect2997-8"
+         d="m 211.42857,397.89299 c 0,15.512 -12.488,28 -28,28 l -84,0 c -15.512,0 -28.000002,-12.488 -28.000002,-28 z"
+         style="fill:url(#linearGradient3053);fill-opacity:1;stroke:none" />
+    </g>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3897"
+       width="29"
+       height="29"
+       x="425.23361"
+       y="249.3219" />
+    <g
+       id="g3963"
+       inkscape:export-filename="D:\Programming\projects-ruby\bibliasocial\public\stylesheets\images\background_search.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         rx="5"
+         ry="5"
+         y="301.07224"
+         x="255.2336"
+         height="25"
+         width="199.00002"
+         id="rect3048-8-9"
+         style="fill:none;stroke:#444444;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <rect
+         rx="5"
+         ry="5"
+         y="300.07217"
+         x="255.2336"
+         height="25"
+         width="199.00002"
+         id="rect3048-8"
+         style="fill:#666666;fill-opacity:1;stroke:#000000;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3847"
+         d="m 437.18741,304.58156 c -3.01913,0.31558 -5.4538,2.95586 -5.4538,6.22645 0,3.48861 2.77684,6.22644 6.07189,6.22644 1.29864,0 2.52909,-0.41222 3.5268,-1.14214 0.0879,0.11472 0.14679,0.23818 0.2545,0.36844 0.41663,0.50381 1.01079,1.13508 1.6725,1.80529 0.66172,0.67023 1.28651,1.23833 1.78158,1.65793 0.24752,0.2098 0.44221,0.37589 0.65446,0.51581 0.10613,0.0699 0.1859,0.15122 0.36358,0.22105 0.0888,0.0349 0.19496,0.0996 0.39995,0.11047 0.20499,0.0107 0.59986,-0.0735 0.90896,-0.40527 0.3091,-0.33192 0.37994,-0.74454 0.36359,-0.95791 -0.0164,-0.21339 -0.073,-0.3137 -0.10902,-0.40528 -0.0721,-0.18319 -0.14799,-0.25983 -0.21815,-0.36843 -0.14031,-0.21716 -0.26436,-0.4481 -0.47267,-0.70001 -0.41664,-0.50381 -1.01077,-1.13509 -1.67249,-1.8053 -0.66172,-0.67022 -1.28652,-1.27517 -1.78158,-1.69477 -0.15507,-0.13142 -0.29462,-0.20033 -0.4363,-0.29474 0.52592,-0.9194 0.83625,-1.97612 0.83625,-3.13164 0,-3.48862 -2.77684,-6.22644 -6.07189,-6.22644 -0.20594,0 -0.41684,-0.021 -0.6181,0 z m 0.61809,1.84214 c 2.48809,0 4.43576,2.01277 4.43576,4.38431 0,2.37153 -1.94767,4.38429 -4.43576,4.38429 -2.48808,0 -4.39939,-2.01276 -4.39939,-4.38429 0,-2.37154 1.91131,-4.38431 4.39939,-4.38431 z"
+         style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#b4b4b4;fill-opacity:1;stroke:#b4b4b4;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+    </g>
+    <g
+       id="g3958"
+       transform="translate(-3.6496124,-12.717804)"
+       inkscape:export-filename="D:\Programming\projects-ruby\bibliasocial\public\stylesheets\images\background_search.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         rx="5"
+         ry="5"
+         y="340.7901"
+         x="258.88321"
+         height="25"
+         width="199.00002"
+         id="rect3048-8-9-7"
+         style="fill:none;stroke:#444444;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <rect
+         rx="5"
+         ry="5"
+         y="339.79004"
+         x="258.88321"
+         height="25"
+         width="199.00002"
+         id="rect3048-8-8"
+         style="fill:#777777;fill-opacity:1;stroke:#000000;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3847-3"
+         d="m 440.83702,344.2994 c -3.01913,0.31558 -5.4538,2.95586 -5.4538,6.22645 0,3.48861 2.77684,6.22644 6.07189,6.22644 1.29864,0 2.52909,-0.41222 3.5268,-1.14214 0.0879,0.11472 0.14679,0.23818 0.2545,0.36844 0.41663,0.50381 1.01079,1.13508 1.6725,1.80529 0.66172,0.67023 1.28651,1.23833 1.78158,1.65793 0.24752,0.2098 0.44221,0.37589 0.65446,0.51581 0.10613,0.0699 0.1859,0.15122 0.36358,0.22105 0.0888,0.0349 0.19496,0.0996 0.39995,0.11047 0.20499,0.0107 0.59986,-0.0735 0.90896,-0.40527 0.3091,-0.33192 0.37994,-0.74454 0.36359,-0.95791 -0.0164,-0.21339 -0.073,-0.3137 -0.10902,-0.40528 -0.0721,-0.18319 -0.14799,-0.25983 -0.21815,-0.36843 -0.14031,-0.21716 -0.26436,-0.4481 -0.47267,-0.70001 -0.41664,-0.50381 -1.01077,-1.13509 -1.67249,-1.8053 -0.66172,-0.67022 -1.28652,-1.27517 -1.78158,-1.69477 -0.15507,-0.13142 -0.29462,-0.20033 -0.4363,-0.29474 0.52592,-0.9194 0.83625,-1.97612 0.83625,-3.13164 0,-3.48862 -2.77684,-6.22644 -6.07189,-6.22644 -0.20594,0 -0.41684,-0.021 -0.6181,0 z m 0.61809,1.84214 c 2.48809,0 4.43576,2.01277 4.43576,4.38431 0,2.37153 -1.94767,4.38429 -4.43576,4.38429 -2.48808,0 -4.39939,-2.01276 -4.39939,-4.38429 0,-2.37154 1.91131,-4.38431 4.39939,-4.38431 z"
+         style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#b4b4b4;fill-opacity:1;stroke:#b4b4b4;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+    </g>
+    <rect
+       style="fill:none;stroke:#444444;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3048-8-9-7-6"
+       width="199.00002"
+       height="25"
+       x="255.2336"
+       y="355.07236"
+       ry="5"
+       rx="5"
+       inkscape:export-filename="D:\Programming\projects-ruby\bibliasocial\public\stylesheets\images\background_search.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#eeeeee;fill-opacity:1;stroke:#000000;stroke-width:0.99999994000000003;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3048-8-8-6"
+       width="199.00002"
+       height="25"
+       x="255.2336"
+       y="354.0723"
+       ry="5"
+       rx="5"
+       inkscape:export-filename="D:\Programming\projects-ruby\bibliasocial\public\stylesheets\images\background_search.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#b4b4b4;fill-opacity:1;stroke:#b4b4b4;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans"
+       d="m 437.1874,358.58167 c -3.01913,0.31558 -5.4538,2.95586 -5.4538,6.22645 0,3.48861 2.77684,6.22644 6.07189,6.22644 1.29864,0 2.52909,-0.41222 3.5268,-1.14214 0.0879,0.11472 0.14679,0.23818 0.2545,0.36844 0.41663,0.50381 1.01079,1.13508 1.6725,1.80529 0.66172,0.67023 1.28651,1.23833 1.78158,1.65793 0.24752,0.2098 0.44221,0.37589 0.65446,0.51581 0.10613,0.0699 0.1859,0.15122 0.36358,0.22105 0.0888,0.0349 0.19496,0.0996 0.39995,0.11047 0.20499,0.0107 0.59986,-0.0735 0.90896,-0.40527 0.3091,-0.33192 0.37994,-0.74454 0.36359,-0.95791 -0.0164,-0.21339 -0.073,-0.3137 -0.10902,-0.40528 -0.0721,-0.18319 -0.14799,-0.25983 -0.21815,-0.36843 -0.14031,-0.21716 -0.26436,-0.4481 -0.47267,-0.70001 -0.41664,-0.50381 -1.01077,-1.13509 -1.67249,-1.8053 -0.66172,-0.67022 -1.28652,-1.27517 -1.78158,-1.69477 -0.15507,-0.13142 -0.29462,-0.20033 -0.4363,-0.29474 0.52592,-0.9194 0.83625,-1.97612 0.83625,-3.13164 0,-3.48862 -2.77684,-6.22644 -6.07189,-6.22644 -0.20594,0 -0.41684,-0.021 -0.6181,0 z m 0.61809,1.84214 c 2.48809,0 4.43576,2.01277 4.43576,4.38431 0,2.37153 -1.94767,4.38429 -4.43576,4.38429 -2.48808,0 -4.39939,-2.01276 -4.39939,-4.38429 0,-2.37154 1.91131,-4.38431 4.39939,-4.38431 z"
+       id="path3847-3-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="D:\Programming\projects-ruby\bibliasocial\public\stylesheets\images\background_search.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>

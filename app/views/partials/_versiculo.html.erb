@@ -1,0 +1,6 @@
+<p class="versiculo clear<%= ' odd' if i % 2 == 1 %>" data-nome="<%= "#{versiculo.livro.nome} #{versiculo.capitulo.numero}:#{versiculo.numero}" %>" data-url="<%= "http://www.bibliasocial.com/#{versiculo.livro.permalink}/#{versiculo.capitulo.numero}/#{versiculo.numero}" %>">
+    <%= link_to(versiculo.numero, "/#{versiculo.livro.permalink}/#{versiculo.capitulo.numero}/#{versiculo.numero}") unless defined?(show_titulo) %> 
+    <span class="text"><%= '"' if defined?(show_aspas) %><%= highlight(versiculo.texto) %><%= '"' if defined?(show_aspas) %></span>
+    <span class="comment_count"></span>
+    <%= link_to("#{versiculo.livro.nome} #{versiculo.capitulo.numero}:#{versiculo.numero}", "/#{versiculo.livro.permalink}/#{versiculo.capitulo.numero}/#{versiculo.numero}", {:class=>"referencia"}) if defined?(show_titulo) %>
+</p>
