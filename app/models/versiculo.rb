@@ -5,6 +5,10 @@ class Versiculo < ActiveRecord::Base
   belongs_to :capitulo, :counter_cache => true
   
   has_many :comentarios, :dependent => :destroy
+  has_many :comments
+  has_many :referencias
+  has_many :links
+  has_many :videos
   
   validates :numero, :presence => true, :numericality => true
   validates :texto, :presence => true
@@ -35,3 +39,4 @@ class Versiculo < ActiveRecord::Base
     @proximo ||= proximo || (capitulo.proximo ? capitulo.proximo.versiculos.order('numero ASC').first : nil)
   end
 end
+

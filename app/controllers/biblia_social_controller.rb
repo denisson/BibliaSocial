@@ -1,10 +1,12 @@
-class BibliaSocialController < ApplicationController
+﻿class BibliaSocialController < ApplicationController
   caches_page :livro, :capitulo, :versiculo
     
   before_filter :find_biblia
   
   def index
     @versiculos = Versiculo.joins(:comentarios).group('versiculo_id').order('max(comentarios.created_at) DESC').paginate(:page => params[:page], :per_page => 3)
+	
+	#@versiculos.first.comments.create(:texto => "Este é o primeiro comentário", :user => current_user)
     respond_to do |format|
       format.html
       format.js

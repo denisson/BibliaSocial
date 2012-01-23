@@ -1,12 +1,22 @@
 Bibliasocial::Application.routes.draw do
+  devise_for :users
+
   root :to => 'biblia_social#index'
   
   resources :comentarios
+  resources :versiculos do
+	resources :comments
+	resources :referencias
+	resources :links
+	resources :videos
+  end
   
   get 'search', :to => 'biblia_social#search'
   get ':livro', :to => 'biblia_social#livro'
   get ':livro/:capitulo', :to => 'biblia_social#capitulo'
   get ':livro/:capitulo/:versiculo', :to => 'biblia_social#versiculo'
+  
+  #get 'auth/facebook/callback', :to => 'biblia_social#search'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,7 @@
+Javascript
+	Tooltip
+		http://flowplayer.org/tools/demos/tooltip/any-html.html
+		
+Rails
+	OmniAuth com Devise
+		http://www.communityguides.eu/articles/11

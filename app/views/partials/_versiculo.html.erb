@@ -2,5 +2,9 @@
     <%= link_to(versiculo.numero, "/#{versiculo.livro.permalink}/#{versiculo.capitulo.numero}/#{versiculo.numero}") unless defined?(show_titulo) %> 
     <span class="text"><%= '"' if defined?(show_aspas) %><%= highlight(versiculo.texto) %><%= '"' if defined?(show_aspas) %></span>
     <span class="comment_count"></span>
+	<%= link_to "Comentar", versiculo_comments_path(versiculo)%>
+	<%= link_to "Ref", versiculo_referencias_path(versiculo)%>
+	<%= link_to "Links", versiculo_links_path(versiculo)%>
+	<%= link_to "Videos", versiculo_videos_path(versiculo)%>
     <%= link_to("#{versiculo.livro.nome} #{versiculo.capitulo.numero}:#{versiculo.numero}", "/#{versiculo.livro.permalink}/#{versiculo.capitulo.numero}/#{versiculo.numero}", {:class=>"referencia"}) if defined?(show_titulo) %>
 </p>

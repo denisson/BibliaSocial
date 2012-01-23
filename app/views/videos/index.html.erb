@@ -1,0 +1,35 @@
+<style>
+.uiVideoThumb{border:0;overflow:hidden;position:relative}
+.uiVideoThumb img{display:inline-block;max-height:130px;max-width:130px}
+.uiVideoThumb img[width]{max-width:auto}
+.uiVideoThumb i{background:url(/images/play_video.png) no-repeat 0 0;bottom:5px;height:26px;left:5px;position:absolute;width:35px}
+.uiVideoThumbSmall i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yN/r/aERK2-5sOBX.png);bottom:3px;height:22px;left:3px;width:27px}
+.uiVideoThumbTiny i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yx/r/LwvvGd2Cr9v.png);bottom:3px;height:17px;width:21px;left:3px}
+.uiVideoThumbLoading i{background:url(http://static.ak.fbcdn.net/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;bottom:0;height:100%;left:0;width:100%}
+.uiVideoThumbSmall.uiVideoThumbLoading i,.uiVideoThumbTiny.uiVideoThumbLoading i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yb/r/GsNJNwuI-UM.gif)}
+.uiVideoThumbLoading img{opacity:.15}
+</style>
+
+<ul>
+<% @videos.each do |video| %>
+	<li>
+		<a class="uiVideoThumb" data-url="<%= video.player_url + '&autoplay=1' %>" href="<%= video.link_url %>" target="_blank">
+			<img src="<%= video.thumb_url %>">
+			<i></i>
+		</a>
+		<%= video.titulo %>
+		
+	</li>
+<% end %>
+</ul>
+
+<script>
+	$('.uiVideoThumb').click(function(event){
+		event.preventDefault();
+		var iframe_video = $('<iframe>')
+			.attr('width', 397)
+			.attr('height', 298)
+			.attr('src', $(this).attr('data-url'));	
+		$(this).parent().html(iframe_video);
+	});
+</script>

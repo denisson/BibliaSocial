@@ -1,0 +1,2 @@
+Retirar bordas dos Iframes
+Colocar gif de carregando no carregamento do vídeo

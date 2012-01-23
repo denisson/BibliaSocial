@@ -7,6 +7,8 @@ gem "rake", "0.8.7"
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2', '0.2.6'
+gem 'devise'
+gem 'omniauth-facebook'
 gem 'nokogiri'
 gem 'will_paginate'
 gem 'twitter'

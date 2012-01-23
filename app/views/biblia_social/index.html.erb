@@ -1,7 +1,9 @@
 <div id="content" class="index">
     <h2>Últimos Versículos Comentados</h2>
     <%= render :partial => 'biblia_social/comentarios' %>
-
+	<%= current_user %>
+	<%= user_session %>
+	<%= user_signed_in? %>
     <h2>Livros</h2>
     <%= render :partial => 'partials/livros' %>
 </div>

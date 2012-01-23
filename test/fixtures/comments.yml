@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  texto: 
+  user_id: 
+  versiculo_id: 1
+
+two:
+  id: 
+  texto: 
+  user_id: 
+  versiculo_id: 1
