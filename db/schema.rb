@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122165440) do
+ActiveRecord::Schema.define(:version => 20120130195921) do
+
+  create_table "atividades", :force => true do |t|
+    t.string   "url"
+    t.integer  "user_id"
+    t.integer  "versiculo_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "biblia", :force => true do |t|
     t.string  "nome",                            :null => false
@@ -58,7 +68,22 @@ ActiveRecord::Schema.define(:version => 20120122165440) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "texto_html"
+    t.integer  "item_id"
+    t.string   "item_type"
   end
+
+  create_table "follows", :force => true do |t|
+    t.integer  "followable_id",                      :null => false
+    t.string   "followable_type",                    :null => false
+    t.integer  "follower_id",                        :null => false
+    t.string   "follower_type",                      :null => false
+    t.boolean  "blocked",         :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], :name => "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], :name => "fk_follows"
 
   create_table "links", :force => true do |t|
     t.string   "url"
@@ -67,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20120122165440) do
     t.integer  "versiculo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "titulo"
   end
 
   create_table "livros", :force => true do |t|
@@ -121,6 +147,11 @@ ActiveRecord::Schema.define(:version => 20120122165440) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nome"
+    t.string   "foto_file_name"
+    t.string   "foto_content_type"
+    t.integer  "foto_file_size"
+    t.datetime "foto_updated_at"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
@@ -136,6 +167,11 @@ ActiveRecord::Schema.define(:version => 20120122165440) do
     t.integer  "capitulo_id",                      :null => false
     t.integer  "comentarios_count", :default => 0, :null => false
     t.datetime "last_comment_at"
+    t.integer  "comments_count",    :default => 0, :null => false
+    t.integer  "referencias_count", :default => 0, :null => false
+    t.integer  "links_count",       :default => 0, :null => false
+    t.integer  "videos_count",      :default => 0, :null => false
+    t.integer  "atividades_count",  :default => 0, :null => false
   end
 
   add_index "versiculos", ["biblia_id"], :name => "index_versiculos_on_biblia_id"

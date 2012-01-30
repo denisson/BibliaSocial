@@ -1,0 +1,34 @@
+<%= image_tag @user.foto.url(:normal) %>
+<%= @user.nome %>
+<%= link_to "Seguir", new_user_seguidor_path(@user) %>
+<%= link_to "Seguidores", user_seguidores_path(@user) %>
+<%= link_to "Seguindo", "/users/#{@user.id}/seguindo" %>
+
+
+<div id="content" class="index">
+
+<ul class="atividades">
+<% @user.atividades.each do |atividade| %>
+<li>
+
+	<%= link_to (image_tag atividade.item.user.foto.url(:thumb)), user_path(atividade.item.user), {:class => "atividadeUserFoto"} %>
+	<div class="atividadeContainer">
+		<%= render :partial => 'partials/user_atividade', :locals => {:item => atividade.item, :mostrar_versiculo => true}%>
+		<%= render :partial => 'partials/' + atividade.item.class.name.downcase, :locals => {:item => atividade.item}%>
+	<div>
+</li>
+<% end %>
+</ul>
+
+</div>
+
+<script>
+	$('.uiVideoThumb').click(function(event){
+		event.preventDefault();
+		var iframe_video = $('<iframe>')
+			.attr('width', 397)
+			.attr('height', 298)
+			.attr('src', $(this).attr('data-url'));	
+		$(this).parent().html(iframe_video);
+	});
+</script>

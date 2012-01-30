@@ -3,12 +3,20 @@ Bibliasocial::Application.routes.draw do
 
   root :to => 'biblia_social#index'
   
+  resources :users do
+	resources :seguidores
+  end
+  
+  get 'users/:user_id/seguindo', :to => 'seguidores#seguindo'
+  get 'mural', :to => 'users#mural'
+  
   resources :comentarios
   resources :versiculos do
 	resources :comments
 	resources :referencias
 	resources :links
 	resources :videos
+	resources :atividades
   end
   
   get 'search', :to => 'biblia_social#search'

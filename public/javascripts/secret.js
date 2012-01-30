@@ -74,7 +74,7 @@
             }
         });
           
-        $(this).find('.comment_count').each(function() {
+        /*$(this).find('.comment_count').each(function() {
             var count = this;
             var url = $(this).parents('.versiculo, .titulo').data('url').replace(/www\./, '');
             $.getJSON('http://graph.facebook.com/?ids=' + url + '&callback=?', function(json) {
@@ -82,6 +82,7 @@
                 $(count).text(comments ? comments : 0);
             });
         });
+		*/
         
         return $(this);
     };

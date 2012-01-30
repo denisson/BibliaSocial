@@ -1,7 +1,7 @@
 <div id="content" class="index">
     <h2>Últimos Versículos Comentados</h2>
     <%= render :partial => 'biblia_social/comentarios' %>
-	<%= current_user %>
+	<%= link_to current_user.email, edit_user_path(current_user) if current_user != nil %>
 	<%= user_session %>
 	<%= user_signed_in? %>
     <h2>Livros</h2>

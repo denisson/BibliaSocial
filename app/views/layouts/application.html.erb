@@ -21,6 +21,84 @@
         <% end %>
         <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
 		<script src="http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js"></script>
+		
+<style>
+.uiVideoThumb{border:0;overflow:hidden;position:relative}
+.uiVideoThumb img{display:inline-block;max-height:130px;max-width:130px}
+.uiVideoThumb img[width]{max-width:auto}
+.uiVideoThumb i{background:url(/images/play_video.png) no-repeat 0 0;bottom:5px;height:26px;left:5px;position:absolute;width:35px}
+.uiVideoThumbSmall i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yN/r/aERK2-5sOBX.png);bottom:3px;height:22px;left:3px;width:27px}
+.uiVideoThumbTiny i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yx/r/LwvvGd2Cr9v.png);bottom:3px;height:17px;width:21px;left:3px}
+.uiVideoThumbLoading i{background:url(http://static.ak.fbcdn.net/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;bottom:0;height:100%;left:0;width:100%}
+.uiVideoThumbSmall.uiVideoThumbLoading i,.uiVideoThumbTiny.uiVideoThumbLoading i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yb/r/GsNJNwuI-UM.gif)}
+.uiVideoThumbLoading img{opacity:.15}
+
+.atividadeInfo a.atividadeTitulo{
+	font-weight: bold;
+	display: block;
+}
+
+.atividadeThumb{
+	float:left;
+	margin-right: 10px;
+}
+
+.videoInfo{
+	display: table-cell;
+	vertical-align: top;
+}
+
+.referenciaInfo{
+	border-left:2px solid #ccc;
+	padding-left: 10px;
+}
+
+.referenciaInfo .referenciaDescricao{
+	color: gray;
+	margin-top: 5px;
+}
+
+.atividadeContainer{
+	display:table-cell;
+}
+
+.atividadeUserFoto{
+	display:block;
+	float:left;
+	margin-right: 10px;	
+}
+
+.atividadeInfo{
+	margin-top:3px;
+}
+
+.atividadeUserNome{
+	font-weight: bold;
+}
+
+
+ul.atividades{
+	list-style-type: none;
+}
+
+ul.atividades li{
+	border-style: solid;
+	border-width: 1px 0 0 0;
+	border-color: #E9E9E9;
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+
+ul.atividades li:first-child {
+	border-width: 0px;
+}
+
+ul.atividades p{
+	margin: 0px;
+}
+</style>
+		
+		
     </head>
     <body>
         <div id="loading"><span class="text">Carregando...</span></div>

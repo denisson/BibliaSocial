@@ -1,7 +1,27 @@
+<%= form_for([@versiculo, @link]) do |f| %>
+
+  <%= f.fields_for :comment do |comment_form| %>
+  <div>
+    <%= comment_form.label :texto %><br />
+    <%= comment_form.text_area :texto %>
+  </div>
+  <% end %>
+  
+  <div>
+	<%= f.label :url %><br />
+	<%= f.text_field :url %>
+  </div>
+  
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <ul>
 <% @links.each do |link| %>
 	<li>
-		<%= link.url %>
+		<a href="<%= link.url %>" target="_blank"> <%= link.titulo %> </a>
 	</li>
 <% end %>
 </ul>

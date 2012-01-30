@@ -9,6 +9,7 @@ class Versiculo < ActiveRecord::Base
   has_many :referencias
   has_many :links
   has_many :videos
+  has_many :atividades
   
   validates :numero, :presence => true, :numericality => true
   validates :texto, :presence => true
@@ -37,6 +38,20 @@ class Versiculo < ActiveRecord::Base
   def proximo
     proximo = capitulo.versiculos.where(['numero > ?', self.numero]).order('numero ASC').first
     @proximo ||= proximo || (capitulo.proximo ? capitulo.proximo.versiculos.order('numero ASC').first : nil)
+  end
+  
+  def url
+	livro = self.capitulo.livro.permalink
+	capitulo = self.capitulo.numero.to_s
+	versiculo = self.numero.to_s
+	return "/" + livro + "/" + capitulo + "/" + versiculo
+  end
+  
+  def ref
+	livro = self.capitulo.livro.nome
+	capitulo = self.capitulo.numero.to_s
+	versiculo = self.numero.to_s
+	return livro + " " + capitulo + ":" + versiculo
   end
 end
 

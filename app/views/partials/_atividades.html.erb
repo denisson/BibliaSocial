@@ -1,0 +1,23 @@
+<div id="content" class="index">
+
+<ul class="atividades">
+<% atividades.each do |atividade| %>
+<li>
+	<%= render :partial => 'partials/user_atividade', :locals => {:item => atividade.item, :mostrar_versiculo => mostrar_versiculo}%>
+	<%= render :partial => 'partials/' + atividade.item.class.name.downcase, :locals => {:item => atividade.item}%>
+</li>
+<% end %>
+</ul>
+
+</div>
+
+<script>
+	$('.uiVideoThumb').click(function(event){
+		event.preventDefault();
+		var iframe_video = $('<iframe>')
+			.attr('width', 397)
+			.attr('height', 298)
+			.attr('src', $(this).attr('data-url'));	
+		$(this).parent().html(iframe_video);
+	});
+</script>

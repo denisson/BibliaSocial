@@ -1,0 +1,6 @@
+﻿<%= link_to item.user.nome, user_path(item.user), {:class => "atividadeUserNome"} %>
+<%= item.descricao_atividade %>
+<% if mostrar_versiculo %>
+	<%= item.descricao_atividade_conectivo%>
+	<%= link_to item.versiculo.ref, item.versiculo.url %>
+<% end %>

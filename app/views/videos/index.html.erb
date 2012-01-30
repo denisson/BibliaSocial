@@ -1,3 +1,24 @@
+<%= form_for([@versiculo, @video]) do |f| %>
+
+  <%= f.fields_for :comment do |comment_form| %>
+  <div>
+    <%= comment_form.label :texto %><br />
+    <%= comment_form.text_area :texto %>
+  </div>
+  <% end %>
+  
+  <div>
+	<%= f.label :link_url %><br />
+	<%= f.text_field :link_url %>
+  </div>
+  
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
 <style>
 .uiVideoThumb{border:0;overflow:hidden;position:relative}
 .uiVideoThumb img{display:inline-block;max-height:130px;max-width:130px}

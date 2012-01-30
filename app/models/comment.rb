@@ -1,88 +1,77 @@
 ﻿class Comment < ActiveRecord::Base
-  @@referencias = Array.new
-  @@links = Array.new
-  belongs_to :versiculo#, :counter_cache => true
-  belongs_to :user#, :counter_cache => true
+  belongs_to :versiculo, :counter_cache => true
+  belongs_to :user
+  belongs_to :item, :polymorphic => true
   
   has_many :referencias, :dependent => :destroy
   has_many :links, :dependent => :destroy
   has_many :videos, :dependent => :destroy
   
-  validates :texto, :presence => true
+  has_one :atividade, :as => :item, :dependent => :destroy
+  
+  validates :texto, :presence => true, :uniqueness => {:scope => [:user_id, :versiculo_id]}
+  validates :texto_html, :presence => true
   validates :user_id, :presence => true
   
-  def self.formatar_links(comentario)
-	@@links = Array.new
-	comentario_formatado = comentario.dup
-	comentario_formatado.gsub!(URI.regexp) do |match|
-		@@links << match
-		'<a href="'+match+'" target="_blank">'+match+'</a>'
+  after_create :criar_atividade
+  
+  def criar_atividade
+	self.versiculo.atividades.create({:user => self.user, :item => self})
+  end
+  
+  def self.create_comment(user, versiculo, texto)
+	texto_html = TextoHtml.new(texto)
+	comment = {
+		:user => user,
+		:texto => texto,
+		:texto_html => texto_html.texto
+	}
+	@comment = versiculo.comments.create(comment)
+	if @comment.errors.empty?
+		@comment.create_referencias texto_html.referencias
+		@comment.create_links texto_html.links
 	end
-	return comentario_formatado
+	return @comment
   end
   
-  def self.formatar_html(comentario)
-	@@referencias = Array.new
-  
-	livros_nomes = LIVROS.keys
-	livros_e_abreviaturas = LIVROS.merge(LIVROS_ABREVIADOS)
-
-	regex_referencia = Regexp.new('(((([1-3]|[iI]{1,3})( )?)?([a-zá-úà-ùâ-ûä-üçA-ZÁ-ÚÀ-ÙÂ-ÛÄ-ÜÇ]+))[ ]?((\d{1,3})((:|-|,|\.)( )?(\d{1,3}))*))')
-	
-	comentario_formatado = comentario.dup
-	
-	comentario_formatado.gsub!(regex_referencia) do |match|
-		referencia = $1
-		livro = $2
-		capitulo_versiculo = $7
-		url_fim = ''
-		cap = ''
-		ver = ''
-		if capitulo_versiculo =~ /(\d{1,3})[ ]?(\:|\.)[ ]?(\d{1,3})/
-			cap = $1
-			ver = $3
-			url_fim = '/' + cap + '/' + ver
-		elsif capitulo_versiculo =~ /(\d{1,3})/
-			cap = $1
-			url_fim = '/' + cap
-		end
-
-		nome_deste_livro = livros_e_abreviaturas[livro.mb_chars.downcase.to_s]
-		if nome_deste_livro != nil #é realmente uma referência
-			reticencias = ''
-			if ver == ''
-				ver = 1
-				reticencias = ' (...)'
-			end
-			livro = Livro.where(:permalink => nome_deste_livro).first
-			capitulo = livro.capitulos.where(:numero => cap).first
-			if capitulo != nil
-				versiculo = capitulo.versiculos.where(:numero => ver).first
-			else
-				versiculo = nil
-			end
-			
-			if versiculo != nil
-				texto_versiculo = versiculo.texto + reticencias
-				@@referencias << {:versiculo_citado => versiculo, :ref => referencia}
-				'<a title="' + texto_versiculo + '" href="/'+ nome_deste_livro + url_fim + '">' + referencia +'</a>'
-			else
-				match
-			end
-		else #não é uma referência
-			match
-		end
+  def create_referencias(referencias)
+	referencias.each do |referencia|
+		referencia.user = self.user
+		referencia.versiculo = self.versiculo
+		referencia.comment = self
+		referencia.save
 	end
-
-	return comentario_formatado
-  end
-
-  def self.get_referencias
-	@@referencias
   end
   
-  def self.get_links
-	@@links
+  def create_links(links)
+	links.each do |link|
+		Link.create_link_comment self, link
+	end
+  end
+  
+  def self.create_comment_link(user, versiculo, texto, url)
+	@comment = create_comment(user, versiculo, texto)
+	if @comment.errors.empty?
+		@comment.item = Link.create_link_comment @comment, url
+		@comment.save
+	end
+	return @comment
+  end
+  
+  def self.create_comment_referencia(user, versiculo, texto, ref)
+	@comment = create_comment(user, versiculo, texto)
+	if @comment.errors.empty?		
+		@comment.item = Referencia.create_referencia_comment @comment, ref
+		@comment.save
+	end
+	return @comment
   end
 
+  def descricao_atividade
+	"comentou"
+  end
+  
+  def descricao_atividade_conectivo
+	""
+  end
 end
