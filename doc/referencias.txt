@@ -1,7 +1,16 @@
 Javascript
 	Tooltip
+		https://github.com/jaz303/tipsy	
 		http://flowplayer.org/tools/demos/tooltip/any-html.html
+	
 		
 Rails
 	OmniAuth com Devise
 		http://www.communityguides.eu/articles/11
+		
+Regex
+	BNF Url
+		http://www.w3.org/Addressing/URL/5_BNF.html#z12
+		
+Cropping Images:
+	http://railscasts.com/episodes/182-cropping-images

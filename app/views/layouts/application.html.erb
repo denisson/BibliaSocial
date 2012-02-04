@@ -13,89 +13,137 @@
         <meta property="og:description" content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>"/> 
 		<%= csrf_meta_tag %>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <%= stylesheet_link_tag 'jquery_ui', 'application' %>
+        <%= stylesheet_link_tag 'jquery_ui', 'application', 'tipsy' %>
         <% if ENV['RAILS_ENV'] == 'production' %>
             <%= javascript_include_tag 'all' %>
         <% else %>
-            <%= javascript_include_tag 'jquery', 'jquery_ui', 'rails', 'secret' %>
+            <%= javascript_include_tag 'jquery', 'jquery_ui', 'rails', 'secret', 'jquery.tipsy' %>
         <% end %>
         <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
-		<script src="http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js"></script>
-		
+
 <style>
-.uiVideoThumb{border:0;overflow:hidden;position:relative}
-.uiVideoThumb img{display:inline-block;max-height:130px;max-width:130px}
-.uiVideoThumb img[width]{max-width:auto}
-.uiVideoThumb i{background:url(/images/play_video.png) no-repeat 0 0;bottom:5px;height:26px;left:5px;position:absolute;width:35px}
-.uiVideoThumbSmall i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yN/r/aERK2-5sOBX.png);bottom:3px;height:22px;left:3px;width:27px}
-.uiVideoThumbTiny i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yx/r/LwvvGd2Cr9v.png);bottom:3px;height:17px;width:21px;left:3px}
-.uiVideoThumbLoading i{background:url(http://static.ak.fbcdn.net/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;bottom:0;height:100%;left:0;width:100%}
-.uiVideoThumbSmall.uiVideoThumbLoading i,.uiVideoThumbTiny.uiVideoThumbLoading i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yb/r/GsNJNwuI-UM.gif)}
-.uiVideoThumbLoading img{opacity:.15}
+	ul{ list-style-type: none;}
 
-.atividadeInfo a.atividadeTitulo{
-	font-weight: bold;
-	display: block;
-}
+	.uiVideoThumb{border:0;overflow:hidden;position:relative}
+	.uiVideoThumb img{display:inline-block;max-height:130px;max-width:130px}
+	.uiVideoThumb img[width]{max-width:auto}
+	.uiVideoThumb i{background:url(/images/play_video.png) no-repeat 0 0;bottom:5px;height:26px;left:5px;position:absolute;width:35px}
+	.uiVideoThumbSmall i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yN/r/aERK2-5sOBX.png);bottom:3px;height:22px;left:3px;width:27px}
+	.uiVideoThumbTiny i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yx/r/LwvvGd2Cr9v.png);bottom:3px;height:17px;width:21px;left:3px}
+	.uiVideoThumbLoading i{background:url(http://static.ak.fbcdn.net/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;bottom:0;height:100%;left:0;width:100%}
+	.uiVideoThumbSmall.uiVideoThumbLoading i,.uiVideoThumbTiny.uiVideoThumbLoading i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yb/r/GsNJNwuI-UM.gif)}
+	.uiVideoThumbLoading img{opacity:.15}
 
-.atividadeThumb{
-	float:left;
-	margin-right: 10px;
-}
-
-.videoInfo{
-	display: table-cell;
-	vertical-align: top;
-}
-
-.referenciaInfo{
-	border-left:2px solid #ccc;
-	padding-left: 10px;
-}
-
-.referenciaInfo .referenciaDescricao{
-	color: gray;
-	margin-top: 5px;
-}
-
-.atividadeContainer{
-	display:table-cell;
-}
-
-.atividadeUserFoto{
-	display:block;
-	float:left;
-	margin-right: 10px;	
-}
-
-.atividadeInfo{
-	margin-top:3px;
-}
-
-.atividadeUserNome{
-	font-weight: bold;
-}
-
-
-ul.atividades{
-	list-style-type: none;
-}
-
-ul.atividades li{
-	border-style: solid;
-	border-width: 1px 0 0 0;
-	border-color: #E9E9E9;
-	padding-top: 14px;
-	padding-bottom: 14px;
-}
-
-ul.atividades li:first-child {
-	border-width: 0px;
-}
-
-ul.atividades p{
-	margin: 0px;
-}
+	.atividadeInfo a.atividadeTitulo{font-weight: bold;	display: block;}
+	.atividadeThumb{float:left;	margin-right: 10px;}
+	.videoInfo{	display: table-cell; vertical-align: top;}
+	.referenciaInfo{ border-left:2px solid #ccc; padding-left: 10px;}
+	.referenciaInfo .referenciaDescricao{ color: gray; margin-top: 5px;}
+	.atividadeContainer{ display:table-cell; font-size: 11px;}
+	.atividadeUserFoto{	display:block; float:left; margin-right: 10px;}
+	.atividadeInfo{	margin-top:5px;}
+	.atividadeContainerDescricao{color:#808080; padding-bottom: 3px;}
+	.atividadeUserNome{	font-weight: bold;}
+	
+	ul.atividades li{ border-style: solid; border-width: 1px 0 0 0;	border-color: #E9E9E9;	padding-top: 14px;	padding-bottom: 14px;}
+	ul.atividades li:first-child { border-width: 0px;}
+	ul.atividades p{ margin: 0px;}
+	ul.atividadesFiltros{
+		background: whiteSmoke;
+		border: 2px solid #EBEBEB;
+		margin: 0px -27px;
+		margin-top: 20px;
+		padding: 0px 9px 0px 25px;
+		text-align: right;
+	}
+	.cuboLeft{
+		float:left;
+		border-left: 7px solid transparent;
+		border-top: 5px solid #EEE;
+		margin-left: -27px;
+	}
+	.cuboRight{
+		float:right;
+		border-right: 7px solid transparent;
+		border-top: 5px solid #EEE;
+		margin-right: -27px;
+	}
+		
+	ul.atividadesFiltros li{
+		display: inline-block;
+		font-size: 11px;
+		font-weight: bold;
+		height: 18px;
+		line-height: 19px;
+		padding: 5px 0px;
+		margin-left: -5px;
+	}
+	ul.atividadesFiltros li a{
+		padding: 8px 10px 9px 16px;
+	}
+	ul.atividadesFiltros li a i{
+		padding: 1px 0px 1px 17px;
+		background-image: url(/images/icones_atividades.png);
+		background-repeat: no-repeat;
+		background-position: 0px 0px;
+	}
+	ul.atividadesFiltros li a span{
+		padding-left: 5px;
+		color: #666;
+		font-size: 9px;
+		position: relative;
+		top: -9px;
+		left: -4px;
+	}
+	ul.atividadesFiltros li a:hover{
+		background-color: #EBEBEB;
+		text-decoration: none;
+	}
+	ul.atividadesFiltros li.selected a{
+		background-color: #FFF;
+		border-width: 2px 2px 0px 2px;
+		border-color: #EBEBEB;
+		border-style: solid;
+		padding-top: 14px;
+	}
+	ul.atividadesFiltros li a:hover span{
+		color: inherit;
+	}
+	ul.atividadesFiltros li.selected a i{
+		background-position-x: -18px;
+	}
+	ul.atividadesFiltros li a:hover i{
+		background-position-x: -18px;
+	}
+	ul.atividadesFiltros li.videoFiltro a i{background-position-y: -15px;}
+	ul.atividadesFiltros li.commentFiltro a i{background-position-y: -30px;}
+	ul.atividadesFiltros li.linkFiltro a i{background-position-y: -45px;}
+	ul.atividadesFiltros li.referenciaFiltro a i{background-position-y: -60px;}
+	ul.atividadesFiltros li.citacaoFiltro a i{background-position-y: -74px;}
+	form textarea{
+		border: 1px solid #DDD;
+		width: 100%;
+		height: 92px;
+	}
+	form input[type=submit]{
+		background-color: #368200;
+		background-image: -webkit-linear-gradient(top,#3d9400,#368200);
+		background-image: -moz-linear-gradient(top,#3d9400,#368200);
+		background-image: -ms-linear-gradient(top,#3d9400,#368200);
+		background-image: -o-linear-gradient(top,#3d9400,#368200);
+		background-image: linear-gradient(top,#3d9400,#368200);
+		border: 1px solid #2D6200;
+		border-image: initial;
+		cursor: pointer;
+		padding: 3px 5px;
+		color: white;
+		font-weight: bold;
+	}
+	form .botoes{ text-align: right;}
+	
+	.atividadeDatahora{
+		color: #808080;
+	}
 </style>
 		
 		
@@ -180,7 +228,10 @@ ul.atividades p{
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
             })();
         </script>
+		<script type='text/javascript'>
+			 $(function() {
+			   $('a[title]').tipsy({fade: true, gravity: 'n'});
+			 });
+		</script>
     </body>
 </html>
-
-

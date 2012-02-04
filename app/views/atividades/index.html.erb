@@ -1,80 +1,47 @@
-<style>
-.uiVideoThumb{border:0;overflow:hidden;position:relative}
-.uiVideoThumb img{display:inline-block;max-height:130px;max-width:130px}
-.uiVideoThumb img[width]{max-width:auto}
-.uiVideoThumb i{background:url(/images/play_video.png) no-repeat 0 0;bottom:5px;height:26px;left:5px;position:absolute;width:35px}
-.uiVideoThumbSmall i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yN/r/aERK2-5sOBX.png);bottom:3px;height:22px;left:3px;width:27px}
-.uiVideoThumbTiny i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yx/r/LwvvGd2Cr9v.png);bottom:3px;height:17px;width:21px;left:3px}
-.uiVideoThumbLoading i{background:url(http://static.ak.fbcdn.net/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;bottom:0;height:100%;left:0;width:100%}
-.uiVideoThumbSmall.uiVideoThumbLoading i,.uiVideoThumbTiny.uiVideoThumbLoading i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yb/r/GsNJNwuI-UM.gif)}
-.uiVideoThumbLoading img{opacity:.15}
+﻿<div id="content" class="index">
 
-.atividadeInfo a.atividadeTitulo{
-	font-weight: bold;
-	display: block;
-}
+	<%= render :partial => "partials/#{@item.class.name.downcase}/new", :locals=> {:versiculo => @versiculo, :item => @item} %>
 
-.atividadeThumb{
-	float:left;
-	margin-right: 10px;
-}
 
-.videoInfo{
-	display: table-cell;
-	vertical-align: top;
-}
-
-.referenciaInfo{
-	border-left:2px solid #ccc;
-	padding-left: 10px;
-}
-
-.referenciaInfo .referenciaDescricao{
-	color: gray;
-	margin-top: 5px;
-}
-
-ul.atividades{
-	list-style-type: none;
-}
-
-ul.atividades li{
-	border-style: solid;
-	border-width: 1px 0 0 0;
-	border-color: #E9E9E9;
-	padding-top: 14px;
-	padding-bottom: 14px;
-}
-
-ul.atividades li:first-child {
-	border-width: 0px;
-}
-
-ul.atividades p{
-	margin: 0px;
-}
-</style>
-
-<div id="content" class="index">
-
-<ul class="atividades">
-<% @atividades.each do |atividade| %>
-<li>
-	<%= render :partial => 'partials/user_atividade', :locals => {:item => atividade.item, :mostrar_versiculo => false}%>
-	<%= render :partial => 'partials/' + atividade.item.class.name.downcase, :locals => {:item => atividade.item}%>
-</li>
-<% end %>
-</ul>
-
+	<ul class="atividadesFiltros">
+		<li class="atividadeFiltro <%="selected" if @filtro == "Atividade"%>">
+			<a href="<%= versiculo_atividades_path(@versiculo)%>" title="Atividades">
+				<i></i>
+				<span><%= @versiculo.atividades.count if @versiculo.atividades.count > 0%></span>
+			</a>
+		</li>
+		<li class="commentFiltro <%="selected" if @filtro == "Comment"%>">
+			<a href="<%= versiculo_atividades_path(@versiculo) + "?filtro=Comment"%>" title="Comentários">
+				<i></i>
+				<span><%= @versiculo.comments.count if @versiculo.comments.count > 0%></span>
+			</a>
+		</li>
+		<li class="videoFiltro <%="selected" if @filtro == "Video"%>">
+			<a href="<%= versiculo_atividades_path(@versiculo) + "?filtro=Video"%>" title="Vídeos">
+				<i></i>
+				<span><%= @versiculo.videos.count if @versiculo.videos.count > 0%></span>
+			</a>
+		</li>
+		<li class="linkFiltro <%="selected" if @filtro == "Link"%>">
+			<a href="<%= versiculo_atividades_path(@versiculo) + "?filtro=Link"%>" title="Links">
+				<i></i>
+				<span><%= @versiculo.links.count if @versiculo.links.count > 0%></span>
+			</a>
+		</li>
+		<li class="referenciaFiltro <%="selected" if @filtro == "Referencia"%>">
+			<a href="<%= versiculo_atividades_path(@versiculo) + "?filtro=Referencia"%>" title="Referências">
+				<i></i>
+				<span><%= @versiculo.referencias.count if @versiculo.referencias.count > 0%></span>
+			</a>
+		</li>
+		<li class="citacaoFiltro <%="selected" if @filtro == "Citacao"%>">
+			<a href="<%= versiculo_atividades_path(@versiculo) + "?filtro=Citacao"%>" title="Citações">
+				<i></i>
+				<span><%= @versiculo.referencias.count if @versiculo.referencias.count > 0%></span>
+			</a>
+		</li>
+	</ul>
+	<div class="cuboLeft"></div>
+	<div class="cuboRight"></div>
+	<%= render :partial => 'partials/atividades', :locals => {:itens => @itens, :mostrar_versiculo => false}%>
 </div>
-
-<script>
-	$('.uiVideoThumb').click(function(event){
-		event.preventDefault();
-		var iframe_video = $('<iframe>')
-			.attr('width', 397)
-			.attr('height', 298)
-			.attr('src', $(this).attr('data-url'));	
-		$(this).parent().html(iframe_video);
-	});
-</script>

@@ -1,1 +1,9 @@
-<%= render :partial => 'partials/atividades', :locals => {:atividades => @atividades, :mostrar_versiculo => true}%>
+﻿<ul>
+	<li><%= link_to "Atividades", "/mural"%></li>
+	<li><%= link_to "Comentários", "/mural?filtro=Comment"%></li>
+	<li><%= link_to "Vídeos", "/mural?filtro=Video"%></li>
+	<li><%= link_to "Links", "/mural?filtro=Link"%></li>
+	<li><%= link_to "Referências", "/mural?filtro=Referencia"%></li>
+<ul>
+
+<%= render :partial => 'partials/atividades', :locals => {:itens => @itens, :mostrar_versiculo => true}%>

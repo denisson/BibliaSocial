@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
 
-  has_many :comments
+  
   has_many :atividades
-  has_many :users, :through => :seguidores
+  has_many :comments
+  has_many :videos
+  has_many :links
+  has_many :referencias
   acts_as_followable
   acts_as_follower
   #has_many :users_seguindo, :through => :seguidores
@@ -15,5 +18,5 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
-  has_attached_file :foto, :styles => {:small => "32x32>", :thumb => "50x50>", :normal => "100x100>"}
+  has_attached_file :foto, :styles => {:small => "32x32#", :thumb => "50x50#", :normal => "100x100#"}
 end

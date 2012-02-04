@@ -13,6 +13,8 @@
   validates :texto_html, :presence => true
   validates :user_id, :presence => true
   
+  default_scope order("created_at DESC")
+  
   after_create :criar_atividade
   
   def criar_atividade
@@ -20,7 +22,7 @@
   end
   
   def self.create_comment(user, versiculo, texto)
-	texto_html = TextoHtml.new(texto)
+	texto_html = TextoHtml.new(texto.sanitize)
 	comment = {
 		:user => user,
 		:texto => texto,

@@ -1,15 +1,15 @@
-<div id="content" class="index">
-
 <ul class="atividades">
-<% atividades.each do |atividade| %>
+<% itens.each do |item| %>
 <li>
-	<%= render :partial => 'partials/user_atividade', :locals => {:item => atividade.item, :mostrar_versiculo => mostrar_versiculo}%>
-	<%= render :partial => 'partials/' + atividade.item.class.name.downcase, :locals => {:item => atividade.item}%>
+	<%= link_to (image_tag item.user.foto.url(:thumb)), user_path(item.user), {:class => "atividadeUserFoto"} %>
+	<div class="atividadeContainer">
+		<%= render :partial => 'partials/user_atividade', :locals => {:item => item, :mostrar_versiculo => mostrar_versiculo}%>
+		<%= render :partial => "partials/#{item.class.name.downcase}/show", :locals => {:item => item}%>
+		<span class="atividadeDatahora">há <%= distance_of_time_in_words_to_now item.created_at %></span>
+	</div>
 </li>
 <% end %>
 </ul>
-
-</div>
 
 <script>
 	$('.uiVideoThumb').click(function(event){

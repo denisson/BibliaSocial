@@ -2,27 +2,19 @@
 
   def index
 	@versiculo = Versiculo.find(params[:versiculo_id])
-	@atividades = @versiculo.atividades
-	
+	@filtro =  params[:filtro]
+	if @filtro == nil
+		@item = Comment.new
+		@itens = @versiculo.atividades.map(&:item)
+		@filtro = "Atividade"
+	else
+		@item = @filtro.constantize.new
+		@itens = @filtro.constantize.where(:versiculo_id => @versiculo)
+	end
     respond_to do |format|
       format.html
       format.js
     end
-  end
-  
-  def create
-	@versiculo = Versiculo.find(params[:versiculo_id])
-	comment = params[:link][:comment]
-	if comment[:texto] != ""
-		@comment = Comment.create_comment_link(current_user, @versiculo, comment[:texto], params[:link][:url])
-		if @comment.errors.any?
-			flash[:alert] = @comment.errors.inspect
-		end
-	else
-		link_ou_video = Link.create_link current_user, @versiculo, params[:link][:url]
-	end
-	
-	redirect_to versiculo_links_path(@versiculo)
   end
 end
 

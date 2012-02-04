@@ -25,15 +25,26 @@
 
   def show
 	@user = User.find(params[:id])
+	filtro =  params[:filtro]
+	if filtro == nil
+		@itens = @user.atividades.map(&:item)
+	else
+		@itens = filtro.constantize.where(:user_id => @user)
+	end
   end
 
   def mural
-	if (current_use != nil)
-		@user = current_use
-		@atividades = Atividade.where(:user => @user.all_following)
+	if (current_user != nil)
+		@user = current_user
+		filtro =  params[:filtro]
+		if filtro == nil
+			@itens = Atividade.mural(@user).map(&:item)
+		else
+			@itens = filtro.constantize.where(:user_id => @user.all_following.map(&:id))
+		end
 	else
 		flash[:notice] = "Você precisa se logar para acessar esta área!"
-		redirect_to root
+		redirect_to root_path
 	end
   end
 end

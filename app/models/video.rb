@@ -8,6 +8,8 @@
 
 	validates :player_url, :uniqueness => {:scope => [:user_id, :versiculo_id]}
 	
+	default_scope order("created_at DESC")
+	
 	after_create :criar_atividade
 	
 	def criar_atividade

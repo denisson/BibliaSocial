@@ -24,7 +24,7 @@
 		referencia = Referencia.create_referencia current_user, @versiculo, params[:referencia][:ref]
 	end
 	
-	redirect_to versiculo_referencias_path(@versiculo)
+	redirect_to versiculo_atividades_path(@versiculo) + "?filtro=Referencia"
   end
 end
 

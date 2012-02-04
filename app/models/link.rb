@@ -8,6 +8,8 @@ class Link < ActiveRecord::Base
 	
 	validates :url,:presence => true, :uniqueness => {:scope => [:user_id, :versiculo_id]}
 	
+	default_scope order("created_at DESC")
+	
 	after_create :criar_atividade
 	
 	def criar_atividade
@@ -70,11 +72,13 @@ class Link < ActiveRecord::Base
 			if titulo_meta_tag != nil
 				titulo = titulo_meta_tag.attribute('content').content
 			else
-				titulo = page.css('title').first.content
+				titulo_tag = page.css('title').first
+				titulo = titulo_tag.content if titulo_tag != nil
 			end
 
-			return {:type => "Link", :url => url, :titulo => titulo}
+			return {:type => "Link", :url => url, :titulo => titulo} if titulo != nil
 		end
+		return nil
 	end
 
 	def descricao_atividade

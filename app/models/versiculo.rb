@@ -7,6 +7,7 @@ class Versiculo < ActiveRecord::Base
   has_many :comentarios, :dependent => :destroy
   has_many :comments
   has_many :referencias
+  has_many :citacoes, :class_name => "Referencia", :foreign_key => "versiculo_citado_id"
   has_many :links
   has_many :videos
   has_many :atividades

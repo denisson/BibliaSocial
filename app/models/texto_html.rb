@@ -3,16 +3,21 @@
   attr_accessor :referencias, :links, :texto
   
   def initialize(texto)
-	@texto = texto.dup
+	@texto = texto.dup.to_str # de acordo com essa solução https://github.com/rails/rails/issues/1744#issuecomment-1405503
 	@referencias = Array.new
 	@links = Array.new
 	formatar
   end
   
   def formatar_links
-	@texto.gsub!(URI.regexp) do |match|
-		@links << match
-		'<a href="'+match+'" target="_blank">'+match+'</a>'
+	@texto.gsub!(regex_url) do |match|
+		if $1 == nil
+			url = "http://" + match
+		else
+			url = match	
+		end
+		@links << url
+		'<a href="'+url+'" target="_blank">'+match+'</a>'
 	end
   end
   
@@ -34,5 +39,8 @@
 	formatar_links
 	formatar_referencias
   end
-
+  
+  def regex_url
+	/(https?:\/\/)?(([\da-z-]+)\.)+([a-z]{2,6})(\:\d+)?(\/[\w\?=#&$!\*\"\'\(\)\,\;\:\%\+\.-]*)*/
+  end
 end

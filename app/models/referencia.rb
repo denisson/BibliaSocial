@@ -9,6 +9,8 @@
 	
 	validates :ref, :uniqueness => {:scope => [:user_id, :versiculo_id]}
 	
+	default_scope order("created_at DESC")
+	
 	after_create :criar_atividade
 	
 	def criar_atividade
@@ -77,13 +79,13 @@
 	end
 	
 	def self.regex
-		return Regexp.new('(((([1-3]|[iI]{1,3})( )?)?([a-zá-úà-ùâ-ûä-üçA-ZÁ-ÚÀ-ÙÂ-ÛÄ-ÜÇ]+))[ ]?((\d{1,3})((:|-|,|\.)( )?(\d{1,3}))*))')
+		return Regexp.new('(((([1-3]|[iI]{1,3})( )?)?([a-zá-úà-ùâ-ûä-üçA-ZÁ-ÚÀ-ÙÂ-ÛÄ-ÜÇ]+))[ ]((\d{1,3})((:|-|,|\.)( )?(\d{1,3}))*))')
 	end
 	
 	def pretty_ref
 		if ref =~ Referencia.regex
-			capitulo_versiculo = $7
-			return versiculo.livro.nome + " " + capitulo_versiculo.strip
+			capitulo_versiculo = $7			
+			return versiculo_citado.livro.nome + " " + capitulo_versiculo.strip.gsub(":", ".")
 		else
 			return ref
 		end

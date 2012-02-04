@@ -1,6 +1,6 @@
 * { margin: 0; padding: 0 }
-body { background: #8ec1da; font-family: Arial, Tahoma, Calibri, Verdana, Geneva, sans-serif; font-size: 16px }
-a, .link { color: #337fe5; text-decoration: none }
+body { background: #FFF; font-family: "lucida grande",tahoma,verdana,arial,sans-serif; font-size: 16px }
+a, .link { color: #36C; text-decoration: none }
 a:hover { text-decoration: underline }
 img { border: none }
 input { vertical-align: middle }
@@ -23,8 +23,8 @@ p, h1, h2, h3, h4, h5, ul { margin: 20px 0 }
         #search input[type=submit].hover { background-position: -170px -27px }
         #search input[type=submit].focus { background-position: -170px -54px }
 
-#window { background: #fff url('images/background_window.png') top right repeat-y; margin: 25px 0; min-height: 800px }
-#content { float: left; width: 560px; padding: 0 20px }
+#window { /*background: #fff url('images/background_window.png') top right repeat-y;*/ margin: 25px 0; min-height: 800px }
+#content { float: left; width: 558px; padding: 20px; border: solid 1px #EEE; box-shadow: 0px 0px 8px #888;}
     #content h2, #sidebar h3 { border-bottom: 1px solid #999; padding-bottom: 5px }
 #sidebar { position: relative; float: right; width: 360px; padding: 20px }
     #sidebar h3 { margin-top: 43px }
