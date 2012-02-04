@@ -1,0 +1,8 @@
+<%= form_for([@versiculo, @item]) do |f| %>
+  <div>
+    <%= f.text_area :texto %>
+  </div>
+  <div class="botoes">
+    <%= f.submit "Publicar" %>
+  </div>
+<% end %>

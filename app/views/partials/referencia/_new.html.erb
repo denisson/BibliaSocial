@@ -1,0 +1,19 @@
+<%= form_for([@versiculo, @item]) do |f| %>
+
+  <%= f.fields_for :comment do |comment_form| %>
+  <div>
+    <%= comment_form.label :texto %><br />
+    <%= comment_form.text_area :texto %>
+  </div>
+  <% end %>
+  
+  <div>
+	<%= f.label :ref %><br />
+	<%= f.text_field :ref %>
+  </div>
+  
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
