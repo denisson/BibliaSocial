@@ -1,4 +1,5 @@
-﻿require 'open-uri'
+﻿
+require 'open-uri'
 class CommentsController < ApplicationController
   def index
 	@versiculo = Versiculo.find(params[:versiculo_id])
@@ -12,11 +13,11 @@ class CommentsController < ApplicationController
 
   def create
     @versiculo = Versiculo.find(params[:versiculo_id])
-	@comment = Comment.create_comment(current_user, @versiculo, params[:comment][:texto])
+	@comment = Comment.criar({:user => current_user, :versiculo => @versiculo, :texto => params[:comment][:texto]})
 	if @comment.errors.any?
 		flash[:alert] = @comment.errors.inspect
 	end
-	redirect_to versiculo_comments_path(@versiculo)
+	redirect_to versiculo_atividades_path(@versiculo) + "?filtro=Comment"
   end
 
   def destroy

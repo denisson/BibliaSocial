@@ -4,6 +4,9 @@
 	<%= link_to (image_tag item.user.foto.url(:thumb)), user_path(item.user), {:class => "atividadeUserFoto"} %>
 	<div class="atividadeContainer">
 		<%= render :partial => 'partials/user_atividade', :locals => {:item => item, :mostrar_versiculo => mostrar_versiculo}%>
+		<% if item.class.method_defined?(:comment) && item.comment != nil %>
+			<%= render :partial => "partials/comment/show", :locals => {:item => item.comment}%>
+		<% end %>
 		<%= render :partial => "partials/#{item.class.name.downcase}/show", :locals => {:item => item}%>
 		<span class="atividadeDatahora">há <%= distance_of_time_in_words_to_now item.created_at %></span>
 	</div>

@@ -16,12 +16,12 @@
 	@versiculo = Versiculo.find(params[:versiculo_id])
 	comment = params[:referencia][:comment]
 	if comment[:texto] != ""
-		@comment = Comment.create_comment_referencia(current_user, @versiculo, comment[:texto], params[:referencia][:ref])
-		if @comment.errors.any?
-			flash[:alert] = @comment.errors.inspect
+		@referencia = Referencia.criar_com_comment({:user => current_user, :versiculo => @versiculo, :ref => params[:referencia][:ref]}, comment[:texto])
+		if @referencia == nil
+			flash[:alert] = "Não foi possível criar a ref"
 		end
 	else
-		referencia = Referencia.create_referencia current_user, @versiculo, params[:referencia][:ref]
+		@referencia = Referencia.criar({:user => current_user, :versiculo => @versiculo, :ref => params[:referencia][:ref]})
 	end
 	
 	redirect_to versiculo_atividades_path(@versiculo) + "?filtro=Referencia"

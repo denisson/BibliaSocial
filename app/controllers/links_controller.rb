@@ -16,15 +16,15 @@
 	@versiculo = Versiculo.find(params[:versiculo_id])
 	comment = params[:link][:comment]
 	if comment[:texto] != ""
-		@comment = Comment.create_comment_link(current_user, @versiculo, comment[:texto], params[:link][:url])
-		if @comment.errors.any?
-			flash[:alert] = @comment.errors.inspect
+		link_ou_video = Link.criar_com_comment({:user => current_user, :versiculo => @versiculo, :url => params[:link][:url]}, comment[:texto])
+		if link_ou_video == nil
+			flash[:alert] = "Não foi possível criar o link"
 		end
 	else
-		link_ou_video = Link.create_link current_user, @versiculo, params[:link][:url]
+		link_ou_video = Link.criar({:user => current_user, :versiculo => @versiculo, :url => params[:link][:url]})
 	end
 	
-	redirect_to versiculo_links_path(@versiculo)
+	redirect_to versiculo_atividades_path(@versiculo) + "?filtro=Link"
   end
 end
 

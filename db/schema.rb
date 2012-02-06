@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120130195921) do
+ActiveRecord::Schema.define(:version => 20120205000024) do
 
   create_table "atividades", :force => true do |t|
     t.string   "url"
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(:version => 20120130195921) do
     t.integer  "links_count",       :default => 0, :null => false
     t.integer  "videos_count",      :default => 0, :null => false
     t.integer  "atividades_count",  :default => 0, :null => false
+    t.integer  "citacoes_count",    :default => 0, :null => false
   end
 
   add_index "versiculos", ["biblia_id"], :name => "index_versiculos_on_biblia_id"

@@ -5,9 +5,9 @@ class Versiculo < ActiveRecord::Base
   belongs_to :capitulo, :counter_cache => true
   
   has_many :comentarios, :dependent => :destroy
-  has_many :comments
+  has_many :comments, :conditions => { :item_id => nil}
   has_many :referencias
-  has_many :citacoes, :class_name => "Referencia", :foreign_key => "versiculo_citado_id"
+  has_many :citacoes, :foreign_key => "versiculo_citado_id"
   has_many :links
   has_many :videos
   has_many :atividades
@@ -20,7 +20,8 @@ class Versiculo < ActiveRecord::Base
   validates :capitulo, :presence => true
   
   scope :default_includes, includes(:capitulo, :livro)
-  
+  scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo)}
+	
   define_index do
     # fields
     indexes texto
@@ -52,7 +53,7 @@ class Versiculo < ActiveRecord::Base
 	livro = self.capitulo.livro.nome
 	capitulo = self.capitulo.numero.to_s
 	versiculo = self.numero.to_s
-	return livro + " " + capitulo + ":" + versiculo
+	return livro + " " + capitulo + "." + versiculo
   end
 end
 

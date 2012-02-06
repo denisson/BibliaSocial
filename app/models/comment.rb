@@ -14,29 +14,28 @@
   validates :user_id, :presence => true
   
   default_scope order("created_at DESC")
+  scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo, :item_id => nil)}
   
   after_create :criar_atividade
   
   def criar_atividade
-	self.versiculo.atividades.create({:user => self.user, :item => self})
+	if self.item == nil
+		self.versiculo.atividades.create({:user => self.user, :item => self})
+	end
   end
   
-  def self.create_comment(user, versiculo, texto)
-	texto_html = TextoHtml.new(texto.sanitize)
-	comment = {
-		:user => user,
-		:texto => texto,
-		:texto_html => texto_html.texto
-	}
-	@comment = versiculo.comments.create(comment)
+  def self.criar(comment)
+	texto_html = TextoHtml.new(comment[:texto].sanitize)
+	comment[:texto_html] = texto_html.texto
+	@comment = comment[:versiculo].comments.create(comment)
 	if @comment.errors.empty?
-		@comment.create_referencias texto_html.referencias
-		@comment.create_links texto_html.links
+		@comment.criar_referencias texto_html.referencias
+		@comment.criar_links texto_html.links
 	end
 	return @comment
   end
   
-  def create_referencias(referencias)
+  def criar_referencias(referencias)
 	referencias.each do |referencia|
 		referencia.user = self.user
 		referencia.versiculo = self.versiculo
@@ -45,28 +44,10 @@
 	end
   end
   
-  def create_links(links)
+  def criar_links(links)
 	links.each do |link|
-		Link.create_link_comment self, link
+		Link.criar({:user => self.user, :versiculo => self.versiculo, :url => link, :comment => self})
 	end
-  end
-  
-  def self.create_comment_link(user, versiculo, texto, url)
-	@comment = create_comment(user, versiculo, texto)
-	if @comment.errors.empty?
-		@comment.item = Link.create_link_comment @comment, url
-		@comment.save
-	end
-	return @comment
-  end
-  
-  def self.create_comment_referencia(user, versiculo, texto, ref)
-	@comment = create_comment(user, versiculo, texto)
-	if @comment.errors.empty?		
-		@comment.item = Referencia.create_referencia_comment @comment, ref
-		@comment.save
-	end
-	return @comment
   end
 
   def descricao_atividade

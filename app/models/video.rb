@@ -4,12 +4,12 @@
 	belongs_to :comment
 
 	has_one :atividade, :as => :item, :dependent => :destroy
-	has_one :comment_item, :as => :item
 
-	validates :player_url, :uniqueness => {:scope => [:user_id, :versiculo_id]}
+	#validates :player_url, :uniqueness => {:scope => [:user_id, :versiculo_id]}
 	
 	default_scope order("created_at DESC")
-	
+	scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo)}
+		
 	after_create :criar_atividade
 	
 	def criar_atividade

@@ -4,47 +4,44 @@ class Link < ActiveRecord::Base
 	belongs_to :comment
 	
 	has_one :atividade, :as => :item, :dependent => :destroy
-	has_one :comment_item, :as => :item
-	
-	validates :url,:presence => true, :uniqueness => {:scope => [:user_id, :versiculo_id]}
+
+	# não deu certo pq salva primeiro o link, então não tem comment_id ainda!
+	#validates :url,:presence => true, :uniqueness => {:scope => [:user_id, :versiculo_id, :comment_id]}
 	
 	default_scope order("created_at DESC")
+	scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo)}
 	
 	after_create :criar_atividade
 	
 	def criar_atividade
 		if self.comment == nil
-			self.versiculo.atividades.create({:user => self.user, :item => self})
+			@atividades = self.versiculo.atividades.create({:user => self.user, :item => self})
 		end
 	end
 	
-	def self.create_link_completo(user, versiculo, url, comment)
-		meta_info = get_meta_info(url)
+	def self.criar(link_hash)
+		meta_info = get_meta_info(link_hash[:url])
 		if meta_info != nil
-			meta_info[:user] = user
-			meta_info[:versiculo] = versiculo
+			meta_info[:user] = link_hash[:user]
+			meta_info[:versiculo] = link_hash[:versiculo]
+			meta_info[:comment] = link_hash[:comment]
 			if meta_info[:type] == "Video"
-				if comment != nil
-					return comment.videos.create(meta_info)
-				else
-					return versiculo.videos.create(meta_info)
-				end
+				return Video.create(meta_info)
 			else
-				if comment != nil
-					return comment.links.create(meta_info)
-				else
-					return versiculo.links.create(meta_info)
-				end
+				return Link.create(meta_info)
 			end
+		else
+			return nil
 		end
 	end
 	
-	def self.create_link_comment(comment, url)
-		create_link_completo comment.user, comment.versiculo, url, comment
-	end
-	
-	def self.create_link(user, versiculo, url)
-		create_link_completo(user, versiculo, url, nil)
+	def self.criar_com_comment(link_hash, texto)
+		link = criar(link_hash)
+		return nil if link == nil
+		comment = Comment.criar({:user => link_hash[:user], :versiculo => link_hash[:versiculo], :texto => texto, :item => link})
+		link.comment = comment
+		link.save
+		return link
 	end
 	
 	def self.get_meta_info(url)

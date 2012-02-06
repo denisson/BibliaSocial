@@ -5,18 +5,40 @@
 	belongs_to :versiculo_citado, :class_name => "Versiculo"
 	
 	has_one :atividade, :as => :item, :dependent => :destroy
-	has_one :comment_item, :as => :item
 	
-	validates :ref, :uniqueness => {:scope => [:user_id, :versiculo_id]}
+	#validates :ref, :uniqueness => {:scope => [:user_id, :versiculo_id, :comment_id]}
 	
 	default_scope order("created_at DESC")
+	scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo)}
 	
-	after_create :criar_atividade
+	after_create :criar_atividade, :criar_citacao
 	
 	def criar_atividade
 		if self.comment == nil
 			self.versiculo.atividades.create({:user => self.user, :item => self})
 		end
+	end
+	
+	def criar_citacao
+		Citacao.criar_atividade self
+	end
+	
+	def self.criar(referencia_hash)
+		referencia = build_referencia(referencia_hash[:ref])
+		return nil if referencia == nil
+		referencia.versiculo = referencia_hash[:versiculo]
+		referencia.user = referencia_hash[:user]
+		referencia.save
+		return referencia
+	end
+	
+	def self.criar_com_comment(referencia_hash, texto)
+		referencia = criar(referencia_hash)
+		return nil if referencia == nil
+		comment = Comment.criar({:user => referencia_hash[:user], :versiculo => referencia_hash[:versiculo], :texto => texto, :item => referencia})
+		referencia.comment = comment
+		referencia.save
+		return referencia
 	end
 	
 	def self.build_referencia(ref)
@@ -56,25 +78,6 @@
 				end
 			end
 		end
-		return referencia
-	end
-	
-	def self.create_referencia(user, versiculo, ref)
-		referencia = build_referencia(ref)
-		return nil if referencia == nil
-		referencia.versiculo = versiculo
-		referencia.user = user
-		referencia.save
-		return referencia
-	end
-
-	def self.create_referencia_comment(comment, ref)
-		referencia = build_referencia(ref)
-		return nil if referencia == nil
-		referencia.versiculo = comment.versiculo
-		referencia.user = comment.user
-		referencia.comment = comment
-		referencia.save
 		return referencia
 	end
 	

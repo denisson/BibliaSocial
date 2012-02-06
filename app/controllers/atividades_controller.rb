@@ -9,8 +9,9 @@
 		@filtro = "Atividade"
 	else
 		@item = @filtro.constantize.new
-		@itens = @filtro.constantize.where(:versiculo_id => @versiculo)
+		@itens = @filtro.constantize.where_versiculo(@versiculo)
 	end
+	
     respond_to do |format|
       format.html
       format.js

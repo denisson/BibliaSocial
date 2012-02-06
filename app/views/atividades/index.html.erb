@@ -1,7 +1,7 @@
 ﻿<div id="content" class="index">
 
-	<%= render :partial => "partials/#{@item.class.name.downcase}/new", :locals=> {:versiculo => @versiculo, :item => @item} %>
 
+<%= render :partial => "partials/#{@item.class.name.downcase}/new", :locals=> {:versiculo => @versiculo, :item => @item} %>
 
 	<ul class="atividadesFiltros">
 		<li class="atividadeFiltro <%="selected" if @filtro == "Atividade"%>">
@@ -37,7 +37,7 @@
 		<li class="citacaoFiltro <%="selected" if @filtro == "Citacao"%>">
 			<a href="<%= versiculo_atividades_path(@versiculo) + "?filtro=Citacao"%>" title="Citações">
 				<i></i>
-				<span><%= @versiculo.referencias.count if @versiculo.referencias.count > 0%></span>
+				<span><%= @versiculo.citacoes.count if @versiculo.citacoes.count > 0%></span>
 			</a>
 		</li>
 	</ul>
