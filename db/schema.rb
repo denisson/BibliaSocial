@@ -10,10 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120205000024) do
+ActiveRecord::Schema.define(:version => 20120219120143) do
 
   create_table "atividades", :force => true do |t|
-    t.string   "url"
     t.integer  "user_id"
     t.integer  "versiculo_id"
     t.integer  "item_id"
@@ -93,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20120205000024) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "titulo"
+    t.integer  "comment_descricao_id"
   end
 
   create_table "livros", :force => true do |t|
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20120205000024) do
     t.integer  "comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comment_descricao_id"
   end
 
   create_table "secoes", :force => true do |t|
@@ -172,7 +173,6 @@ ActiveRecord::Schema.define(:version => 20120205000024) do
     t.integer  "links_count",       :default => 0, :null => false
     t.integer  "videos_count",      :default => 0, :null => false
     t.integer  "atividades_count",  :default => 0, :null => false
-    t.integer  "citacoes_count",    :default => 0, :null => false
   end
 
   add_index "versiculos", ["biblia_id"], :name => "index_versiculos_on_biblia_id"
@@ -190,6 +190,16 @@ ActiveRecord::Schema.define(:version => 20120205000024) do
     t.integer  "versiculo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comment_descricao_id"
+  end
+
+  create_table "votos", :force => true do |t|
+    t.integer  "user_id",      :null => false
+    t.integer  "pontuacao",    :null => false
+    t.integer  "votavel_id",   :null => false
+    t.string   "votavel_type", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

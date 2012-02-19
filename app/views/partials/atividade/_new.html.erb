@@ -1,0 +1,46 @@
+<%= form_for([versiculo, comment], :remote => true,  :html => {:class => "atividadesForm"}) do |f| %>
+
+  <div class="textareaContainer">
+    <%= f.text_area :texto, {:placeholder=> "Comente aqui..."} %>
+  </div>
+  
+<ul class="botoesItens">
+	<li class="botaoVideo">
+		<a href="/versiculos/19782/atividades?filtro=Video" data-placeholder="Digite ou cole a url do vídeo" title="Adicionar Vídeo">
+			<i></i>
+		</a>
+	</li>
+	<li class="botaoLink">
+		<a href="/versiculos/19782/atividades?filtro=Link" data-placeholder="Digite ou cole um link" title="Adicionar Link">
+			<i></i>
+		</a>
+	</li>
+	<li class="botaoReferencia">
+		<a href="/versiculos/19782/atividades?filtro=Referencia" data-placeholder="Digite uma referência (Jo 3.16, por exemplo)" title="Adicionar Referência">
+			<i></i>
+		</a>
+	</li>
+</ul>
+
+<script>
+	$('ul.botoesItens a').click(function(event){
+		event.preventDefault();
+		$('.stringItemContainer').show();
+		$('ul.botoesItens a').removeClass("selected");
+		$(this).addClass("selected");
+		$('#stringItem').attr('placeholder', $(this).attr('data-placeholder'))
+	});
+    $('.atividadesForm textarea').autosize();
+</script>
+  
+  <div class="stringItemContainer">
+	<%= text_field_tag  'comment[string_item]', nil,  {:id => "stringItem"} %>
+  </div>
+
+  <div class="botoes">
+    <%= f.submit "Publicar", :disable_with => "Publicando..." %>
+  </div>
+
+  <div class=".validation-error">
+  </div>
+<% end %>

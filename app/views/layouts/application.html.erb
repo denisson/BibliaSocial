@@ -17,10 +17,9 @@
         <% if ENV['RAILS_ENV'] == 'production' %>
             <%= javascript_include_tag 'all' %>
         <% else %>
-            <%= javascript_include_tag 'jquery', 'jquery_ui', 'rails', 'secret', 'jquery.tipsy' %>
+            <%= javascript_include_tag 'jquery', 'jquery_ui', 'rails', 'jquery.tipsy', 'jquery.autosize-min', 'jquery-ui.custom.min', 'secret' %>
         <% end %>
-        <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
-
+        <!--<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>-->
 <style>
 	ul{ list-style-type: none;}
 
@@ -45,9 +44,11 @@
 	.atividadeContainerDescricao{color:#808080; padding-bottom: 3px;}
 	.atividadeUserNome{	font-weight: bold;}
 	.atividadeComment{margin: 5px 0px}
-	
+
+    ul.atividades{ margin-bottom: 0px}
 	ul.atividades li{ border-style: solid; border-width: 1px 0 0 0;	border-color: #E9E9E9;	padding-top: 14px;	padding-bottom: 14px;}
-	ul.atividades li:first-child { border-width: 0px;}
+	ul.atividades li:first-child, ul.atividades li.first { border-width: 0px;}
+    ul.atividades li.loading{opacity:0.5}
 	ul.atividades p{ margin: 0px;}
 	ul.atividadesFiltros{
 		background: whiteSmoke;
@@ -57,20 +58,24 @@
 		padding: 0px 25px;
 		text-align: right;
 	}
+	ul.botoesItens{
+		margin: 0px;
+		text-align: right;
+	}
 	.cuboLeft{
 		float:left;
-		border-left: 7px solid transparent;
-		border-top: 5px solid #EEE;
+		border-left: 6px solid transparent;
+		border-top: 5px solid #CCC;
 		margin-left: -27px;
 	}
 	.cuboRight{
 		float:right;
-		border-right: 7px solid transparent;
-		border-top: 5px solid #EEE;
+		border-right: 6px solid transparent;
+		border-top: 5px solid #CCC;
 		margin-right: -27px;
 	}
 		
-	ul.atividadesFiltros li{
+	ul.atividadesFiltros li, ul.botoesItens li{
 		display: inline-block;
 		font-size: 11px;
 		font-weight: bold;
@@ -82,13 +87,21 @@
 	ul.atividadesFiltros li a{
 		padding: 8px 10px 9px 16px;
 	}
-	ul.atividadesFiltros li a i{
+	ul.botoesItens li a{
+		padding: 8px;
+	}
+	ul.atividadesFiltros li a i, ul.botoesItens li a i,  .versiculo a.comment_count i{
 		padding: 1px 0px 1px 17px;
 		background-image: url(/images/icones_atividades.png);
 		background-repeat: no-repeat;
 		background-position: 0px 0px;
 	}
-	ul.atividadesFiltros li a span{
+    ul.atividadesFiltros li a.loading i{
+    	background-image: url(/images/loader.gif);
+		background-position: 0px 0px !important;
+    }
+
+	ul.atividadesFiltros li a span, .versiculo a.comment_count span{
 		padding-left: 5px;
 		color: #666;
 		font-size: 9px;
@@ -100,6 +113,9 @@
 		background-color: #EBEBEB;
 		text-decoration: none;
 	}
+	ul.botoesItens li a.selected{
+		background-color: #F5F5F5;
+	}
 	ul.atividadesFiltros li.selected a{
 		background-color: #FFF;
 		border-width: 2px 2px 0px 2px;
@@ -110,21 +126,31 @@
 	ul.atividadesFiltros li a:hover span{
 		color: inherit;
 	}
-	ul.atividadesFiltros li.selected a i{
+	ul.atividadesFiltros li.selected a i, ul.botoesItens li a.selected i, .versiculo.selected a.comment_count i {
 		background-position-x: -18px;
 	}
-	ul.atividadesFiltros li a:hover i{
+	ul.atividadesFiltros li a:hover i, ul.botoesItens li a:hover i, .versiculo a.comment_count:hover i{
 		background-position-x: -18px;
 	}
-	ul.atividadesFiltros li.videoFiltro a i{background-position-y: -15px;}
-	ul.atividadesFiltros li.commentFiltro a i{background-position-y: -30px;}
-	ul.atividadesFiltros li.linkFiltro a i{background-position-y: -45px;}
-	ul.atividadesFiltros li.referenciaFiltro a i{background-position-y: -60px;}
-	ul.atividadesFiltros li.citacaoFiltro a i{background-position-y: -74px;}
+	ul.atividadesFiltros li.Video i, ul.botoesItens li.botaoVideo a i{background-position-y: -15px;}
+	ul.atividadesFiltros li.Comment i, .versiculo a.comment_count i{background-position-y: -30px;}
+	ul.atividadesFiltros li.Link i, ul.botoesItens li.botaoLink a i{background-position-y: -45px;}
+	ul.atividadesFiltros li.Referencia i, ul.botoesItens li.botaoReferencia a i{background-position-y: -60px;}
+	ul.atividadesFiltros li.Citacao i{background-position-y: -74px;}
+	
+	form.atividadesForm{
+		border: solid 1px #D2D2D2;
+	}
 	form textarea{
-		border: 1px solid #DDD;
+		border: 0px;
 		width: 100%;
-		height: 92px;
+		height: 32px;
+		outline: 0;
+		padding: 10px 10px 0px 10px;
+		resize: none;
+	}
+	form .textareaContainer{
+		padding-right:20px;
 	}
 	form input[type=submit]{
 		background-color: #368200;
@@ -136,15 +162,53 @@
 		border: 1px solid #2D6200;
 		border-image: initial;
 		cursor: pointer;
-		padding: 3px 5px;
+		padding: 3px 15px;
 		color: white;
 		font-weight: bold;
 	}
-	form .botoes{ text-align: right;}
-	
+	form input[type=submit]:hover{
+		opacity: .8;
+	}
+	form .botoes input[disabled]{
+		background-color: #368200;
+		opacity: .5;
+	}
+	form .botoes{
+		text-align: right;
+		padding: 6px;
+		text-align: right;
+		border-top: 0px;
+		background-color: #F5F5F5;
+	}
+	form input#stringItem {width:100%; border: solid 1px #DDD; padding:3px}
 	.atividadeDatahora{
 		color: #808080;
 	}
+	form .stringItemContainer{
+		background-color: #F5F5F5;
+		border-top: 0px;
+		padding: 8px 18px;
+		display: none;
+	}
+    .apagado{opacity:0.4}
+    .versiculo.selected{
+        background-color: #D9EBF4;
+        margin-right: -20px;
+        padding-right: 20px;
+        margin-left: -20px;
+        padding-left: 20px;
+    }
+    .bordaSeta{
+        display: none;
+        background: url(/images/borda_seta.png);
+        width: 10px;
+        height: 20px;
+        position: relative;
+        display: block;
+        top: 67px;
+        left: -29px;
+        float: left;
+    }
 </style>
 		
 		
@@ -171,7 +235,6 @@
         </div>
         <%= yield :ready %>
         <script type="text/javascript">
-            $(document).ready(function() {
                 var livros = <%= Livro.order('nome ASC').map(&:nome).to_json.html_safe %>;
 
                 var accentMap = {
@@ -202,21 +265,9 @@
                         }));
                     }
                 });
-            });
         </script>
 
-        <script type="text/javascript">
-            FB.Event.subscribe('comment.create', function(response) {
-                $.post('/comentarios', { 
-                    'comentario[comment_id]': response.commentID, 
-                    'comentario[href]': response.href, 
-                    'comentario[parent_comment_id]': response.parentCommentID 
-                });
-            });
-            FB.Event.subscribe('comment.remove', function(response) {
-                $.post('/comentarios/' + response.commentID, { _method: 'delete' });
-            });
-        </script>
+
 
         <script type="text/javascript">
             var _gaq = _gaq || [];
@@ -230,9 +281,58 @@
             })();
         </script>
 		<script type='text/javascript'>
-			 $(function() {
-			   $('a[title]').tipsy({fade: false, gravity: 'n'});
-			 });
+
+//               $(".atividadesFiltros a")
+//                .bind("ajax:success", function(evt, data, status, xhr){
+//                   $('.atividades').html(xhr.responseText);
+//                });
+//				  $('form#new_comment')
+//					.bind("ajax:success", function(evt, data, status, xhr){
+//					  var $form = $(this);
+//
+//					  // Reset fields and any validation errors, so form can be used again, but leave hidden_field values intact.
+//					  $form.find('textarea,input[type="text"],input[type="file"]').val("");
+//					  $form.find('div.validation-error').empty();
+//
+//					  // Insert response partial into page below the form.
+//					  $('.atividades').prepend(xhr.responseText);
+//
+//					})
+//					.bind("ajax:error", function(evt, xhr, status, error){
+//					  var $form = $(this),
+//						  errors,
+//						  errorText;
+//
+//					  try {
+//						// Populate errorText with the comment errors
+//						errors = $.parseJSON(xhr.responseText);
+//					  } catch(err) {
+//						// If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
+//						errors = {message: "Please reload the page and try again"};
+//					  }
+//
+//					  // Build an unordered list from the list of errors
+//					  errorText = "There were errors with the submission: \n<ul>";
+//
+//					  for ( error in errors ) {
+//						errorText += "<li>" + error + ': ' + errors[error] + "</li> ";
+//					  }
+//
+//					  errorText += "</ul>";
+//
+//					  // Insert error list into form
+//					  $form.find('div.validation-error').html(errorText);
+//					});
 		</script>
+        <script>
+            $('.uiVideoThumb').live('click', (function(event){
+                event.preventDefault();
+                var iframe_video = $('<iframe>')
+                    .attr('width', 397)
+                    .attr('height', 298)
+                    .attr('src', $(this).attr('data-url'));
+                $(this).parent().html(iframe_video);
+            });
+        </script>
     </body>
 </html>

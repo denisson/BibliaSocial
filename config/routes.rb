@@ -11,12 +11,36 @@ Bibliasocial::Application.routes.draw do
   get 'mural', :to => 'users#mural'
   
   resources :comentarios
+
+  resources :comments do
+    post 'like', :on => :member
+    post 'dislike', :on => :member
+    delete 'desfazer_voto', :on => :member
+  end
+  resources :referencias do
+    post 'like', :on => :member
+    post 'dislike', :on => :member
+    delete 'desfazer_voto', :on => :member
+  end
+  resources :links do
+    post 'like', :on => :member
+    post 'dislike', :on => :member
+    delete 'desfazer_voto', :on => :member
+  end
+  resources :videos do
+    post 'like', :on => :member
+    post 'dislike', :on => :member
+    delete 'desfazer_voto', :on => :member
+  end
+
   resources :versiculos do
-	resources :comments
-	resources :referencias
-	resources :links
-	resources :videos
-	resources :atividades
+    resources :comments
+    resources :referencias
+    resources :links
+    resources :videos
+    resources :atividades do
+      get 'lista', :on => :collection
+    end
   end
   
   get 'search', :to => 'biblia_social#search'

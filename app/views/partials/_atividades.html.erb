@@ -1,26 +1,46 @@
-<ul class="atividades">
-<% itens.each do |item| %>
-<li>
-	<%= link_to (image_tag item.user.foto.url(:thumb)), user_path(item.user), {:class => "atividadeUserFoto"} %>
-	<div class="atividadeContainer">
-		<%= render :partial => 'partials/user_atividade', :locals => {:item => item, :mostrar_versiculo => mostrar_versiculo}%>
-		<% if item.class.method_defined?(:comment) && item.comment != nil %>
-			<%= render :partial => "partials/comment/show", :locals => {:item => item.comment}%>
+	<ul class="atividadesFiltros">
+		<li class="filtro Atividade <%="selected" if @filtro == "Atividade"%>">
+			<a href="<%= url%>" title="Tudo" data-filtro="Atividade">
+				<i></i>
+				<span id="atividadeContador"><%= versiculo.atividades.quantos%></span>
+			</a>
+		</li>
+		<li class="filtro Comment <%="selected" if @filtro == "Comment"%>">
+			<a href="<%= url + "?filtro=Comment"%>" title="Somente Comentários"  data-filtro="Comment">
+				<i></i>
+				<span id="commentContador"><%= versiculo.comments.quantos%></span>
+			</a>
+		</li>
+		<li class="filtro Video <%="selected" if @filtro == "Video"%>">
+			<a href="<%= url + "?filtro=Video"%>" title="Somente Vídeos"  data-filtro="Video">
+				<i></i>
+				<span id="videoContador"><%= versiculo.videos.quantos%></span>
+			</a>
+		</li>
+		<li class="filtro Link <%="selected" if @filtro == "Link"%>">
+			<a href="<%= url + "?filtro=Link"%>" title="Somente Links"  data-filtro="Link">
+				<i></i>
+				<span id="linkContador"><%= versiculo.links.quantos%></span>
+			</a>
+		</li>
+		<li class="filtro Referencia <%="selected" if @filtro == "Referencia"%>">
+			<a href="<%= url + "?filtro=Referencia"%>" title="Somente Referências"  data-filtro="Referencia">
+				<i></i>
+				<span id="referenciaContador"><%= versiculo.referencias.quantos%></span>
+			</a>
+		</li>
+		<% if versiculo.class.method_defined?(:citacoes) %>
+		<li class="filtro Citacao <%="selected" if @filtro == "Citacao"%>">
+			<a href="<%= url + "?filtro=Citacao"%>" title="Somente Citações"  data-filtro="Citacao">
+				<i></i>
+				<span id="citacaoContador"><%= versiculo.citacoes.quantos %></span>
+			</a>
+		</li>
 		<% end %>
-		<%= render :partial => "partials/#{item.class.name.downcase}/show", :locals => {:item => item}%>
-		<span class="atividadeDatahora">há <%= distance_of_time_in_words_to_now item.created_at %></span>
-	</div>
-</li>
-<% end %>
-</ul>
+	</ul>
+	<div class="cuboLeft"></div>
+	<div class="cuboRight"></div>
 
-<script>
-	$('.uiVideoThumb').click(function(event){
-		event.preventDefault();
-		var iframe_video = $('<iframe>')
-			.attr('width', 397)
-			.attr('height', 298)
-			.attr('src', $(this).attr('data-url'));	
-		$(this).parent().html(iframe_video);
-	});
-</script>
+<ul class="atividades">
+    <%= render :partial => "partials/atividade/lista", :locals => {:itens => itens, :mostrar_versiculo => false}%>
+</ul>

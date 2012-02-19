@@ -1,2 +1,22 @@
+Tratamento de Exceções (erros, deletou e não deu certo. mostrar erro para o usuário)
+Adicionar funcionalidade de like e dislike
+Terminar o perfil do usuário
+Terminar o mural
+Adicionar funcionalidade de mudar de livro e capítulo
+Fazer index
+COnvidar amigos do facebook
+passo a passo para recém cadastrado no site
+emails de resumo semanais
+Terminar intregração com omniauth (Decidir se além do facebook vai colocar twitter e google)
+Como transicionar Comentários do 1.0 para essa nova versão
+
 Retirar bordas dos Iframes
-Colocar gif de carregando no carregamento do v�deo
+Colocar gif de carregando no carregamento do v�deo
+
+-----
+AGORA:
+Adicionando funcionalidade de exclusão ao Link, Video e Referencia; e corrigindo a de comentário que quando tem algum item atrelado, não exclui da tela.
+
+----
+BUGs:
+    Quando o usuário insere uma nova referência, video ou link com comentário... o contador de comentário aumenta. Isso não pode acontecer pois o comentário de um item não deve ser considerado um comentário. O engraçado é que se recarregar a página, a contagem fica correta.

@@ -1,0 +1,18 @@
+<li id="<%="#{item.class.name}_#{item.id}"%>" class="<%=item.class.name%> <%="Atividade" if classe_atividade %>" style="<%="display:none" unless classe_atividade %>" data-item-dependencia="<%=item_dependencia if defined?(item_dependencia)%>">
+	<%= link_to (image_tag item.user.foto.url(:small)), user_path(item.user), {:class => "atividadeUserFoto"} %>
+	<div class="atividadeContainer">
+		<%= render :partial => 'partials/user_atividade', :locals => {:item => item, :mostrar_versiculo => mostrar_versiculo}%>
+		<% if item.class.method_defined?(:comment_descricao) && item.comment_descricao != nil %>
+			<%= render :partial => "partials/comment/show", :locals => {:item => item.comment_descricao}%>
+		<% end %>
+		<%= render :partial => "partials/#{item.class.name.downcase}/show", :locals => {:item => item}%>
+        <%= link_to 'Gostei', like_comment_path(item), :remote => true, :method => :post, :class => "botaoLikeItem" %>
+        <%= link_to 'Não Gostei', dislike_comment_path(item), :remote => true, :method => :post, :class => "botaoDislikeItem" %>
+		<span class="atividadeDatahora">há <%= distance_of_time_in_words_to_now item.created_at %></span>
+	</div>
+    <%= link_to 'x', [item.versiculo, item], :remote => true, :confirm => 'Deseja realmente excluir esta publicação?',:method => :delete, :class => "botaoExcluirItem" if (item.user == current_user && item.class != Citacao) %>
+</li>
+
+<% item.atividades_dependentes.each do |comment_atividade_item| %>
+  <%= render :partial => "partials/atividade/show", :locals => {:item => comment_atividade_item, :mostrar_versiculo => mostrar_versiculo, :classe_atividade => false, :item_dependencia => "#{item.class.name}_#{item.id}" }%>
+<% end %>

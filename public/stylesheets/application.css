@@ -1,6 +1,6 @@
 * { margin: 0; padding: 0 }
-body { background: #FFF; font-family: "lucida grande",tahoma,verdana,arial,sans-serif; font-size: 16px }
-a, .link { color: #36C; text-decoration: none }
+body { background: url(/images/background.png); font-family: "lucida grande",tahoma,verdana,arial,sans-serif; font-size: 16px }
+a, .link { color: #3B5998; text-decoration: none }
 a:hover { text-decoration: underline }
 img { border: none }
 input { vertical-align: middle }
@@ -23,10 +23,10 @@ p, h1, h2, h3, h4, h5, ul { margin: 20px 0 }
         #search input[type=submit].hover { background-position: -170px -27px }
         #search input[type=submit].focus { background-position: -170px -54px }
 
-#window { /*background: #fff url('images/background_window.png') top right repeat-y;*/ margin: 25px 0; min-height: 800px }
-#content { float: left; width: 558px; padding: 20px; border: solid 1px #EEE; box-shadow: 0px 0px 8px #888;}
+#window { /*background: #fff url('images/background_window.png') top right repeat-y;*/ margin: 0px 0; min-height: 800px }
+#content { float: left; width: 558px; padding: 20px;background: white;box-shadow: 0px 0px 12px #000;}
     #content h2, #sidebar h3 { border-bottom: 1px solid #999; padding-bottom: 5px }
-#sidebar { position: relative; float: right; width: 360px; padding: 20px }
+#sidebar { display:block; position: relative; float: right; width: 360px; padding: 20px; border: solid 1px #EEE; box-shadow: 0px 0px 12px #000;background-color: #FFFFFF;-webkit-border-radius: 6px; margin-left: 10px;}
     #sidebar h3 { margin-top: 43px }
     #sidebar h3.special { margin-top: 7px }
 
@@ -53,7 +53,7 @@ p, h1, h2, h3, h4, h5, ul { margin: 20px 0 }
    --- CLASSES
    -----------------------------*/
 .ui-menu-item { font-size: 13px }
-.wrapper { width: 1000px; margin: 0 auto }
+.wrapper { width: 1010px; margin: 0 auto }
 .clear { height: 100% }
 .clear:after { clear: both; content: ""; display: block }
 .previous_and_next { font-weight: bold; text-align: center }
@@ -65,14 +65,15 @@ p, h1, h2, h3, h4, h5, ul { margin: 20px 0 }
 
 .index .odd { background:none }
 .index .versiculo { padding: 20px 0;}
-.versiculo { margin: 0; padding: 10px 0px 10px 5px; cursor: pointer }
+.versiculo { margin: 0; padding: 10px 0px 10px 5px;}
 .versiculo a, .versiculo .link { margin-right: 5px }
-.versiculo:hover { background-color: #D9EBF4 }
+/*.versiculo:hover { background-color: #D9EBF4 }*/
 .versiculo a.numero { color: #000; display: inline-block; font-weight: bold; width: 20px; text-align: right; margin-right: 5px }
 .versiculo a.referencia { float: right; clear: both }
-.odd { background: #f0f0e1 }
+.odd { background: #F5F5F5 }
 .endereco { color: #337fe5; float: right; margin: 3px 10px }
-.comment_count { background: url('images/background_comments_count.png') no-repeat; background-size: 13px auto; background-position: left center; color: #337fe5; display: inline-block; float: right; height: 13px; width:17px; padding-left: 12px; font-size: 11px; text-align: center; line-height: 10px; margin: 5px 0 0 0 }
+.comment_count { display: inline-block; float: right; height: 13px; width:17px; font-size: 11px; padding: 3px 5px; }
+.versiculo.loading a.comment_count i { background: url('images/loader.gif') no-repeat !important;}
 .titulo { cursor: pointer }
 .titulo .comment_count { margin-top: 12px; font-weight: normal }
 

@@ -6,8 +6,7 @@ class ReferenciaTest < ActiveSupport::TestCase
   test "Referencia sem Comentário" do
 	ref = "Jo 12:24-26"
 	
-	@referencia = Referencia.create_referencia(@user, @versiculo, ref)
-
+	@referencia = Referencia.criar({:user => @user, :versiculo => @versiculo, :ref => ref})
 	assert_equal ref, @referencia.ref
 	assert_equal versiculos(:joao), @referencia.versiculo_citado
 	assert_equal nil, @referencia.comment
@@ -17,19 +16,18 @@ class ReferenciaTest < ActiveSupport::TestCase
 	ref = "Jo 12:24-26"
 	texto = "texto do comentário"
 	
-	@comment = Comment.create_comment_referencia(@user, @versiculo, texto, ref)
+	@referencia = Referencia.criar_com_comment({:user => @user, :versiculo => @versiculo, :ref => ref}, texto)
+	assert_equal ref, @referencia.ref
+	assert_equal versiculos(:joao), @referencia.versiculo_citado
+
+	@comment = @referencia.comment
 	assert_equal texto, @comment.texto
 	assert_equal texto, @comment.texto_html
 	assert_equal 0, @comment.links.size
 	assert_equal 1, @comment.referencias.size
 	assert_equal 0, @comment.videos.size
 	
-	@referencia = @comment.item
-	assert_equal ref, @referencia.ref
-	assert_equal versiculos(:joao), @referencia.versiculo_citado
-	assert_equal @comment, @referencia.comment
-	assert_equal nil, @referencia.comment
-	assert_equal @comment, @referencia.comment_item
+
   end
   
   def inicializar

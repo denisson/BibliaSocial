@@ -2,15 +2,17 @@ Javascript
 	Tooltip
 		https://github.com/jaz303/tipsy	
 		http://flowplayer.org/tools/demos/tooltip/any-html.html
-	
+	AutoSize Textarea:
+		https://github.com/jackmoore/autosize
 		
 Rails
 	OmniAuth com Devise
 		http://www.communityguides.eu/articles/11
-		
+	Cropping Images:
+		http://railscasts.com/episodes/182-cropping-images
+	Ajax:
+	    http://www.alfajango.com/blog/rails-3-remote-links-and-forms/
 Regex
 	BNF Url
 		http://www.w3.org/Addressing/URL/5_BNF.html#z12
-		
-Cropping Images:
-	http://railscasts.com/episodes/182-cropping-images
+	

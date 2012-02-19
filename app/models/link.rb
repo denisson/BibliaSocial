@@ -1,12 +1,18 @@
+require "open-uri"
 class Link < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :versiculo, :counter_cache => true
 	belongs_to :comment
 	
 	has_one :atividade, :as => :item, :dependent => :destroy
+  has_one :comment_descricao, :as => :item, :class_name => "Comment", :dependent => :destroy
 
-	# não deu certo pq salva primeiro o link, então não tem comment_id ainda!
+  has_many :votos, :as => :votavel, :dependent => :destroy
+
+	# nï¿½o deu certo pq salva primeiro o link, entï¿½o nï¿½o tem comment_id ainda!
 	#validates :url,:presence => true, :uniqueness => {:scope => [:user_id, :versiculo_id, :comment_id]}
+	validates :user_id, :presence => true
+	validates :versiculo_id, :presence => true
 	
 	default_scope order("created_at DESC")
 	scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo)}
@@ -17,10 +23,18 @@ class Link < ActiveRecord::Base
 		if self.comment == nil
 			@atividades = self.versiculo.atividades.create({:user => self.user, :item => self})
 		end
-	end
+  end
+
+  def atividades_dependentes
+    if comment_descricao != nil
+      comment_descricao.atividades_dependentes
+    else
+      Array.new
+    end
+  end
 	
 	def self.criar(link_hash)
-		meta_info = get_meta_info(link_hash[:url])
+		meta_info = get_meta_info(adicionar_protocolo(link_hash[:url]))
 		if meta_info != nil
 			meta_info[:user] = link_hash[:user]
 			meta_info[:versiculo] = link_hash[:versiculo]
@@ -39,8 +53,8 @@ class Link < ActiveRecord::Base
 		link = criar(link_hash)
 		return nil if link == nil
 		comment = Comment.criar({:user => link_hash[:user], :versiculo => link_hash[:versiculo], :texto => texto, :item => link})
-		link.comment = comment
-		link.save
+#		link.comment = comment
+#		link.save
 		return link
 	end
 	
@@ -48,10 +62,11 @@ class Link < ActiveRecord::Base
 		begin
 			#tenta abrir um link especificado
 			page = Nokogiri::HTML(open(url))
-		rescue
-			#caso não consiga, não salva nada
-			return nil
-		end
+    rescue Exception => e
+      #p e.inspect
+			return {:type => "Link", :url => url, :titulo => nome_site(url)}
+	  end
+
 		video_link = page.css('meta[property="og:video"]').first
 		if video_link != nil
 			thumb_url = page.css('meta[property="og:image"]').first.attribute('content').content
@@ -84,6 +99,29 @@ class Link < ActiveRecord::Base
 
 	def descricao_atividade_conectivo
 		"em"
+	end
+	
+	def self.pode_ser?(string)
+		return string =~ regex
+	end
+	
+	def self.regex
+		/(https?:\/\/)?((([\da-z-]+)\.)+([a-z]{2,6}))(\:\d+)?(\/[\w\?=#&$!\*\"\'\(\)\,\;\:\%\+\.-]*)*/
+	end
+	
+	def self.nome_site(url)
+		if url =~ regex
+			return $2
+		else
+			return url
+		end
+	end
+	
+	def self.adicionar_protocolo(url)
+		if url =~ regex
+			url = "http://" + url if $1 == nil
+		end
+		return url
 	end
 	
 end

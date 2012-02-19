@@ -17,17 +17,6 @@
     <%= render :partial => 'partials/livros' %>
 </div>
 <div id="sidebar">
-    <h3>Capítulos</h3>
-    <%= render :partial => 'partials/capitulos' %>
-
-    <h3>Facebook</h3>
-    <div id="sidebar_window">
-        <div class="title"><div class="text"></div><span>fechar <b>x</b></span></div>
-        <p id="buttons"></p>
-        <div id="facebook"></div>
-    </div>
-    <div id="sidebar_window2">
-        <div class="title"><div class="text"><b>Comentários:</b> <%= "#{@livro.nome} #{@capitulo.numero}" %></div><span>fechar <b>x</b></span></div>
-        <div id="facebook2"><fb:comments href="<%= "http://www.bibliasocial.com/#{@livro.permalink}/#{@capitulo.numero}"%>" num_posts="10" width="360"></fb:comments></div>
-    </div>
+    <h3>Comentários</h3>
+    <%= render :partial => "partials/atividade/lista", :locals => {:itens => @itens, :mostrar_versiculo => true}%>
 </div>

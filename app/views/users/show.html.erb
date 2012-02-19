@@ -4,12 +4,4 @@
 <%= link_to "Seguidores", user_seguidores_path(@user) %>
 <%= link_to "Seguindo", "/users/#{@user.id}/seguindo" %>
 
-<ul>
-	<li><%= link_to "Atividades - #{@user.atividades.count}", user_path(@user)%></li>
-	<li><%= link_to "Comentários - #{@user.comments.count}", user_path(@user) + "?filtro=Comment"%></li>
-	<li><%= link_to "Vídeos - #{@user.videos.count}", user_path(@user) + "?filtro=Video"%></li>
-	<li><%= link_to "Links - #{@user.links.count}", user_path(@user) + "?filtro=Link"%></li>
-	<li><%= link_to "Referências - #{@user.referencias.count}", user_path(@user) + "?filtro=Referencia"%></li>
-<ul>
-
-<%= render :partial => 'partials/atividades', :locals => {:itens => @itens, :mostrar_versiculo => true}%>
+<%= render :partial => 'partials/atividades', :locals => {:url => user_path(@user) , :versiculo => @user , :itens => @itens, :mostrar_versiculo => true}%>

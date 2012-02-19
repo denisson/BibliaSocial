@@ -10,7 +10,7 @@
   end
   
   def formatar_links
-	@texto.gsub!(regex_url) do |match|
+	@texto.gsub!(Link.regex) do |match|
 		if $1 == nil
 			url = "http://" + match
 		else
@@ -40,7 +40,4 @@
 	formatar_referencias
   end
   
-  def regex_url
-	/(https?:\/\/)?(([\da-z-]+)\.)+([a-z]{2,6})(\:\d+)?(\/[\w\?=#&$!\*\"\'\(\)\,\;\:\%\+\.-]*)*/
-  end
 end

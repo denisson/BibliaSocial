@@ -4,9 +4,11 @@
   before_filter :find_biblia
   
   def index
-    @versiculos = Versiculo.joins(:comentarios).group('versiculo_id').order('max(comentarios.created_at) DESC').paginate(:page => params[:page], :per_page => 3)
-	
-	#@versiculos.first.comments.create(:texto => "Este é o primeiro comentário", :user => current_user)
+    #@versiculos = Versiculo.joins(:comentarios).group('versiculo_id').order('max(comentarios.created_at) DESC').paginate(:page => params[:page], :per_page => 3)
+	@versiculos = Versiculo.limit(12).paginate(:page => params[:page], :per_page => 3)
+	@versiculo = @versiculos.first
+	@itens = @versiculo.atividades.map(&:item)
+	@comment = Comment.new
     respond_to do |format|
       format.html
       format.js
@@ -21,6 +23,7 @@
     @livro = @biblia.livros.where(:permalink => params[:livro]).first
     @capitulo = @livro.capitulos.where(:numero => params[:capitulo]).first
     @versiculos = @capitulo.versiculos.order('numero ASC')
+    @itens = Atividade.joins(:versiculo).where(:versiculo_id => @versiculos.map(&:id)).order("numero, atividades.created_at desc").map(&:item)
   end
   
   def versiculo
