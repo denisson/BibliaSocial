@@ -1,0 +1,20 @@
+<h5 class="tituloDivisor"><%=@tituloDivisor%></h5>
+
+<ul class="listaUsers">
+<% @users.each do |user| %>
+	<li>
+      <%= link_to (image_tag user.foto.url(:thumb)), user_path(user), {:class => "userFoto"} %>
+      <div class="userInfo">
+        <div>
+            <%= link_to user.nome, user_path(user), {:class => "userNome"} %>
+        </div>
+        <div class="userMaisInfo">
+            <%= pluralize(user.followers.count, 'seguidor')%>
+        </div>
+      </div>
+      <div class="userBotoes">
+            <%= render :partial => 'partials/botao_seguir', :locals => {:user => user}%>
+      </div>
+	</li>
+<% end %>
+</ul>

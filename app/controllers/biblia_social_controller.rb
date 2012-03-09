@@ -5,10 +5,10 @@
   
   def index
     #@versiculos = Versiculo.joins(:comentarios).group('versiculo_id').order('max(comentarios.created_at) DESC').paginate(:page => params[:page], :per_page => 3)
-	@versiculos = Versiculo.limit(12).paginate(:page => params[:page], :per_page => 3)
-	@versiculo = @versiculos.first
-	@itens = @versiculo.atividades.map(&:item)
-	@comment = Comment.new
+    @versiculos = Versiculo.limit(12).paginate(:page => params[:page], :per_page => 3)
+    @versiculo = @versiculos.first
+    @itens = @versiculo.atividades.map(&:item)
+    @comment = Comment.new
     respond_to do |format|
       format.html
       format.js
@@ -53,6 +53,7 @@
   protected
   
   def find_biblia
+
     @biblia = Biblia.find(1)
     @velho_testamento = @biblia.secoes.where(:permalink => 'velho-testamento').first
     @novo_testamento = @biblia.secoes.where(:permalink => 'novo-testamento').first

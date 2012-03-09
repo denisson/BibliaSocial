@@ -1,39 +1,39 @@
 	<ul class="atividadesFiltros">
-		<li class="filtro Atividade <%="selected" if @filtro == "Atividade"%>">
+		<li class="filtro Atividade selected">
 			<a href="<%= url%>" title="Tudo" data-filtro="Atividade">
 				<i></i>
-				<span id="atividadeContador"><%= versiculo.atividades.quantos%></span>
+				<span id="atividadeContador"><%= agrupador_itens.atividades.size.quantos if agrupador_itens%></span>
 			</a>
 		</li>
-		<li class="filtro Comment <%="selected" if @filtro == "Comment"%>">
+		<li class="filtro Comment">
 			<a href="<%= url + "?filtro=Comment"%>" title="Somente Comentários"  data-filtro="Comment">
 				<i></i>
-				<span id="commentContador"><%= versiculo.comments.quantos%></span>
+				<span id="commentContador"><%= agrupador_itens.comments.size.quantos  if agrupador_itens%></span>
 			</a>
 		</li>
-		<li class="filtro Video <%="selected" if @filtro == "Video"%>">
+		<li class="filtro Video">
 			<a href="<%= url + "?filtro=Video"%>" title="Somente Vídeos"  data-filtro="Video">
 				<i></i>
-				<span id="videoContador"><%= versiculo.videos.quantos%></span>
+				<span id="videoContador"><%= agrupador_itens.videos.size.quantos  if agrupador_itens%></span>
 			</a>
 		</li>
-		<li class="filtro Link <%="selected" if @filtro == "Link"%>">
+		<li class="filtro Link">
 			<a href="<%= url + "?filtro=Link"%>" title="Somente Links"  data-filtro="Link">
 				<i></i>
-				<span id="linkContador"><%= versiculo.links.quantos%></span>
+				<span id="linkContador"><%= agrupador_itens.links.size.quantos  if agrupador_itens%></span>
 			</a>
 		</li>
-		<li class="filtro Referencia <%="selected" if @filtro == "Referencia"%>">
+		<li class="filtro Referencia">
 			<a href="<%= url + "?filtro=Referencia"%>" title="Somente Referências"  data-filtro="Referencia">
 				<i></i>
-				<span id="referenciaContador"><%= versiculo.referencias.quantos%></span>
+				<span id="referenciaContador"><%= agrupador_itens.referencias.size.quantos if agrupador_itens%></span>
 			</a>
 		</li>
-		<% if versiculo.class.method_defined?(:citacoes) %>
-		<li class="filtro Citacao <%="selected" if @filtro == "Citacao"%>">
+		<% if agrupador_itens and agrupador_itens.class.method_defined?(:citacoes) %>
+		<li class="filtro Citacao">
 			<a href="<%= url + "?filtro=Citacao"%>" title="Somente Citações"  data-filtro="Citacao">
 				<i></i>
-				<span id="citacaoContador"><%= versiculo.citacoes.quantos %></span>
+				<span id="citacaoContador"><%= agrupador_itens.citacoes.size.quantos  if agrupador_itens %></span>
 			</a>
 		</li>
 		<% end %>
@@ -42,5 +42,5 @@
 	<div class="cuboRight"></div>
 
 <ul class="atividades">
-    <%= render :partial => "partials/atividade/lista", :locals => {:itens => itens, :mostrar_versiculo => false}%>
+    <%= render :partial => "partials/atividade/lista", :locals => {:itens => itens, :mostrar_versiculo => mostrar_versiculo}%>
 </ul>

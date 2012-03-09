@@ -1,10 +1,16 @@
-<div class="atividadeThumb">
-	<a class="uiVideoThumb" data-url="<%= item.player_url + '&autoplay=1' %>" href="<%= item.link_url %>" target="_blank">
-		<img src="<%= item.thumb_url %>">
-		<i></i>
-	</a>
+<div class="atividadeVideoContainer">
+    <div class="atividadeThumb">
+        <a class="uiVideoThumb" data-url="<%= item.player_url + '&autoplay=1' %>" href="<%= item.link_url %>" target="_blank">
+            <img src="<%= item.thumb_url %>">
+            <i></i>
+        </a>
+    </div>
+    <div class="atividadeInfo videoInfo">
+        <div class="atividadeTitulo">
+           <%= link_to item.titulo, item.link_url, {:class => "reticencias", :title => item.titulo} %>
+        </div>
+        <div class="atividadeUrl">
+            <%= link_to item.link_url, item.link_url, {:class => "reticencias", :title => item.link_url} %>
+        </div>
+    </div>
 </div>
-<div class="atividadeInfo videoInfo">
-<%= link_to item.titulo, item.link_url, {:class => "atividadeTitulo"} %>
-<%= link_to item.link_url, item.link_url, {:class => "atividadeDescricao"} %>
-<div>

@@ -3,6 +3,6 @@
     <span class="text"><%= '"' if defined?(show_aspas) %><%= highlight(versiculo.texto) %><%= '"' if defined?(show_aspas) %></span>
     <a href="<%= versiculo_atividades_path(versiculo)%>" class="comment_count" data-remote=true>
         <i></i>
-        <span><%= versiculo.atividades.count%></span>
+        <span><%= versiculo.atividades.size%></span>
     </a>
 </p>

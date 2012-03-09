@@ -1,0 +1,11 @@
+<%
+#if flash[:alert].is_a? Array
+#    flash[:alert].each do |campo_mensagem|
+#        campo_mensagem.each do |mensagem|
+#
+#        end
+#    end
+#end
+%>
+showMessage("<%= flash[:alert] %>");
+<% flash[:alert] = "" %>

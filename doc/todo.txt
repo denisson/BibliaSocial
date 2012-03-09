@@ -1,22 +1,25 @@
-Tratamento de Exceções (erros, deletou e não deu certo. mostrar erro para o usuário)
-Adicionar funcionalidade de like e dislike
-Terminar o perfil do usuário
-Terminar o mural
+#Tratamento de Exceções (erros, deletou e não deu certo. mostrar erro para o usuário)
+#Terminar o perfil do usuário
+#Terminar o mural
 Adicionar funcionalidade de mudar de livro e capítulo
 Fazer index
-COnvidar amigos do facebook
+#COnvidar amigos do facebook
 passo a passo para recém cadastrado no site
 emails de resumo semanais
-Terminar intregração com omniauth (Decidir se além do facebook vai colocar twitter e google)
-Como transicionar Comentários do 1.0 para essa nova versão
-
-Retirar bordas dos Iframes
-Colocar gif de carregando no carregamento do v�deo
+#Terminar intregração com omniauth (Decidir se além do facebook vai colocar twitter e google) - Decidido somente facebook
+#Como transicionar Comentários do 1.0 para essa nova versão - Resolvido
+Adaptar para multi-versões
 
 -----
-AGORA:
-Adicionando funcionalidade de exclusão ao Link, Video e Referencia; e corrigindo a de comentário que quando tem algum item atrelado, não exclui da tela.
 
-----
-BUGs:
-    Quando o usuário insere uma nova referência, video ou link com comentário... o contador de comentário aumenta. Isso não pode acontecer pois o comentário de um item não deve ser considerado um comentário. O engraçado é que se recarregar a página, a contagem fica correta.
+
+-----
+update versiculos set comments_count = 0,	referencias_count = 0, 	links_count = 0, 	videos_count = 0, 	atividades_count = 0, 	citacoes_count = 0
+
+http://localhost:3000/users/auth/facebook/callback?code=AQBawxWswdYBDa1Q5Hsd3ofjzbUNzVryoEp3753f7IiCAsoRIEmpzEkzq-fdlzeSA_8_Q6O5pk46HqVbZXRs-N3ay33PVrEobmFg5gnyEemZiwF01WjhpA2slbZKejJTbDcCFtU3up4Hp6QsIX6oja7toa8yNXwMhBx3oi6FBUBtdTbNDX1H-k1N9zvTzL9WMRs#_=_
+
+
+
+Devise callbacks
+https://groups.google.com/group/plataformatec-devise/browse_thread/thread/57d0259b075f21c5/e30420828b73e311?lnk=gst&q=callbacks#e30420828b73e311
+http://rubydoc.info/github/hassox/warden/master/Warden/Hooks

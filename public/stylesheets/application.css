@@ -1,11 +1,11 @@
 * { margin: 0; padding: 0 }
-body { background: url(/images/background.png); font-family: "lucida grande",tahoma,verdana,arial,sans-serif; font-size: 16px }
+body { background: url(images/background.png); font-family: "lucida grande",tahoma,verdana,arial,sans-serif; font-size: 16px }
 a, .link { color: #3B5998; text-decoration: none }
 a:hover { text-decoration: underline }
 img { border: none }
 input { vertical-align: middle }
 p, h1, h2, h3, h4, h5, ul { margin: 20px 0 }
-
+ul{ list-style-type: none;}
 /* -----------------------------
    --- IDS
    -----------------------------*/
@@ -29,6 +29,9 @@ p, h1, h2, h3, h4, h5, ul { margin: 20px 0 }
 #sidebar { display:block; position: relative; float: right; width: 360px; padding: 20px; border: solid 1px #EEE; box-shadow: 0px 0px 12px #000;background-color: #FFFFFF;-webkit-border-radius: 6px; margin-left: 10px;}
     #sidebar h3 { margin-top: 43px }
     #sidebar h3.special { margin-top: 7px }
+    #sidebbar .bordaSeta{display: none;background: url(images/borda_seta.png);width: 10px;height: 20px;position: relative;display: block;top: 67px;left: -29px;float: left;}
+    #sidebar .cuboLeft{ float:left; border-left: 6px solid transparent; border-top: 5px solid #CCC; margin-left: -27px;}
+    #sidebar .cuboRight{ float:right; border-right: 6px solid transparent;border-top: 5px solid #CCC;margin-right: -27px;}
 
 #sidebar_window, #sidebar_window2 { border: 1px solid #c4d4dc; border-width: 0; background: #fff; position: absolute; left: 2px; top: 0; overflow: hidden; width: 0 }
     #sidebar_window .title, #sidebar_window2 .title { background: #f4f4f4; line-height: 30px; text-align: right; padding: 0 10px; white-space: nowrap }
@@ -48,7 +51,7 @@ p, h1, h2, h3, h4, h5, ul { margin: 20px 0 }
 
 #loading { display: none; position: fixed; text-align: center; top: 0; width: 100%; z-index: 100 }
 #loading .text { background: #ffc; border: 1px solid #000; border-width: 0 1px 1px 1px; display: inline-block; font-weight: bold; line-height: 30px; padding: 0 75px }
-
+#messageContainer{background-color: #BE9098;position: absolute;text-align: center;width: 100%;z-index: 9999;display:none;}
 /* -----------------------------
    --- CLASSES
    -----------------------------*/
@@ -59,6 +62,7 @@ p, h1, h2, h3, h4, h5, ul { margin: 20px 0 }
 .previous_and_next { font-weight: bold; text-align: center }
 .c { text-align: center }
 .highlight { font-weight: bold }
+.apagado{opacity:0.4}
 
 .pagination { margin: 10px }
 .pagination a, .pagination span { margin: 5px }
@@ -70,12 +74,112 @@ p, h1, h2, h3, h4, h5, ul { margin: 20px 0 }
 /*.versiculo:hover { background-color: #D9EBF4 }*/
 .versiculo a.numero { color: #000; display: inline-block; font-weight: bold; width: 20px; text-align: right; margin-right: 5px }
 .versiculo a.referencia { float: right; clear: both }
+.versiculo.selected{background-color: #D9EBF4;margin-right: -20px;padding-right: 20px;margin-left: -20px;padding-left: 20px;}
 .odd { background: #F5F5F5 }
 .endereco { color: #337fe5; float: right; margin: 3px 10px }
 .comment_count { display: inline-block; float: right; height: 13px; width:17px; font-size: 11px; padding: 3px 5px; }
 .versiculo.loading a.comment_count i { background: url('images/loader.gif') no-repeat !important;}
 .titulo { cursor: pointer }
 .titulo .comment_count { margin-top: 12px; font-weight: normal }
+.botao{border-image: initial;cursor: pointer;padding: 3px 15px;color: white;font-weight: bold;}
+.botao:hover{opacity:0.8;text-decoration:none !important;}
+.botao.positive{background-color: #368200;background-image: -webkit-linear-gradient(top,#3D9400,#368200);background-image: -moz-linear-gradient(top,#3D9400,#368200);background-image: -ms-linear-gradient(top,#3D9400,#368200);background-image: -o-linear-gradient(top,#3D9400,#368200);background-image: linear-gradient(top,#3D9400,#368200);border: 1px solid #2D6200;}
+.botao.negative{background-color: #C53727;background-image: -webkit-linear-gradient(top,#DD4B39,#C53727);background-image: -moz-linear-gradient(top,#DD4B39,#C53727);background-image: -ms-linear-gradient(top,#DD4B39,#C53727);background-image: -o-linear-gradient(top,#DD4B39,#C53727);background-image: linear-gradient(top,#DD4B39,#C53727);border: 1px solid #B0281A;}
+.botao.neutro{background-color: transparent;background-image: -webkit-linear-gradient(top,#F8F8F8,#F1F1F1);background-image: -moz-linear-gradient(top,#F8F8F8,#F1F1F1);background-image: -ms-linear-gradient(top,#F8F8F8,#F1F1F1);background-image: -o-linear-gradient(top,#F8F8F8,#F1F1F1);background-image: linear-gradient(top,#F8F8F8,#F1F1F1); background-image: -webkit-gradient(linear,left top,left bottom,from(#F8F8F8),to(#F1F1F1)); border: 1px solid rgba(0,0,0,0.1); color: #444;}
+.botoes{text-align: right;}
+.conectandoFacebook span{}
+.conectandoFacebook i{background:url(images/bigloader.gif) no-repeat; background-size: 24px;}
+/*----- Atividades -------*/
+ul.atividades{ margin-bottom: 0px}
+    ul.atividades p{ margin: 0px;}
+    ul.atividades li{ border-style: solid; border-width: 1px 0 0 0;	border-color: #E9E9E9;	padding-top: 14px;	padding-bottom: 14px;}
+        ul.atividades li:first-child, ul.atividades li.first { border-width: 0px;}
+        ul.atividades li.loading{opacity:0.5}
+        ul.atividades li .atividadeUserFoto{	display:block; float:left; margin-right: 10px;}
+        ul.atividades li .atividadeContainer{ display:table-cell; font-size: 11px;}
+            ul.atividades li .atividadeContainer .atividadeContainerDescricao{color:#808080; padding-bottom: 5px;}
+            ul.atividades li .atividadeContainer .atividadeContainerDescricao .atividadeUserNome{font-weight: bold;}
+            ul.atividades li .atividadeContainer .atividadeInfo{	margin-top:5px;}
+            ul.atividades li .atividadeContainer .atividadeInfo .atividadeTitulo{font-weight: bold; max-height: 39px; overflow:hidden;}
+            ul.atividades li .atividadeContainer .atividadeInfo .atividadeUrl{height: 13px; overflow:hidden;}
+            ul.atividades li .atividadeContainer .atividadeInfo.videoInfo{display: table-cell; vertical-align: top;}
+            ul.atividades li .atividadeContainer .atividadeInfo.referenciaInfo{ border-left:2px solid #ccc; padding-left: 10px;}
+            ul.atividades li .atividadeContainer .atividadeInfo.referenciaInfo .referenciaDescricao{ color: gray; margin-top: 5px;}
+            ul.atividades li .atividadeContainer .atividadeThumb{float:left; margin-right: 10px;}
+            ul.atividades li .atividadeContainer .atividadeVideoContainer{display:table-cell}
+            ul.atividades li .atividadeContainer .atividadeVideoContainer iframe{border: 0px}
+            /*ul.atividades li .atividadeContainer .atividadeCommentContainer{max-height:60px; overflow: hidden}*/
+            ul.atividades li .atividadeContainer .atividadeCommentContainer .atividadeComment{margin: 5px 0px}
+            ul.atividades li .atividadeContainer .atividadeFooter{clear:both; margin-top: 5px; color: #808080}
+            ul.atividades li .atividadeContainer .atividadeFooter a{color: #6D84B4}
+            ul.atividades li .atividadeContainer .atividadeFooter .countLikeItem i{padding-left: 13px; background-image: url("images/icones.png"); background-repeat: no-repeat;background-position:0px -87px;}
+            ul.atividades li .atividadeContainer .atividadeFooter .countLikeItem.like i{background-position: 0px -87px;}
+            ul.atividades li .atividadeContainer .atividadeFooter .countLikeItem.dislike i{background-position: -25px -87px;}
+            ul.atividades li .atividadeContainer .atividadeFooter .botaoExcluirItem i{padding-left: 12px; background-image: url("images/icones.png"); background-repeat: no-repeat;background-position: 0px -101px; margin-right: 2px;}
+            ul.atividades li .atividadeContainer .atividadeFooter .botaoExcluirItem:hover i{background-position: -19px -101px;}
+
+
+
+
+ul.atividadesFiltros{ background: whiteSmoke; border: 1px solid #DDD; margin: 0px -27px; margin-top: 20px; padding: 0px 25px; text-align: right;}
+    ul.atividadesFiltros li, ul.botoesItens li{display: inline-block;font-size: 11px;font-weight: bold;height: 18px;line-height: 19px;padding: 5px 0px;margin-left: -5px;}
+        ul.atividadesFiltros li a{padding: 8px 10px 7px 16px;}
+        ul.atividadesFiltros li a i, ul.botoesItens li a i,  .versiculo a.comment_count i{padding: 1px 0px 1px 17px;background-image: url(images/icones.png);background-repeat: no-repeat;background-position: 0px 0px;}
+        ul.atividadesFiltros li a.loading i{background-image: url(images/loader.gif);background-position: 0px 0px !important;}
+        ul.atividadesFiltros li a span, .versiculo a.comment_count span{padding-left: 5px;color: #666;font-size: 9px;position: relative;top: -9px;left: -4px;}
+        ul.atividadesFiltros li a:hover{background-color: #EBEBEB;text-decoration: none;}
+        ul.atividadesFiltros li a:hover span{color: inherit;}
+        ul.atividadesFiltros li a:hover i, ul.botoesItens li a:hover i, .versiculo a.comment_count:hover i{background-position-x: -18px;}
+        ul.atividadesFiltros li.selected a{background-color: #FFF;border-width: 1px 1px 0px 1px;border-color: #DDD;border-style: solid;padding-top: 14px; padding-bottom: 8px}
+        ul.atividadesFiltros li.selected a i, ul.botoesItens li a.selected i, .versiculo.selected a.comment_count i {background-position-x: -18px;}
+        ul.atividadesFiltros li.Video i, ul.botoesItens li.botaoVideo a i{background-position: 0px -15px}
+        ul.atividadesFiltros li.Comment i, .versiculo a.comment_count i{background-position: 0px -30px;}
+        ul.atividadesFiltros li.Link i, ul.botoesItens li.botaoLink a i{background-position: 0px -45px;}
+        ul.atividadesFiltros li.Referencia i, ul.botoesItens li.botaoReferencia a i{background-position: 0px -60px;}
+        ul.atividadesFiltros li.Citacao i{background-position: 0px -74px;}
+
+ul.botoesItens{ margin: 0px; text-align: right;}
+    ul.botoesItens li a{padding: 8px;}
+    ul.botoesItens li a.selected{background-color: #F5F5F5;}
+
+/*----- Formulário Atividades -------*/
+form.atividadesForm{border: solid 1px #D2D2D2;}
+    form.atividadesForm textarea{border: 0px;width: 100%;height: 32px;outline: 0;padding: 10px 10px 0px 10px;resize: none;}
+    form.atividadesForm .textareaContainer{padding-right:20px;}
+    form.atividadesForm input[type=submit]{background-color: #368200;background-image: -webkit-linear-gradient(top,#3d9400,#368200);background-image: -moz-linear-gradient(top,#3d9400,#368200);background-image: -ms-linear-gradient(top,#3d9400,#368200);background-image: -o-linear-gradient(top,#3d9400,#368200);background-image: linear-gradient(top,#3d9400,#368200);border: 1px solid #2D6200;border-image: initial;cursor: pointer;padding: 3px 15px;color: white;font-weight: bold;}
+    form.atividadesForm input[type=submit]:hover{opacity: .8;}
+    form.atividadesForm .botoes input[disabled]{background-color: #368200;opacity: .5;}
+    form.atividadesForm .botoes{padding: 6px;text-align: right;border-top: 0px;background-color: #F5F5F5;}
+    form.atividadesForm input#stringItem {width:100%; border: solid 1px #DDD; padding:3px}
+    form.atividadesForm .stringItemContainer{background-color: #F5F5F5;border-top: 0px;padding: 8px 18px;display: none;}
+
+/*----- Video -------*/
+.uiVideoThumb{border:0;overflow:hidden;position:relative}
+    .uiVideoThumb img{display:inline-block;max-height:130px;max-width:130px}
+    .uiVideoThumb img[width]{max-width:auto}
+    .uiVideoThumb i{background:url(images/play_video.png) no-repeat 0 0;bottom:5px;height:26px;left:5px;position:absolute;width:35px}
+    .uiVideoThumbLoading i{background:url(images/bigloader.gif) no-repeat; background-size: 24px;}
+    .uiVideoThumbLoading img{opacity:.15}
+
+/*Lista de Usuários*/
+.listaUsers{margin: 0px;font-size: 13px;min-width: 360px; width: 100%; overflow-y:auto; overflow-x: hidden; height: 99%}
+.listaUsers li{border-width: 1px 0 0 0; border-color: #E9E9E9;border-style: solid;padding: 8px 0;min-height: 50px;}
+.listaUsers li:first-child{border-width: 0px;}
+.userFoto{float:left; margin-right: 10px;}
+.userInfo{float: left;width: 50%;}
+.userInfo .userNome{font-weight: bold;}
+.userInfo .userMaisInfo, .userInfo .userMaisInfo a{ color: #808080;}
+.userBotoes{float: right; text-align: center; width: 80px;height: 100%;}
+.userBotoes a{position: relative; display: block;}
+
+.userPerfilContainer{ display: table; width:100%}
+.userPerfilContainer .userInfo a{ font-size: 13px;}
+.userPerfilContainer .editPerfilBotao{ font-size: 13px;}
+.userPerfilContainer .userBotoes{width:110px}
+
+.tituloDivisor{ background: whiteSmoke; border: 1px solid #DDD; margin: 20px -25px; padding: 10px 25px;}
+#colorbox .tituloDivisor{ margin: 0px; padding: 5px 10px; border-width: 1px 0px;}
+
 
 /* -----------------------------
    --- CSS3

@@ -39,5 +39,7 @@ module Bibliasocial
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    #Essa configuração não é default do rails
+    config.autoload_paths += %W(#{config.root}/app/concerns)
   end
 end

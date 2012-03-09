@@ -1,3 +1,5 @@
+<h5 class="tituloDivisor">Editando Perfil</h5>
+
 <%= form_for @user, :html => { :multipart => true } do |f| %>
   <div>
     <%= f.label :nome %><br />
@@ -5,11 +7,11 @@
   </div>
   
   <div>
-    <%= f.label :foto %><br />
+    <%= f.label :foto, "Foto do Perfil" %><br />
     <%= f.file_field :foto %>
   </div>
 
-  <div>
-    <%= f.submit %>
+  <div class="botoes">
+    <%= f.submit "Salvar Alterações", :class => "botao positive" %>
   </div>
 <% end %>

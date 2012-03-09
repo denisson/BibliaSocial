@@ -7,11 +7,13 @@
 genesis: 
   id: 1
   capitulo_id: 1
+  livro_id: 1
   numero: 1
   texto: texto do versiculo de genesis
 #
 joao:
   id: 2
   capitulo_id: 2
+  livro_id: 2
   numero: 24
   texto: texto do versiculo de joao

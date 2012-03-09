@@ -1,3 +1,5 @@
-<div class="atividadeComment">
-<%= simple_format(item.texto_html.dup, {}, :sanitize => false).html_safe %>
+<div class="atividadeCommentContainer">
+    <div class="atividadeComment reticencias">
+    <%= simple_format(item.texto_html.dup, {}, :sanitize => false).html_safe %>
+    </div>
 </div>

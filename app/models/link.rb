@@ -1,69 +1,54 @@
 require "open-uri"
-class Link < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :versiculo, :counter_cache => true
-	belongs_to :comment
-	
-	has_one :atividade, :as => :item, :dependent => :destroy
-  has_one :comment_descricao, :as => :item, :class_name => "Comment", :dependent => :destroy
+require "acts_as_item"
 
-  has_many :votos, :as => :votavel, :dependent => :destroy
+class Link < ActiveRecord::Base
+  include ActsAsItem
+  acts_as_item
 
 	# n�o deu certo pq salva primeiro o link, ent�o n�o tem comment_id ainda!
 	#validates :url,:presence => true, :uniqueness => {:scope => [:user_id, :versiculo_id, :comment_id]}
-	validates :user_id, :presence => true
-	validates :versiculo_id, :presence => true
-	
-	default_scope order("created_at DESC")
-	scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo)}
-	
-	after_create :criar_atividade
-	
-	def criar_atividade
-		if self.comment == nil
-			@atividades = self.versiculo.atividades.create({:user => self.user, :item => self})
-		end
-  end
-
-  def atividades_dependentes
-    if comment_descricao != nil
-      comment_descricao.atividades_dependentes
-    else
-      Array.new
-    end
-  end
 	
 	def self.criar(link_hash)
+    objeto =  construir(link_hash)
+    if objeto != nil
+      objeto.save
+    else
+      objeto = Link.new
+      objeto.errors.add("link", "Link Invalido")
+    end
+    return objeto
+	end
+	
+	def self.criar_com_comment(link_hash, texto)
+		link = criar(link_hash)
+		if link.errors.empty?
+		  comment = Comment.criar({:user => link_hash[:user], :versiculo => link_hash[:versiculo], :texto => texto, :item => link})
+    end
+		return link
+  end
+
+  def self.construir(link_hash)
+    return nil if !pode_ser? link_hash[:url]
 		meta_info = get_meta_info(adicionar_protocolo(link_hash[:url]))
 		if meta_info != nil
 			meta_info[:user] = link_hash[:user]
 			meta_info[:versiculo] = link_hash[:versiculo]
 			meta_info[:comment] = link_hash[:comment]
 			if meta_info[:type] == "Video"
-				return Video.create(meta_info)
+				return Video.new(meta_info)
 			else
-				return Link.create(meta_info)
+				return Link.new(meta_info)
 			end
 		else
 			return nil
 		end
-	end
-	
-	def self.criar_com_comment(link_hash, texto)
-		link = criar(link_hash)
-		return nil if link == nil
-		comment = Comment.criar({:user => link_hash[:user], :versiculo => link_hash[:versiculo], :texto => texto, :item => link})
-#		link.comment = comment
-#		link.save
-		return link
-	end
+  end
 	
 	def self.get_meta_info(url)
 		begin
 			#tenta abrir um link especificado
 			page = Nokogiri::HTML(open(url))
     rescue Exception => e
-      #p e.inspect
 			return {:type => "Link", :url => url, :titulo => nome_site(url)}
 	  end
 

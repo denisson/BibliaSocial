@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219120143) do
+ActiveRecord::Schema.define(:version => 20120307032748) do
 
   create_table "atividades", :force => true do |t|
     t.integer  "user_id"
@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(:version => 20120219120143) do
     t.text     "texto_html"
     t.integer  "item_id"
     t.string   "item_type"
+    t.integer  "referencias_count", :default => 0, :null => false
+    t.integer  "links_count",       :default => 0, :null => false
+    t.integer  "videos_count",      :default => 0, :null => false
+    t.integer  "likes_count",       :default => 0, :null => false
+    t.integer  "dislikes_count",    :default => 0, :null => false
   end
 
   create_table "follows", :force => true do |t|
@@ -109,6 +114,14 @@ ActiveRecord::Schema.define(:version => 20120219120143) do
   add_index "livros", ["biblia_id"], :name => "index_livros_on_biblia_id"
   add_index "livros", ["numero"], :name => "index_livros_on_numero"
   add_index "livros", ["secao_id"], :name => "index_livros_on_secao_id"
+
+  create_table "migracao_comentarios", :force => true do |t|
+    t.text     "texto"
+    t.string   "facebook_user_id"
+    t.integer  "versiculo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "referencias", :force => true do |t|
     t.string   "ref"
@@ -153,6 +166,7 @@ ActiveRecord::Schema.define(:version => 20120219120143) do
     t.string   "foto_content_type"
     t.integer  "foto_file_size"
     t.datetime "foto_updated_at"
+    t.string   "facebook_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
@@ -173,6 +187,7 @@ ActiveRecord::Schema.define(:version => 20120219120143) do
     t.integer  "links_count",       :default => 0, :null => false
     t.integer  "videos_count",      :default => 0, :null => false
     t.integer  "atividades_count",  :default => 0, :null => false
+    t.integer  "citacoes_count",    :default => 0, :null => false
   end
 
   add_index "versiculos", ["biblia_id"], :name => "index_versiculos_on_biblia_id"

@@ -1,0 +1,31 @@
+<%
+item_votavel = item.votavel
+voto = item_votavel.voto_user(current_user)
+if voto != nil
+    if voto.like?
+        link_like = link_to 'Gostei (desfazer)', voto, :remote => true, :method => :delete, :'data-type' => 'text', :class => "botaoVoto desfazer"
+        link_dislike = ""
+    else
+        link_dislike = link_to 'Não Gostei (desfazer)', voto, :remote => true, :method => :delete, :'data-type' => 'text', :class => "botaoVoto desfazer"
+        link_like = ""
+    end
+    separador_votos = ""
+else
+    link_like = link_to 'Gostei', "/#{item_votavel.class.name.pluralize.downcase}/#{item_votavel.id}/like", :remote => true, :method => :post, :'data-type' => 'text', :class => "botaoVoto votar"
+    link_dislike = link_to 'Não Gostei', "/#{item_votavel.class.name.pluralize.downcase}/#{item_votavel.id}/dislike", :remote => true, :method => :post, :'data-type' => 'text', :class => "botaoVoto votar"
+    separador_votos = "&nbsp;-&nbsp;"
+end
+%>
+<%= link_like %>
+<%= separador_votos.html_safe %>
+<%= link_dislike %>
+&nbsp;-&nbsp;
+
+<% if item_votavel.likes.size > 0 %>
+    <%= link_to  content_tag("i") + content_tag(:span, item_votavel.likes.size), "/#{item_votavel.class.name.pluralize.downcase}/#{item_votavel.id}/likes", :class => "countLikeItem like", :title => pluralize(item_votavel.likes.size, 'pessoa gostou', 'pessoas gostaram') %>
+    &nbsp;-&nbsp;
+<% end %>
+<% if item_votavel.dislikes.size > 0 %>
+    <%= link_to content_tag("i") + content_tag(:span, item_votavel.dislikes.size), "/#{item_votavel.class.name.pluralize.downcase}/#{item_votavel.id}/dislikes", :class => "countLikeItem dislike", :title => pluralize(item_votavel.dislikes.size, 'pessoa não gostou', 'pessoas não gostaram') %>
+    &nbsp;-&nbsp;
+<% end %>

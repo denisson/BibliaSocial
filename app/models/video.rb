@@ -1,36 +1,29 @@
-﻿class Video < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :versiculo, :counter_cache => true
-	belongs_to :comment
+﻿require "acts_as_item"
 
-	has_one :atividade, :as => :item, :dependent => :destroy
-	has_one :comment_descricao, :as => :item, :class_name => "Comment", :dependent => :destroy
+class Video < ActiveRecord::Base
+  include ActsAsItem
+  acts_as_item
 
-  has_many :votos, :as => :votavel, :dependent => :destroy
-
-	#validates :player_url, :uniqueness => {:scope => [:user_id, :versiculo_id]}
-	validates :user_id, :presence => true
-	validates :versiculo_id, :presence => true
-	
-	default_scope order("created_at DESC")
-	scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo)}
-		
-	after_create :criar_atividade
-
-  def atividades_dependentes
-    if comment_descricao != nil
-      comment_descricao.atividades_dependentes
+  def self.criar(video_hash)
+    objeto = Link.construir(video_hash)
+    if objeto != nil and objeto.is_a? Video
+      objeto.save
     else
-      Array.new
+      objeto =  Video.new
+      objeto.errors.add("video", "Video inválido!")
     end
+    return objeto
   end
 
-	def criar_atividade
-		if self.comment == nil
-			self.versiculo.atividades.create({:user => self.user, :item => self})
-		end
-	end
-	
+  def self.criar_com_comment(video_hash, texto)
+    video = criar(video_hash)
+    if video.errors.empty?
+      comment = Comment.criar({:user => video_hash[:user], :versiculo => video_hash[:versiculo], :texto => texto, :item => video})
+    end
+    return video
+  end
+
+
 	def descricao_atividade
 		"adicionou um vídeo"
 	end

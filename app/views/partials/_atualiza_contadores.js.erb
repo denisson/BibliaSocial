@@ -1,7 +1,7 @@
-$('#atividadeContador').html("<%=@versiculo.atividades.quantos%>");
-$('#commentContador').html("<%=@versiculo.comments.quantos%>");
-$('#videoContador').html("<%=@versiculo.videos.quantos%>");
-$('#linkContador').html("<%=@versiculo.links.quantos%>");
-$('#referenciaContador').html("<%=@versiculo.referencias.quantos%>");
-$('#citacaoContador').html("<%=@versiculo.citacoes.quantos%>");
-$('#<%=@versiculo.id%> a.comment_count span').html("<%=@versiculo.atividades.count%>");
+$('#atividadeContador').html("<%=@versiculo.atividades.size.quantos%>");
+$('#commentContador').html("<%=@versiculo.comments.size.quantos%>");
+$('#videoContador').html("<%=@versiculo.videos.size.quantos%>");
+$('#linkContador').html("<%=@versiculo.links.size.quantos%>");
+$('#referenciaContador').html("<%=@versiculo.referencias.size.quantos%>");
+$('#citacaoContador').html("<%=@versiculo.citacoes.size.quantos%>");
+$('#<%=@versiculo.id%> a.comment_count span').html("<%=@versiculo.atividades.size%>");

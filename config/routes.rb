@@ -1,36 +1,49 @@
 Bibliasocial::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root :to => 'biblia_social#index'
   
   resources :users do
-	resources :seguidores
+    get 'seguindo', :on => :member
+    get 'seguidores', :on => :member
+    get 'seguir', :on => :member
+    delete 'deixar', :on => :member
+    resources :comments
   end
-  
-  get 'users/:user_id/seguindo', :to => 'seguidores#seguindo'
   get 'mural', :to => 'users#mural'
   
   resources :comentarios
 
+  resources :votos
   resources :comments do
     post 'like', :on => :member
     post 'dislike', :on => :member
-    delete 'desfazer_voto', :on => :member
+    get 'likes', :on => :member
+    get 'dislikes', :on => :member
   end
   resources :referencias do
     post 'like', :on => :member
     post 'dislike', :on => :member
-    delete 'desfazer_voto', :on => :member
+    get 'likes', :on => :member
+    get 'dislikes', :on => :member
   end
   resources :links do
     post 'like', :on => :member
     post 'dislike', :on => :member
-    delete 'desfazer_voto', :on => :member
+    get 'likes', :on => :member
+    get 'dislikes', :on => :member
   end
   resources :videos do
     post 'like', :on => :member
     post 'dislike', :on => :member
-    delete 'desfazer_voto', :on => :member
+    get 'likes', :on => :member
+    get 'dislikes', :on => :member
+  end
+  resources :citacoes do
+    post 'like', :on => :member
+    post 'dislike', :on => :member
+    get 'likes', :on => :member
+    get 'dislikes', :on => :member
   end
 
   resources :versiculos do

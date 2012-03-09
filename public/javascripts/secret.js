@@ -86,9 +86,12 @@
         
         return $(this);
     };
-    
+
+
     $(document).ready(function() {
-        
+
+        //$('.reticencias').reticence({reduceMode: "char"});
+
         //$('html').processReady();
         
         $('#search input').hover(function() { 
@@ -109,8 +112,51 @@
         });
 
 
-       $('a[title]').tipsy({fade: false, gravity: 'n'});
-       $('textarea').autosize();
+
+        $('.atividadesFiltros  a[title], a.countLikeItem').livequery(function(){
+            $(this).tipsy({fade: false, gravity: 'n', opacity:1});
+        });
+        $('.botoesItens a[title]').livequery(function(){
+            $(this).tipsy({fade: false, gravity: 's', opacity:1});
+        });
+        $('a.countLikeItem').livequery(function(){
+            $(this).colorbox({opacity:0, initialWidth:360, initialHeight:100, fixed:true, close:'Fechar', maxHeight:'70%', scrolling:false});
+        });
+
+        $('ul.botoesItens a').live('click', function(event){
+            event.preventDefault();
+            $('.stringItemContainer').show();
+            $('ul.botoesItens a').removeClass("selected");
+            $(this).addClass("selected");
+            $('#stringItem').attr('placeholder', $(this).attr('data-placeholder'))
+            $('#stringItem').attr('value', '')
+            $('#stringItem').focus()
+            $('#itemType').attr('value', $(this).attr('data-item-type'))
+        });
+        $('.atividadesForm textarea').livequery(function(){
+            $(this).autosize();
+        });
+
+        $('.uiVideoThumb').live('click', function(event){
+            event.preventDefault();
+            var iframe_video = $('<iframe>')
+                .attr('width', 318)
+                .attr('height', 239)
+                .hide()
+                .attr('src', $(this).attr('data-url'));
+            videoContainer = $(this).parents('.atividadeVideoContainer');
+            videoContainer.addClass('uiVideoThumbLoading');
+            videoContainer.append(iframe_video);
+            iframe_video.load(function(){
+                videoContainer.removeClass("uiVideoThumbLoading");
+                videoContainer.find(':not(iframe)').remove();
+                $(this).show();
+            });
+        });
+        $('#messageContainer a').click(function(event){
+            event.preventDefault();
+            $('#messageContainer').hide();
+        });
 
         $('ul.atividadesFiltros li a')
             /*
@@ -130,7 +176,32 @@
                 //todo:refatorar
                 $('.atividades li').hide().removeClass("first");
                 $('.atividades li.'+ $(this).attr("data-filtro")).show().first().addClass("first");
+                $('.atividades li.'+ $(this).attr("data-filtro")).show().first().addClass("first");
             });
+
+//          $('a[data-remote]').bind("ajax:error", function(evt, xhr, status, error){
+//              var errors, errorText;
+//
+//              try {
+//                // Populate errorText with the comment errors
+//                errors = $.parseJSON(xhr.responseText);
+//              } catch(err) {
+//                // If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
+//                errors = {message: "Please reload the page and try again"};
+//              }
+//
+//              // Build an unordered list from the list of errors
+//              errorText = "There were errors with the submission: \n<ul>";
+//
+//              for ( error in errors ) {
+//                errorText += "<li>" + error + ': ' + errors[error] + "</li> ";
+//              }
+//
+//              errorText += "</ul>";
+//
+//              // Insert error list into form
+//              $('#messageContainer').html(errorText);
+//        });
 
         $('p.versiculo a[data-remote]')
             .live("click", function(){
@@ -161,8 +232,52 @@
             })
             .live("ajax:error", function(evt, xhr, status, error){
                 $(this).parents('li').removeClass("apagado");
-                window.alert("Não foi possível excluir este item!");
+                showMessage("Não foi possível excluir este item!");
+            });
+
+        $('a.botaoVoto')
+            .live("ajax:before", function(evt, xhr, settings){
+                var container = $(this).parents(".botoesVoto");
+                container.addClass("apagado");
+            })
+            .live("ajax:success", function(evt, data, status, xhr){
+                var container = $(this).parents(".botoesVoto");
+                container.removeClass("apagado");
+                container.html(xhr.responseText);
+            })
+            .live("ajax:error", function(evt, xhr, status, error){
+                var container = $(this).parents(".botoesVoto");
+                container.removeClass("apagado");
+            });
+        $('a.botaoVoto.desfazer')
+            .live("ajax:error", function(evt, xhr, status, error){
+                showMessage("Não foi possível desfazer. Tente novamente!");
+            });
+        $('a.botaoVoto.votar')
+            .live("ajax:error", function(evt, xhr, status, error){
+                showMessage("Não foi possível registrar sua opnião. Tente novamente!");
+            });
+
+        $('a.userSeguir')
+            .live("ajax:before", function(evt, xhr, settings){
+                var container = $(this).parents(".userBotoes");
+                container.addClass("apagado");
+            })
+            .live("ajax:success", function(evt, data, status, xhr){
+                var container = $(this).parents(".userBotoes");
+                container.removeClass("apagado");
+                container.html(xhr.responseText);
+            })
+            .live("ajax:error", function(evt, xhr, status, error){
+                var container = $(this).parents(".userBotoes");
+                container.removeClass("apagado");
+                showMessage("Não foi possível executar esta operação. Tente novamente!");
             });
 
     });
 })(jQuery);
+
+function showMessage(message){
+    $('#messageContainer span').html(message);
+    $('#messageContainer').show();
+}

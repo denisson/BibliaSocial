@@ -15,7 +15,8 @@ gem 'twitter'
 gem 'koala'
 gem 'thinking-sphinx', '2.0.10'
 gem 'paperclip', "~> 2.0"
-gem "acts_as_follower"
+gem 'acts_as_follower'
+#gem 'sass-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -36,6 +37,7 @@ gem "acts_as_follower"
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
+ group :development, :test do
 #   gem 'webrat'
-# end
+     gem 'ruby-debug19', :require => 'ruby-debug'
+ end

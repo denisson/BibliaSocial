@@ -51,6 +51,8 @@ class CommentTest < ActiveSupport::TestCase
     texto_versiculo = "texto do versiculo de joao"
     @versiculo_citado = versiculos(:joao)
 
+    p @versiculo_citado.inspect
+
     @comment = Comment.criar({:user => @user, :versiculo => @versiculo, :texto => texto})
     assert_equal texto, @comment.texto
     assert_equal '<a title="' +texto_versiculo+'" href="/joao/12/24">'+texto+'</a>', @comment.texto_html
@@ -58,8 +60,10 @@ class CommentTest < ActiveSupport::TestCase
     assert_equal 1, @comment.referencias.size
     assert_equal 1, @versiculo_citado.citacoes.size
     assert_equal 0, @comment.videos.size
+    p @versiculo_citado.inspect
     #assert_equal 1, @versiculo.atividades.size
-
+    p @comment.inspect
+    debugger
 
     @citacao = @versiculo_citado.citacoes.first
     assert_equal @user, @citacao.user

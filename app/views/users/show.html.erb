@@ -1,7 +1,1 @@
-﻿<%= image_tag @user.foto.url(:normal) %>
-<%= @user.nome %>
-<%= link_to "Seguir", new_user_seguidor_path(@user) %>
-<%= link_to "Seguidores", user_seguidores_path(@user) %>
-<%= link_to "Seguindo", "/users/#{@user.id}/seguindo" %>
-
-<%= render :partial => 'partials/atividades', :locals => {:url => user_path(@user) , :versiculo => @user , :itens => @itens, :mostrar_versiculo => true}%>
+﻿<%= render :partial => 'partials/atividades', :locals => {:url => user_path(@user) , :agrupador_itens => @user , :itens => @itens, :mostrar_versiculo => true}%>

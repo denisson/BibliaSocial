@@ -1,62 +1,46 @@
-﻿class Referencia < ActiveRecord::Base
-	belongs_to :user
-	belongs_to :comment
-	belongs_to :versiculo, :counter_cache => true
+﻿require "acts_as_item"
+
+class Referencia < ActiveRecord::Base
+  include ActsAsItem
+  acts_as_item
+
 	belongs_to :versiculo_citado, :class_name => "Versiculo"
-	
-	has_one :atividade, :as => :item, :dependent => :destroy
   has_one :citacao, :foreign_key => "id", :dependent => :destroy
-	has_one :comment_descricao, :as => :item, :class_name => "Comment", :dependent => :destroy
-
-  has_many :votos, :as => :votavel, :dependent => :destroy
-
 	#validates :ref, :uniqueness => {:scope => [:user_id, :versiculo_id, :comment_id]}
-	validates :user_id, :presence => true
-	validates :versiculo_id, :presence => true
 	validates :versiculo_citado_id, :presence => true
-  
-	default_scope order("created_at DESC")
-	scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo)}
-	
+	validates :versiculo_id, :presence => {:unless => :comment_id?}
+
 	after_create :criar_atividade, :criar_citacao
 
-  def atividades_dependentes
-    if comment_descricao != nil
-      comment_descricao.atividades_dependentes
-    else
-      Array.new
-    end
-  end
-
-	def criar_atividade
-		if self.comment == nil
-			self.versiculo.atividades.create({:user => self.user, :item => self})
-		end
-	end
-	
 	def criar_citacao
-		Citacao.criar_atividade self
-	end
+    Citacao.create self
+  end
 	
 	def self.criar(referencia_hash)
 		referencia = build_referencia(referencia_hash[:ref])
-		return nil if referencia == nil
-		referencia.versiculo = referencia_hash[:versiculo]
-		referencia.user = referencia_hash[:user]
-		referencia.save
+    if referencia == nil
+      referencia = Referencia.new
+      referencia.errors.add(referencia_hash[:ref], '"' + referencia_hash[:ref] + '" não é uma referência válida')
+    else
+      referencia.versiculo = referencia_hash[:versiculo]
+      referencia.user = referencia_hash[:user]
+      referencia.save
+    end
 		return referencia
 	end
 	
 	def self.criar_com_comment(referencia_hash, texto)
 		referencia = criar(referencia_hash)
-		return nil if referencia == nil
-		comment = Comment.criar({:user => referencia_hash[:user], :versiculo => referencia_hash[:versiculo], :texto => texto, :item => referencia})
-#		referencia.comment = comment
-#		referencia.save
+
+    if referencia.errors.empty?
+      comment = Comment.criar({:user => referencia_hash[:user], :versiculo => referencia_hash[:versiculo], :texto => texto, :item => referencia})
+      referencia.errors += comment.errors if comment.errors.any?
+    end
 		return referencia
 	end
 	
 	def self.build_referencia(ref)
+    return nil if !pode_ser? ref
 		referencia = nil
 		
 		livros_nomes = LIVROS.keys
@@ -119,5 +103,6 @@
 	
 	def descricao_atividade_conectivo
 		"em"
-	end
+  end
+
 end

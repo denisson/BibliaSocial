@@ -13,205 +13,35 @@
         <meta property="og:description" content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>"/> 
 		<%= csrf_meta_tag %>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <%= stylesheet_link_tag 'jquery_ui', 'application', 'tipsy' %>
+        <%= stylesheet_link_tag 'jquery_ui', 'application', 'tipsy', 'colorbox/colorbox' %>
         <% if ENV['RAILS_ENV'] == 'production' %>
             <%= javascript_include_tag 'all' %>
         <% else %>
-            <%= javascript_include_tag 'jquery', 'jquery_ui', 'rails', 'jquery.tipsy', 'jquery.autosize-min', 'jquery-ui.custom.min', 'secret' %>
+            <%= javascript_include_tag 'jquery', 'jquery_ui', 'rails', 'jquery.tipsy', 'jquery.autosize-min', 'jquery-ui.custom.min', 'secret', 'jquery.reticence', 'jquery.livequery', 'jquery.colorbox' %>
         <% end %>
-        <!--<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>-->
-<style>
-	ul{ list-style-type: none;}
+        <% if user_signed_in? %><script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script><% end %>
+        <%= javascript_include_tag 'fb-auto-login' if !user_signed_in? %>
+        <% if user_signed_in? and current_user.tem_facebook? %>
+            <script>
 
-	.uiVideoThumb{border:0;overflow:hidden;position:relative}
-	.uiVideoThumb img{display:inline-block;max-height:130px;max-width:130px}
-	.uiVideoThumb img[width]{max-width:auto}
-	.uiVideoThumb i{background:url(/images/play_video.png) no-repeat 0 0;bottom:5px;height:26px;left:5px;position:absolute;width:35px}
-	.uiVideoThumbSmall i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yN/r/aERK2-5sOBX.png);bottom:3px;height:22px;left:3px;width:27px}
-	.uiVideoThumbTiny i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yx/r/LwvvGd2Cr9v.png);bottom:3px;height:17px;width:21px;left:3px}
-	.uiVideoThumbLoading i{background:url(http://static.ak.fbcdn.net/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;bottom:0;height:100%;left:0;width:100%}
-	.uiVideoThumbSmall.uiVideoThumbLoading i,.uiVideoThumbTiny.uiVideoThumbLoading i{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v1/yb/r/GsNJNwuI-UM.gif)}
-	.uiVideoThumbLoading img{opacity:.15}
 
-	.atividadeInfo a.atividadeTitulo{font-weight: bold;	display: block;}
-	.atividadeThumb{float:left;	margin-right: 10px;}
-	.videoInfo{	display: table-cell; vertical-align: top;}
-	.referenciaInfo{ border-left:2px solid #ccc; padding-left: 10px;}
-	.referenciaInfo .referenciaDescricao{ color: gray; margin-top: 5px;}
-	.atividadeContainer{ display:table-cell; font-size: 11px;}
-	.atividadeUserFoto{	display:block; float:left; margin-right: 10px;}
-	.atividadeInfo{	margin-top:5px;}
-	.atividadeContainerDescricao{color:#808080; padding-bottom: 3px;}
-	.atividadeUserNome{	font-weight: bold;}
-	.atividadeComment{margin: 5px 0px}
+            $(document).ready(function() {
+                FB.init({
+                    appId  : '187353061340087',
+                    status : true, // check login status
+                    cookie : true, // enable cookies to allow the server to access the session
+                    xfbml  : true  // parse XFBML
+                });
 
-    ul.atividades{ margin-bottom: 0px}
-	ul.atividades li{ border-style: solid; border-width: 1px 0 0 0;	border-color: #E9E9E9;	padding-top: 14px;	padding-bottom: 14px;}
-	ul.atividades li:first-child, ul.atividades li.first { border-width: 0px;}
-    ul.atividades li.loading{opacity:0.5}
-	ul.atividades p{ margin: 0px;}
-	ul.atividadesFiltros{
-		background: whiteSmoke;
-		border: 2px solid #EBEBEB;
-		margin: 0px -27px;
-		margin-top: 20px;
-		padding: 0px 25px;
-		text-align: right;
-	}
-	ul.botoesItens{
-		margin: 0px;
-		text-align: right;
-	}
-	.cuboLeft{
-		float:left;
-		border-left: 6px solid transparent;
-		border-top: 5px solid #CCC;
-		margin-left: -27px;
-	}
-	.cuboRight{
-		float:right;
-		border-right: 6px solid transparent;
-		border-top: 5px solid #CCC;
-		margin-right: -27px;
-	}
-		
-	ul.atividadesFiltros li, ul.botoesItens li{
-		display: inline-block;
-		font-size: 11px;
-		font-weight: bold;
-		height: 18px;
-		line-height: 19px;
-		padding: 5px 0px;
-		margin-left: -5px;
-	}
-	ul.atividadesFiltros li a{
-		padding: 8px 10px 9px 16px;
-	}
-	ul.botoesItens li a{
-		padding: 8px;
-	}
-	ul.atividadesFiltros li a i, ul.botoesItens li a i,  .versiculo a.comment_count i{
-		padding: 1px 0px 1px 17px;
-		background-image: url(/images/icones_atividades.png);
-		background-repeat: no-repeat;
-		background-position: 0px 0px;
-	}
-    ul.atividadesFiltros li a.loading i{
-    	background-image: url(/images/loader.gif);
-		background-position: 0px 0px !important;
-    }
+                $("#botaoConvidarAmigos").click(function(event){
+                    event.preventDefault();
+                    FB.ui({ method: 'apprequests', message: 'Escolha quais amigos deseja convidar para participar da BíbliaSocial.'});
+                })
 
-	ul.atividadesFiltros li a span, .versiculo a.comment_count span{
-		padding-left: 5px;
-		color: #666;
-		font-size: 9px;
-		position: relative;
-		top: -9px;
-		left: -4px;
-	}
-	ul.atividadesFiltros li a:hover{
-		background-color: #EBEBEB;
-		text-decoration: none;
-	}
-	ul.botoesItens li a.selected{
-		background-color: #F5F5F5;
-	}
-	ul.atividadesFiltros li.selected a{
-		background-color: #FFF;
-		border-width: 2px 2px 0px 2px;
-		border-color: #EBEBEB;
-		border-style: solid;
-		padding-top: 14px;
-	}
-	ul.atividadesFiltros li a:hover span{
-		color: inherit;
-	}
-	ul.atividadesFiltros li.selected a i, ul.botoesItens li a.selected i, .versiculo.selected a.comment_count i {
-		background-position-x: -18px;
-	}
-	ul.atividadesFiltros li a:hover i, ul.botoesItens li a:hover i, .versiculo a.comment_count:hover i{
-		background-position-x: -18px;
-	}
-	ul.atividadesFiltros li.Video i, ul.botoesItens li.botaoVideo a i{background-position-y: -15px;}
-	ul.atividadesFiltros li.Comment i, .versiculo a.comment_count i{background-position-y: -30px;}
-	ul.atividadesFiltros li.Link i, ul.botoesItens li.botaoLink a i{background-position-y: -45px;}
-	ul.atividadesFiltros li.Referencia i, ul.botoesItens li.botaoReferencia a i{background-position-y: -60px;}
-	ul.atividadesFiltros li.Citacao i{background-position-y: -74px;}
-	
-	form.atividadesForm{
-		border: solid 1px #D2D2D2;
-	}
-	form textarea{
-		border: 0px;
-		width: 100%;
-		height: 32px;
-		outline: 0;
-		padding: 10px 10px 0px 10px;
-		resize: none;
-	}
-	form .textareaContainer{
-		padding-right:20px;
-	}
-	form input[type=submit]{
-		background-color: #368200;
-		background-image: -webkit-linear-gradient(top,#3d9400,#368200);
-		background-image: -moz-linear-gradient(top,#3d9400,#368200);
-		background-image: -ms-linear-gradient(top,#3d9400,#368200);
-		background-image: -o-linear-gradient(top,#3d9400,#368200);
-		background-image: linear-gradient(top,#3d9400,#368200);
-		border: 1px solid #2D6200;
-		border-image: initial;
-		cursor: pointer;
-		padding: 3px 15px;
-		color: white;
-		font-weight: bold;
-	}
-	form input[type=submit]:hover{
-		opacity: .8;
-	}
-	form .botoes input[disabled]{
-		background-color: #368200;
-		opacity: .5;
-	}
-	form .botoes{
-		text-align: right;
-		padding: 6px;
-		text-align: right;
-		border-top: 0px;
-		background-color: #F5F5F5;
-	}
-	form input#stringItem {width:100%; border: solid 1px #DDD; padding:3px}
-	.atividadeDatahora{
-		color: #808080;
-	}
-	form .stringItemContainer{
-		background-color: #F5F5F5;
-		border-top: 0px;
-		padding: 8px 18px;
-		display: none;
-	}
-    .apagado{opacity:0.4}
-    .versiculo.selected{
-        background-color: #D9EBF4;
-        margin-right: -20px;
-        padding-right: 20px;
-        margin-left: -20px;
-        padding-left: 20px;
-    }
-    .bordaSeta{
-        display: none;
-        background: url(/images/borda_seta.png);
-        width: 10px;
-        height: 20px;
-        position: relative;
-        display: block;
-        top: 67px;
-        left: -29px;
-        float: left;
-    }
-</style>
-		
-		
+
+            });
+            </script>
+        <% end %>
     </head>
     <body>
         <div id="loading"><span class="text">Carregando...</span></div>
@@ -222,15 +52,30 @@
                     <%= form_tag '/search', :method => 'get' do |f| %>
                         <%= text_field_tag 'keywords', 'Busca' %><%= submit_tag '' %>
                     <% end %>
+                    <%= link_to "Entrar", "/users/sign_in" if !user_signed_in? %>
+                    <%= link_to "Cadastrar", "/users/sign_up" if !user_signed_in? %>
+                    <%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %>
+                    <% #link_to "Sair", "/users/sign_out", :method => :delete if user_signed_in? and !current_user.tem_facebook? %>
+                    <%= link_to "Sair", "/users/sign_out", :method => :delete if user_signed_in?%>
+                    <%= link_to "Mural", "/mural" if user_signed_in? %>
+                    <%= link_to (image_tag current_user.foto.url(:small)), user_path(current_user) if user_signed_in? %>
+                    <%= link_to current_user.nome, user_path(current_user) if user_signed_in? %>
+                    <%= link_to "Convidar Amigos" , "#", :id => "botaoConvidarAmigos" if user_signed_in? %>
                 </div>
+
                 <h1><a href="/">BibliaSocial.com</a></h1>
             </div>
         </div>
-		<%= flash[:notice] %>
-		<%= flash[:alert] %>
+        <div id="messageContainer">
+            <span>
+            <%= flash[:notice] %>
+            <%= flash[:alert] %>
+            </span>
+            <a href="#">x</a>
+        </div>
         <div class="wrapper">
             <div id="window" class="clear">
-                <%= yield %>
+                <%= content_for?(:content) ? yield(:content) : yield %>
             </div>
         </div>
         <%= yield :ready %>
@@ -279,60 +124,6 @@
                 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
             })();
-        </script>
-		<script type='text/javascript'>
-
-//               $(".atividadesFiltros a")
-//                .bind("ajax:success", function(evt, data, status, xhr){
-//                   $('.atividades').html(xhr.responseText);
-//                });
-//				  $('form#new_comment')
-//					.bind("ajax:success", function(evt, data, status, xhr){
-//					  var $form = $(this);
-//
-//					  // Reset fields and any validation errors, so form can be used again, but leave hidden_field values intact.
-//					  $form.find('textarea,input[type="text"],input[type="file"]').val("");
-//					  $form.find('div.validation-error').empty();
-//
-//					  // Insert response partial into page below the form.
-//					  $('.atividades').prepend(xhr.responseText);
-//
-//					})
-//					.bind("ajax:error", function(evt, xhr, status, error){
-//					  var $form = $(this),
-//						  errors,
-//						  errorText;
-//
-//					  try {
-//						// Populate errorText with the comment errors
-//						errors = $.parseJSON(xhr.responseText);
-//					  } catch(err) {
-//						// If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
-//						errors = {message: "Please reload the page and try again"};
-//					  }
-//
-//					  // Build an unordered list from the list of errors
-//					  errorText = "There were errors with the submission: \n<ul>";
-//
-//					  for ( error in errors ) {
-//						errorText += "<li>" + error + ': ' + errors[error] + "</li> ";
-//					  }
-//
-//					  errorText += "</ul>";
-//
-//					  // Insert error list into form
-//					  $form.find('div.validation-error').html(errorText);
-//					});
-		</script>
-        <script>
-            $('.uiVideoThumb').live('click', (function(event){
-                event.preventDefault();
-                var iframe_video = $('<iframe>')
-                    .attr('width', 397)
-                    .attr('height', 298)
-                    .attr('src', $(this).attr('data-url'));
-                $(this).parent().html(iframe_video);
-            });
         </script>
     </body>
 </html>

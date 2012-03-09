@@ -1,13 +1,7 @@
-﻿class CitacoesController < ApplicationController
+﻿class CitacoesController < ItensController
 
-  def index
-	@versiculo = Versiculo.find(params[:versiculo_id])
-	@citacoes = @versiculo.citacoes
-	
-    respond_to do |format|
-      format.html
-      format.js
-    end
+  def model
+    Citacao
   end
  
 end

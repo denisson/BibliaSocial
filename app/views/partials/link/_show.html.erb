@@ -1,4 +1,8 @@
 <div class="atividadeInfo linkInfo">
-<%= link_to item.titulo, item.url, {:class => "atividadeTitulo"} %>
-<%= link_to item.url, item.url, {:class => "atividadeDescricao"} %>
-<div>
+    <div class="atividadeTitulo">
+       <%= link_to item.titulo, item.url, {:class => "reticencias", :title => item.titulo} %>
+    </div>
+    <div class="atividadeUrl">
+        <%= link_to item.url, item.url, {:class => "reticencias", :title => item.url} %>
+    </div>
+</div>
