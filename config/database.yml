@@ -35,6 +35,6 @@ production:
   database: bibliasocial_production
   pool: 5
   username: root
-  password: 3cl1ps31
+  password: senha
   host: localhost
 
