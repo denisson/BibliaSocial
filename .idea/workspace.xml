@@ -2,130 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85406b5a-101d-4f8b-938f-c16a905056f4" name="Default" comment="Várias modificações que não foram comitadas ao longo do tempo">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/images/versiculo_icone.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/versiculos_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/atividades/show.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/atividades/top.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/layouts/content.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/layouts/user_mailer.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/_botao_facebook.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_convidar_amigos.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_indice_biblia.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_seguidores.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_seguindo.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_top_publicacoes.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_top_versiculos.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/registrations/edit.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/registrations/new.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/notificar_seguidor_novo.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/notificar_seguidor_novo.text.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/notificar_voto.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/versiculos/top.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/todo.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery.scrollTo.js" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\app\controllers\seguidores_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\app\views\biblia_social\livro.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\app\views\partials\_capitulos.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\app\views\partials\_livros.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\app\views\partials\_versiculos.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\app\views\user_mailer\notificar.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\app\views\user_mailer\notificar.text.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\db\migrate\20120205000024_add_citacoes_count_to_versiculo.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\db\migrate\20120217213035_add_comment_descricao_to_link.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\db\migrate\20120217213144_add_comment_descricao_to_referencia.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\db\migrate\20120217213401_add_comment_descricao_to_video.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\db\migrate\20120225022446_add_likes_count_to_comment.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\db\sphinx\development\versiculo_core.spl" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\doc\todo.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\log\searchd.development.pid" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\public\system\fotos\3\normal\DSC02305.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\public\system\fotos\3\original\DSC02305.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\public\system\fotos\3\small\DSC02305.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\public\system\fotos\3\thumb\DSC02305.JPG" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\public\system\fotos\7\normal\392146_242195289186376_100001877213458_607666_1747908503_n.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\public\system\fotos\7\original\392146_242195289186376_100001877213458_607666_1747908503_n.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\public\system\fotos\7\small\392146_242195289186376_100001877213458_607666_1747908503_n.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\public\system\fotos\7\thumb\392146_242195289186376_100001877213458_607666_1747908503_n.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\bibliasocial\test\fixtures\seguidors.yml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/bibliasocial.iml" afterPath="$PROJECT_DIR$/.idea/bibliasocial.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/sphinx/development/versiculo_core.sph" afterPath="$PROJECT_DIR$/db/sphinx/development/versiculo_core.sph" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/sphinx/development/versiculo_core.sps" afterPath="$PROJECT_DIR$/db/sphinx/development/versiculo_core.sps" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/favicon.ico" afterPath="$PROJECT_DIR$/public/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/fotos/normal/missing.png" afterPath="$PROJECT_DIR$/public/fotos/normal/missing.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/fotos/small/missing.png" afterPath="$PROJECT_DIR$/public/fotos/small/missing.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/fotos/thumb/missing.png" afterPath="$PROJECT_DIR$/public/fotos/thumb/missing.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/images/background_search.png" afterPath="$PROJECT_DIR$/public/stylesheets/images/background_search.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/images/icones.png" afterPath="$PROJECT_DIR$/public/stylesheets/images/icones.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/sphinx/production/versiculo_core.spd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/sphinx/production/versiculo_core.sph" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/sphinx/production/versiculo_core.spi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/sphinx/production/versiculo_core.spk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/sphinx/production/versiculo_core.spl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/sphinx/production/versiculo_core.spm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/sphinx/production/versiculo_core.spp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/sphinx/production/versiculo_core.sps" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/dislike.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/like.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/novo_icone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/images/icone_fb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/script/delayed_job" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/mailer/unlock_instructions.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/shared/_links.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/devise/unlocks/new.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/_sidebar.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_notificacoes_iniciais.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_top_user_publicacoes.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_top_users.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/notificar_voto.text.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/binlog.002" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/binlog.003" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/binlog.004" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/production.sphinx.conf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120307032749_create_delayed_jobs.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120322221020_add_likes_count_to_itens.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120323195943_add_counts_to_user.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120602144452_add_nome_to_user.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/sphinx/production/versiculo_core.spa" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/searchd.production.pid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/channel.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/genesis/1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery.cookie.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery.reticencias.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/concerns/acts_as_item.rb" afterPath="$PROJECT_DIR$/app/concerns/acts_as_item.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/atividades_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/atividades_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/biblia_social_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/biblia_social_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/comments_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/comments_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/itens_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/itens_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users/omniauth_callbacks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users/omniauth_callbacks_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/votos_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/votos_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/user_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/atividade.rb" afterPath="$PROJECT_DIR$/app/models/atividade.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/capitulo.rb" afterPath="$PROJECT_DIR$/app/models/capitulo.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/citacao.rb" afterPath="$PROJECT_DIR$/app/models/citacao.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/comment.rb" afterPath="$PROJECT_DIR$/app/models/comment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/follow.rb" afterPath="$PROJECT_DIR$/app/models/follow.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/link.rb" afterPath="$PROJECT_DIR$/app/models/link.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/referencia.rb" afterPath="$PROJECT_DIR$/app/models/referencia.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/texto_html.rb" afterPath="$PROJECT_DIR$/app/models/texto_html.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/versiculo.rb" afterPath="$PROJECT_DIR$/app/models/versiculo.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/video.rb" afterPath="$PROJECT_DIR$/app/models/video.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/voto.rb" afterPath="$PROJECT_DIR$/app/models/voto.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/atividades/index.html.erb" afterPath="$PROJECT_DIR$/app/views/atividades/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/biblia_social/capitulo.html.erb" afterPath="$PROJECT_DIR$/app/views/biblia_social/capitulo.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/biblia_social/index.html.erb" afterPath="$PROJECT_DIR$/app/views/biblia_social/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/biblia_social/search.html.erb" afterPath="$PROJECT_DIR$/app/views/biblia_social/search.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/create.js.erb" afterPath="$PROJECT_DIR$/app/views/comments/create.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/users.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/users.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/_atividades.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/_atividades.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/_botao_seguir.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/_botao_seguir.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/_botoes_votos.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/_botoes_votos.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/_user_atividade.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/_user_atividade.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/_versiculo.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/_versiculo.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/atividade/_lista.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/atividade/_lista.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/atividade/_new.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/atividade/_new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/atividade/_show.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/atividade/_show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/users/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/lista.html.erb" afterPath="$PROJECT_DIR$/app/views/users/lista.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/mural.html.erb" afterPath="$PROJECT_DIR$/app/views/users/mural.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/binlog.meta" afterPath="$PROJECT_DIR$/binlog.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/development.sphinx.conf" afterPath="$PROJECT_DIR$/config/development.sphinx.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/test.rb" afterPath="$PROJECT_DIR$/config/environments/test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/devise.rb" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/devise.pt-BR.yml" afterPath="$PROJECT_DIR$/config/locales/devise.pt-BR.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/pt-BR.yml" afterPath="$PROJECT_DIR$/config/locales/pt-BR.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/sphinx.yml" afterPath="$PROJECT_DIR$/config/sphinx.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/sphinx/development/versiculo_core.spa" afterPath="$PROJECT_DIR$/db/sphinx/development/versiculo_core.spa" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/referencias.txt" afterPath="$PROJECT_DIR$/doc/referencias.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/email.rake" afterPath="$PROJECT_DIR$/lib/tasks/email.rake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/all.js" afterPath="$PROJECT_DIR$/public/javascripts/all.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/fb-auto-login.js" afterPath="$PROJECT_DIR$/public/javascripts/fb-auto-login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/secret.js" afterPath="$PROJECT_DIR$/public/javascripts/secret.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/application.css" afterPath="$PROJECT_DIR$/public/stylesheets/application.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/atividades.yml" afterPath="$PROJECT_DIR$/test/fixtures/atividades.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/unit/comment_test.rb" afterPath="$PROJECT_DIR$/test/unit/comment_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/unit/link_test.rb" afterPath="$PROJECT_DIR$/test/unit/link_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/unit/referencia_test.rb" afterPath="$PROJECT_DIR$/test/unit/referencia_test.rb" />
     </list>
     <list id="29883faa-c7ca-444d-bc57-3a058605ab7d" name="Rejected commit: Default" comment="Várias modificações que não foram comitadas ao longo do tempo" />
     <ignored path="bibliasocial.iws" />
@@ -164,7 +84,7 @@
       <file leaf-file-name="texto_html.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/texto_html.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="9" selection-start="734" selection-end="734" vertical-scroll-proportion="0.62285715">
+            <state line="28" column="56" selection-start="689" selection-end="689" vertical-scroll-proportion="0.5257143">
               <folding />
             </state>
           </provider>
@@ -695,6 +615,11 @@
       <created>1328826376845</created>
       <updated>1328826376845</updated>
     </task>
+    <task id="LOCAL-00001" summary="Várias modificações que não foram comitadas ao longo do tempo">
+      <created>1340058604060</created>
+      <updated>1340058604060</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -721,11 +646,12 @@
     <frame x="-8" y="0" width="1382" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.6704918" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32894737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4013657" sideWeight="0.67105263" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4013657" sideWeight="0.67105263" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -735,7 +661,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.61513156" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -877,7 +802,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/texto_html.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="9" selection-start="734" selection-end="734" vertical-scroll-proportion="0.62285715">
+        <state line="28" column="56" selection-start="689" selection-end="689" vertical-scroll-proportion="0.5257143">
           <folding />
         </state>
       </provider>

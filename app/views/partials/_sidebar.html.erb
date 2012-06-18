@@ -1,0 +1,16 @@
+<%
+#Possíveis Widgets:
+#   indice_biblia
+#   top_users
+#   top_versiculos
+#   top_publicacoes
+#   convidar_amigos
+#   seguindo
+#   seguidores
+#   top_user_publicacoes
+%>
+<div id="sidebar_opaco"></div>
+<div id="sidebar_flutuante" class="sidebar"></div>
+<% widgets.each do |nome_widget|%>
+    <%= render :partial => "partials/sidebar/" + nome_widget%>
+<% end %>

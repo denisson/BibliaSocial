@@ -1,0 +1,10 @@
+<div class="widigetSidebar">
+  <h3>Top Publicações <%= link_to "+", user_path(@user), :title=>"Ver lista completa", :class => "tooltip mais" if @top_publicacoes.any? %> <span class="info">Minhas publicações mais populares</span></h3>
+  <% if @top_publicacoes.any?  %>
+      <ul class="atividades">
+        <%= render :partial => "partials/atividade/lista", :locals => {:itens => @top_publicacoes, :mostrar_versiculo => true}%>
+      </ul>
+  <% else %>
+      <span class="textoDiscreto">Ainda não fiz nenhuma publicação.</span>
+  <% end %>
+</div>

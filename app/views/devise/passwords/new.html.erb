@@ -1,0 +1,17 @@
+<div id="content" class="contentEsqueceuSenha">
+
+<h2>Esqueceu sua senha?</h2>
+
+<p>Não se preocupe! Preencha abaixo o email que você informou no cadastro, e nós te enviaremos um email com as informações necessários para você recuperar sua senha.</p>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="inputText">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="botoes"><%= f.submit "Envie-me as instruções", {:class => 'botao positive'} %></div>
+<% end %>
+
+</div>

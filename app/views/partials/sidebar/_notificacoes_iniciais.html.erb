@@ -1,0 +1,22 @@
+<% if !current_user.tem_foto? or  !current_user.tem_facebook? or !current_user.tem_atividades?%>
+    <div class="widigetSidebar">
+      <h4><%= current_user.nome %>, </h4>
+      <% if !current_user.tem_foto? %>
+        <span class="textoDiscreto">Personalize seu perfil. <%= link_to "Clique aqui para adicionar sua foto!", edit_user_path(current_user) %> </span>
+        <br/>
+      <% end %>
+      <% if !current_user.tem_facebook? %>
+        <span class="textoDiscreto">Você tem Facebook?</span>
+        <%= render :partial => "partials/botao_facebook", :locals => {:texto_botao => 'Vincular ao Facebook'}%>
+        <br/>
+      <% end %>
+      <% if !current_user.tem_foto? or  !current_user.tem_facebook? %>
+        <br/>
+      <% end %>
+      <% if !current_user.tem_atividades? %>
+        <span class="textoDiscreto">Utilize o espaço ao lado para falar com seus seguidores ou escolha um versículo e faça sua primeira publicação!</span>
+        <br/>
+      <% end %>
+
+    </div>
+<% end %>
