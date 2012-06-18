@@ -28,6 +28,7 @@
 
       if referencia != nil
         @referencias << referencia
+        #todo: colocar link_to_versiculo versiculo    aqui!
         '<a title="' + referencia.versiculo_citado.texto + '" href="' + referencia.versiculo_citado.url + '">' + referencia.ref + '</a>'
       else
         match

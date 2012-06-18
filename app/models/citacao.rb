@@ -20,7 +20,7 @@
   end
 
   def destroy
-    atividade.destroy
+    atividade.destroy if !atividade.nil?
     Versiculo.decrement_counter(:citacoes_count, self.versiculo_citado_id)
   end
 
@@ -29,7 +29,7 @@
   end
 
 	def criar_atividade
-		versiculo.atividades.create({:item => self})
+		versiculo.atividades.create({:item => self, :user => self.user})
 	end
 
   def comentario

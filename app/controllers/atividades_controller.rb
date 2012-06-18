@@ -13,6 +13,14 @@
 
     respond_with(@itens)
   end
+
+  def top
+    if params[:capitulo_id].nil?
+      @atividades = Atividade.default_includes.top.paginate(:page => params[:page], :per_page => 10)
+    else
+      @atividades = Atividade.default_includes.top_do_capitulo(params[:capitulo_id]).paginate(:page => params[:page], :per_page => 10)
+    end
+  end
 end
 
 

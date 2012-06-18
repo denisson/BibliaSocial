@@ -37,6 +37,11 @@ GEM
     builder (2.1.2)
     cocaine (0.2.1)
     columnize (0.3.6)
+    delayed_job (3.0.1)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.3.2)
+      activerecord (> 2.1.0)
+      delayed_job (~> 3.0.0)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -143,6 +148,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_follower
+  delayed_job_active_record
   devise
   koala
   mysql2 (= 0.2.6)

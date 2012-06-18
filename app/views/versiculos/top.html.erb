@@ -1,0 +1,13 @@
+﻿<div id="content">
+  <h5 class="tituloDivisor">Top Versículos <span class="info"><%= I18n.t("bibliasocial.top.versiculo") %></span></h5>
+  <% @versiculos.each_with_index do |versiculo, i| %>
+      <%= render :partial => 'partials/versiculo', :locals => { :versiculo => versiculo, :i => i, :show_titulo => true, :mostrar_referencia => true } %>
+  <% end %>
+  <div class="c">
+      <%= will_paginate @versiculos, :next_label => 'Próximos', :previous_label => 'Anteriores', :inner_window => 2, :outer_window => 0 %>
+  </div>
+</div>
+<div id="sidebar">
+  <%= render :partial => "partials/sidebar", :locals => {:widgets => ['indice_biblia']} %>
+</div>
+

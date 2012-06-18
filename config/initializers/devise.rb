@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "noreply@bibliasocial.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -198,6 +198,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   config.omniauth :facebook, '187353061340087', '48a088f12d426fdf3916fd56b65fa7da', :scope => 'email,user_birthday, user_online_presence, publish_stream', :client_options => { :ssl => { :ca_file => Rails.root.join('lib/assets/cacert.pem').to_s } }
+  #config.omniauth :facebook, '200389373346541', '97fa53c6c7739282d9b92e50aeab127d', :scope => 'email,user_birthday, user_online_presence, publish_stream', :client_options => { :ssl => { :ca_file => Rails.root.join('lib/assets/cacert.pem').to_s } }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

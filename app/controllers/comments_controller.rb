@@ -5,20 +5,25 @@
   end
 
   def create
-      @versiculo = Versiculo.find(params[:versiculo_id]) if params[:versiculo_id] != nil
+      if params[:versiculo_id] != nil
+        @versiculo = Versiculo.find(params[:versiculo_id])
+        @mostrar_versiculo = false
+      else
+        @mostrar_versiculo = true
+      end
 
       string_item = params[:comment][:string_item]
       texto_comment = params[:comment][:texto]
       item_type = params[:comment][:item_type]
       hash_item = {:user => current_user, :versiculo => @versiculo}
 
-      if item_type == "Referencia" and string_item != nil # and Referencia.pode_ser? string_item
+      if item_type == "Referencia" and string_item != '' # and Referencia.pode_ser? string_item
         model_item = Referencia
         hash_item[:ref] = string_item
-      elsif item_type == "Link"  and string_item != nil# Link.pode_ser? string_item
+      elsif item_type == "Link"  and string_item != ''# Link.pode_ser? string_item
         model_item = Link
         hash_item[:url] = string_item
-      elsif item_type == "Video" and string_item != nil
+      elsif item_type == "Video" and string_item != ''
         model_item = Video
         hash_item[:url] = string_item
       else

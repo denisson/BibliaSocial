@@ -1,22 +1,72 @@
 <%= title "#{@livro.nome} #{@capitulo.numero} - BíbliaSocial.com" %>
+<%= content_for :menu_selecionado, 'biblia' %>
 
-<div id="content">
-    <%= breadcrumb [['Bíblia', '/'],[@livro.nome, "/#{@livro.permalink}"],["Capítulo #{@capitulo.numero}", "/#{@livro.permalink}/#{@capitulo.numero}"]] %>
-    <h2 class="titulo clear" data-nome="<%= "#{@livro.nome} #{@capitulo.numero}" %>" data-url="<%= "http://www.bibliasocial.com/#{@livro.permalink}/#{@capitulo.numero}" %>"><span class="comment_count"></span><%= "#{@livro.nome} #{@capitulo.numero}" %></h2>
+<% if @versiculo != nil %>
+    <%= description @versiculo.texto %>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+//          $("#<%= @versiculo.id%> .comment_count").focus().click();
+      })
+
+    </script>
+<% end %>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#indiceBibliaFlutuante').indiceBiblia(<%= @livro.id %>, <%= @capitulo.numero %>, {flutuante:true, ativador:$('#livroCapituloAtual')});
+        $('#sidebar_opaco').css('height', $('#window').height());
+    });
+</script>
+<style type="text/css">
+  /* -----------------------------
+    --- Full Screen
+    -----------------------------*/
+  body.fullscreen { background: #FFF }
+  body.fullscreen .wrapper{width:740px}
+  body.fullscreen #window{border:none}
+  body.fullscreen #top{display:none}
+  body.fullscreen #sidebar{display:none}
+  body.fullscreen #content{width: 698px;border-right: none;}
+</style>
+
+<div id="content" class="capitulo">
+    <%# breadcrumb [['Bíblia', '/'],[@livro.nome, "/#{@livro.permalink}"],["Capítulo #{@capitulo.numero}", "/#{@livro.permalink}/#{@capitulo.numero}"]] %>
+
+    <h2 class="titulo clear" >
+        <%= link_to "#{@livro.nome}  #{@capitulo.numero}" , "/#{@livro.permalink}", :class => 'nomeLivroCapitulo' %>
+		<%= link_to (content_tag(:i, "")).html_safe , "#escolhaLivroCapitulo", :id => "livroCapituloAtual", :class => 'tooltip', :title => 'Mudar livro e capítulo' %>
+		<a id="botaoFullscreen" class="tooltip" href="#" title="Tela Cheia"><i></i></a>
+		<a id="diminuirTamanhoFonte" class="tamanho_fonte tooltip" href="#" title="Diminuir Tamanho da Letra">A-</a>
+		<a id="aumentarTamanhoFonte" class="tamanho_fonte tooltip" href="#" title="Aumentar Tamanho da Letra">A+</a>
+		
+
+	</h2>
+    <div id="indiceBibliaFlutuante"></div>
+
+    <%# render :partial => 'partials/indice_biblia', :locals => { :livros => @biblia.livros, :livro_marcado => @livro} %>
+
+	<article>
     <% @versiculos.each_with_index do |versiculo, i| %>
-        <%= render :partial => 'partials/versiculo', :locals => { :versiculo => versiculo, :i => i } %>
+        <%= render :partial => 'partials/versiculo', :locals => { :versiculo => versiculo, :i => i, :mostrar_num_versiculo => true} %>
     <% end %>
+	</article>
 
     <p class="previous_and_next">
-        <%= link_to "Anterior", "/#{@capitulo.anterior.livro.permalink}/#{@capitulo.anterior.numero}" if @capitulo.anterior %> 
-        « Capítulo <%= @capitulo.numero %> »
-        <%= link_to "Próximo", "/#{@capitulo.proximo.livro.permalink}/#{@capitulo.proximo.numero}" if @capitulo.proximo %>
+      <% if @capitulo.anterior %>
+          <%= link_to("Anterior", "/#{@capitulo.anterior.livro.permalink}/#{@capitulo.anterior.numero}")%>
+          «
+      <% end %>
+      Capítulo <%= @capitulo.numero %>
+      <% if @capitulo.proximo %>
+        »
+        <%=link_to("Próximo", "/#{@capitulo.proximo.livro.permalink}/#{@capitulo.proximo.numero}") %>
+      <% end %>
     </p>
 
-    <h2>Livros</h2>
-    <%= render :partial => 'partials/livros' %>
 </div>
+
 <div id="sidebar">
-    <h3>Comentários</h3>
-    <%= render :partial => "partials/atividade/lista", :locals => {:itens => @itens, :mostrar_versiculo => true}%>
+  <% @livro_selecionado_id = @livro.id %>
+  <% @numero_capitulo_selecionado = @capitulo.numero %>
+  <%= render :partial => "partials/sidebar", :locals => {:widgets => ['indice_biblia', 'top_users', 'top_versiculos', 'top_publicacoes']}%>
 </div>

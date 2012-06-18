@@ -1,5 +1,6 @@
-$('.atividades').prepend("<%= escape_javascript render :partial => "partials/atividade/show", :locals => { :item => @item, :mostrar_versiculo => false, :classe_atividade => true }%>");
+$('.atividades').prepend("<%= escape_javascript render :partial => "partials/atividade/show", :locals => { :item => @item, :mostrar_versiculo => @mostrar_versiculo, :classe_atividade => true }%>");
 $('ul.atividadesFiltros li.filtro.Atividade a').click();
 $('.atividades li.first').effect("highlight", {color:"#D9EBF4"}, 2000);
+$('.nenhumaPublicacao').hide();
 <%= render :partial => "partials/atualiza_contadores" if @versiculo != nil %>
 $('#new_comment').find('textarea,input[type="text"],input[type="file"]').val("");

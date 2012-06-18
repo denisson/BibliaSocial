@@ -16,6 +16,7 @@ gem 'koala'
 gem 'thinking-sphinx', '2.0.10'
 gem 'paperclip', "~> 2.0"
 gem 'acts_as_follower'
+gem 'delayed_job_active_record'
 #gem 'sass-rails'
 
 # Use unicorn as the web server

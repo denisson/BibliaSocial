@@ -1,0 +1,10 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#indiceBibliaSidebar').indiceBiblia(<%= defined?(@livro_selecionado_id) ? @livro_selecionado_id : 1 %>, <%= defined?(@numero_capitulo_selecionado) ? @numero_capitulo_selecionado : 0 %>);
+    });
+</script>
+
+<div class="widigetSidebar">
+    <h3>Leitura <span class="info">Escolha o livro e o capítulo que deseja ler</span></h3>
+    <div id="indiceBibliaSidebar"></div>
+</div>

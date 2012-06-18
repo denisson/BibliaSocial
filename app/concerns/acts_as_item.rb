@@ -5,6 +5,15 @@ module ActsAsItem
     end
 
     module ClassMethods
+
+      def label
+        name
+      end
+
+      def descricao_atividade_email
+        " do seu " + label.downcase
+      end
+
       def acts_as_item
         acts_as_item_comment
         include ActsAsItem::NoCommentInstanceMethods
@@ -33,10 +42,14 @@ module ActsAsItem
 
         validates :user_id, :presence => true#, :message => "Você precisa estar logado para fazer esta operação"
 
-        default_scope order("created_at DESC")
+        scope :recentes, order("created_at DESC")
+        scope :top, order("saldo_votos DESC").order("created_at DESC")
+        scope :top_do_capitulo,  lambda { |capitulo_id| joins(:versiculo).where("versiculos.capitulo_id" => capitulo_id).top}
+
 
         after_create :criar_atividade
       end
+
     end
 
     module InstanceMethods
@@ -61,12 +74,16 @@ module ActsAsItem
          usuario_tenta_excluir == user  and independente?
       end
 
+      def atualizar_saldo_votos
+        self.update_attributes!(:saldo_votos => "(likes_count - dislikes_count)")
+      end
+
     end
 
     module NoCommentInstanceMethods
       def criar_atividade
         if self.comment == nil
-          Atividade.create({:user => self.user, :item => self, :versiculo => self.versiculo})
+          Atividade.create({:user => self.user, :item => self, :versiculo => self.versiculo, :created_at => self.created_at, :updated_at => self.updated_at})
         end
       end
 

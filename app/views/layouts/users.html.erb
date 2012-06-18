@@ -1,10 +1,11 @@
 ﻿<%= title "#{@user.nome} - BíbliaSocial.com" %>
+<%= content_for :menu_selecionado, 'perfil' if @user == current_user %>
 
 <% content_for :content do %>
     <div id="content">
 
         <div class="userPerfilContainer" style="display: table; width:100%">
-          <%= image_tag @user.foto.url(:normal), :class => "userFoto" %>
+          <%= link_to image_tag(@user.foto.url(:normal), :class => "userFoto"), @user.foto.url  %>
           <div class="userInfo">
             <div>
                 <%= link_to @user.nome, user_path(@user), {:class => "userNome"} %>
@@ -17,11 +18,17 @@
           </div>
           <div class="userBotoes">
                 <%= render :partial => 'partials/botao_seguir', :locals => {:user => @user}%>
-                <%= link_to "Editar Perfil", edit_user_path(@user), :class => "editPerfilBotao botao neutro" if @user == current_user%>
+                <%=  %>
+                <%= link_to "Editar Perfil", edit_user_path(@user), :class => "editPerfilBotao botao neutro" if @user == current_user and params[:action] != 'edit'%>
+                <%# link_to "Deletar", @user, :method => :delete, :class => "botao negative" if @user == current_user%>
           </div>
         </div>
 
         <%= yield %>
+    </div>
+
+    <div id="sidebar" class="users">
+        <%= render :partial => "partials/sidebar", :locals => {:widgets => ['seguindo', 'seguidores', 'top_user_publicacoes']}%>
     </div>
 <% end %>
 

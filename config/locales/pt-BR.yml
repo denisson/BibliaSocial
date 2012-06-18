@@ -198,3 +198,14 @@ pt-BR:
       long: ! '%A, %d de %B de %Y, %H:%M h'
       short: ! '%d/%m, %H:%M h'
     pm: ''
+  activerecord:
+    attributes:
+      user:
+        foto_content_type: 'Foto do Perfil'
+  bibliasocial:
+    top:
+      publicacoes: Os melhores vídeos, links e comentários
+      versiculo: Os versículos mais discutidos
+      usuarios: Os usuários mais ativos
+  will_paginate:
+    page_gap: ...

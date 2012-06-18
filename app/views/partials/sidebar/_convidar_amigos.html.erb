@@ -1,0 +1,24 @@
+<% if user_signed_in? and current_user.tem_facebook? %>
+    <script>
+        $(document).ready(function() {
+            $("#botaoConvidarAmigos").click(function(event){
+                if (!FB._initialized){
+                    FB.init({
+                        appId  : '187353061340087',
+                        channelUrl : '//localhost:3000/channel.html', // Channel File
+                        status : true, // check login status
+                        cookie : true, // enable cookies to allow the server to access the session
+                        xfbml  : true  // parse XFBML
+                    });
+                }
+
+                event.preventDefault();
+                FB.ui({ method: 'apprequests', message: 'Escolha quais amigos deseja convidar para participar da BíbliaSocial.'});
+            });
+        });
+    </script>
+    <div class="widigetSidebar">
+      <h3>Convite  <span class="info">Convide seus amigos do Facebook</span></h3>
+      <span class="textoDiscreto"><%= link_to("Clique aqui para convidar seus amigos do Facebook." , "#", :id => "botaoConvidarAmigos")%></span>
+    </div>
+<% end %>

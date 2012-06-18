@@ -24,4 +24,26 @@ module ApplicationHelper
     end unless params[:keywords].blank?
     result.html_safe
   end
+
+  def link_to_versiculo(versiculo)
+    link_to versiculo.ref, versiculo.url, {:title=>versiculo.texto, :"data-versiculo-id" => versiculo.id, :class => "linkVersiculo"}
+  end
+
+  def bibliasocial_error_messages(resource)
+    return "" if resource.errors.empty?
+
+    messages = resource.errors.full_messages.map { | msg| content_tag(:li, msg) }.join
+    sentence = I18n.t("errors.messages.not_updated",
+                      :count => resource.errors.count,
+                      :resource => resource.class.model_name.human.downcase)
+
+    html = <<-HTML
+    <div id="error_explanation">
+      <h2>#{sentence}</h2>
+      <ul>#{messages}</ul>
+    </div>
+    HTML
+
+    html.html_safe
+  end
 end

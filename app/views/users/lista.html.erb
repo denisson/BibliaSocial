@@ -1,4 +1,4 @@
-<h5 class="tituloDivisor"><%=@tituloDivisor%></h5>
+<h5 class="tituloDivisor"><%=@tituloDivisor.html_safe%></h5>
 
 <ul class="listaUsers">
 <% @users.each do |user| %>
@@ -9,7 +9,7 @@
             <%= link_to user.nome, user_path(user), {:class => "userNome"} %>
         </div>
         <div class="userMaisInfo">
-            <%= pluralize(user.followers.count, 'seguidor')%>
+            <%= pluralize(user.seguidores_count, 'seguidor')%>
         </div>
       </div>
       <div class="userBotoes">
@@ -18,3 +18,9 @@
 	</li>
 <% end %>
 </ul>
+
+<%if !@users_paginate.nil?%>
+    <div class="c">
+        <%= will_paginate @users_paginate, :next_label => 'Próximos', :previous_label => 'Anteriores', :inner_window => 2, :outer_window => 0 %>
+    </div>
+<%end%>

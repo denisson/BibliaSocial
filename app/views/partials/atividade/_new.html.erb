@@ -1,7 +1,7 @@
 <%= form_for([agrupador_item, comment], :remote => true,  :html => {:class => "atividadesForm"}) do |f| %>
 
     <div class="textareaContainer">
-        <%= f.text_area :texto, {:placeholder=> "Comente aqui..."} %>
+        <%= f.text_area :texto, {:class=>'textoComentario', :placeholder=> user_signed_in? ? "Comente aqui..." : "Cadastre-se para comentar!", :disabled => !user_signed_in?} %>
     </div>
   
     <ul class="botoesItens">
@@ -25,11 +25,15 @@
     </ul>
   
     <div class="stringItemContainer">
-        <%= text_field_tag  'comment[string_item]', nil,  {:id => "stringItem"} %>
-        <%= hidden_field_tag  'comment[item_type]', nil,  {:id => "itemType"} %>
+      <a href="javascript:restaurarSidebar();" class="botaoFechar fecharStringItem"></a>
+
+      <div class="stringItemMargem">
+        <%= text_field_tag  'comment[string_item]', nil,  {:id => "stringItem", :disabled => !user_signed_in?} %>
+      </div>
+      <%= hidden_field_tag  'comment[item_type]', nil,  {:id => "itemType"} %>
     </div>
 
     <div class="botoes">
-        <%= f.submit "Publicar", :disable_with => "Publicando..." %>
+        <%= f.submit "Publicar", :disable_with => "Publicando...", :disabled => !user_signed_in? %>
     </div>
 <% end %>

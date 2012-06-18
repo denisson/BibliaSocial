@@ -1,0 +1,10 @@
+﻿<div id="content">
+  <ul class="atividades">
+    <%= render :partial => "partials/atividade/show", :locals => {:item => @item, :mostrar_versiculo => true, :classe_atividade => true, :tamanho_foto => :thumb}%>
+  </ul>
+</div>
+
+<div id="sidebar">
+  <%= render :partial => "partials/sidebar", :locals => {:widgets => ['indice_biblia']}%>
+</div>
+

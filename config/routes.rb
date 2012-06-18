@@ -1,5 +1,5 @@
 Bibliasocial::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations"}
 
   root :to => 'biblia_social#index'
   
@@ -8,6 +8,7 @@ Bibliasocial::Application.routes.draw do
     get 'seguidores', :on => :member
     get 'seguir', :on => :member
     delete 'deixar', :on => :member
+    get 'top', :on => :collection
     resources :comments
   end
   get 'mural', :to => 'users#mural'
@@ -54,8 +55,13 @@ Bibliasocial::Application.routes.draw do
     resources :atividades do
       get 'lista', :on => :collection
     end
+    get 'top', :on => :collection
   end
-  
+
+  get 'atividades/top', :to => 'atividades#top', :as => :atividades_top
+  get 'atividades/top/:capitulo_id', :to => 'atividades#top', :as => :atividades_capitulo_top
+  get 'versiculos/top/:capitulo_id', :to => 'versiculos#top', :as => :top_versiculos_capitulo
+
   get 'search', :to => 'biblia_social#search'
   get ':livro', :to => 'biblia_social#livro'
   get ':livro/:capitulo', :to => 'biblia_social#capitulo'

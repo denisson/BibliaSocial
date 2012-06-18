@@ -4,6 +4,10 @@ Javascript
 		http://flowplayer.org/tools/demos/tooltip/any-html.html
 	AutoSize Textarea:
 		https://github.com/jackmoore/autosize
+	ScrollTo:
+	    http://flesler.blogspot.com/2007/10/jqueryscrollto.html
+	Filter html
+	    http://kilianvalkhof.com/uploads/listfilter/
 		
 Rails
 	OmniAuth com Devise
@@ -12,7 +16,13 @@ Rails
 		http://railscasts.com/episodes/182-cropping-images
 	Ajax:
 	    http://www.alfajango.com/blog/rails-3-remote-links-and-forms/
+	Erro de Multi-byte character: (# encoding: utf-8)
+        http://stackoverflow.com/questions/1739836/invalid-multibyte-char-us-ascii-with-rails-and-ruby-1-9
 Regex
 	BNF Url
 		http://www.w3.org/Addressing/URL/5_BNF.html#z12
+
+Email
+    Problema da Imagem
+        http://stackoverflow.com/questions/5739819/image-tag-in-mailer-not-using-asset-host
 	

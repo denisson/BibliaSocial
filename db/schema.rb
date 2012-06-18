@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307032748) do
+ActiveRecord::Schema.define(:version => 20120602144452) do
 
   create_table "atividades", :force => true do |t|
     t.integer  "user_id"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(:version => 20120307032748) do
     t.string   "item_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "likes_count",    :default => 0, :null => false
+    t.integer  "dislikes_count", :default => 0, :null => false
+    t.integer  "saldo_votos",    :default => 0, :null => false
   end
 
   create_table "biblia", :force => true do |t|
@@ -74,7 +77,24 @@ ActiveRecord::Schema.define(:version => 20120307032748) do
     t.integer  "videos_count",      :default => 0, :null => false
     t.integer  "likes_count",       :default => 0, :null => false
     t.integer  "dislikes_count",    :default => 0, :null => false
+    t.integer  "saldo_votos",       :default => 0, :null => false
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "follows", :force => true do |t|
     t.integer  "followable_id",                      :null => false
@@ -97,7 +117,9 @@ ActiveRecord::Schema.define(:version => 20120307032748) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "titulo"
-    t.integer  "comment_descricao_id"
+    t.integer  "likes_count",    :default => 0, :null => false
+    t.integer  "dislikes_count", :default => 0, :null => false
+    t.integer  "saldo_votos",    :default => 0, :null => false
   end
 
   create_table "livros", :force => true do |t|
@@ -131,7 +153,9 @@ ActiveRecord::Schema.define(:version => 20120307032748) do
     t.integer  "comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comment_descricao_id"
+    t.integer  "likes_count",         :default => 0, :null => false
+    t.integer  "dislikes_count",      :default => 0, :null => false
+    t.integer  "saldo_votos",         :default => 0, :null => false
   end
 
   create_table "secoes", :force => true do |t|
@@ -161,12 +185,18 @@ ActiveRecord::Schema.define(:version => 20120307032748) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "nome"
     t.string   "foto_file_name"
     t.string   "foto_content_type"
     t.integer  "foto_file_size"
     t.datetime "foto_updated_at"
     t.string   "facebook_id"
+    t.integer  "seguindo_count",                        :default => 0,  :null => false
+    t.integer  "seguidores_count",                      :default => 0,  :null => false
+    t.integer  "atividades_count",                      :default => 0,  :null => false
+    t.integer  "likes_count",                           :default => 0,  :null => false
+    t.integer  "dislikes_count",                        :default => 0,  :null => false
+    t.integer  "reputacao",                             :default => 0,  :null => false
+    t.string   "nome",                                                  :null => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
@@ -205,7 +235,9 @@ ActiveRecord::Schema.define(:version => 20120307032748) do
     t.integer  "versiculo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comment_descricao_id"
+    t.integer  "likes_count",    :default => 0, :null => false
+    t.integer  "dislikes_count", :default => 0, :null => false
+    t.integer  "saldo_votos",    :default => 0, :null => false
   end
 
   create_table "votos", :force => true do |t|

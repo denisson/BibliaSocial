@@ -105,4 +105,12 @@ class Referencia < ActiveRecord::Base
 		"em"
   end
 
+  def self.label
+    "Referência"
+  end
+
+  def self.descricao_atividade_email
+    " da sua " + label
+  end
+
 end

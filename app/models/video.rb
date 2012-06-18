@@ -10,7 +10,7 @@ class Video < ActiveRecord::Base
       objeto.save
     else
       objeto =  Video.new
-      objeto.errors.add("video", "Video inválido!")
+      objeto.errors.add("video", "Vídeo inválido!")
     end
     return objeto
   end
@@ -30,5 +30,9 @@ class Video < ActiveRecord::Base
 	
 	def descricao_atividade_conectivo
 		"em"
-	end
+  end
+
+  def self.label
+    "Vídeo"
+  end
 end

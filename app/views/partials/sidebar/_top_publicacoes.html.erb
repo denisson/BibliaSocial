@@ -1,0 +1,11 @@
+<div class="widigetSidebar">
+
+  <h3>Top Publicações <%= link_to "+", @capitulo.nil? ? atividades_top_path : atividades_capitulo_top_path(@capitulo.id), :title=>"Ver lista completa", :class => "tooltip mais" if @top_itens.any? %> <span class="info"><%= I18n.t("bibliasocial.top.publicacoes") %></span></h3>
+  <% if defined?(@top_itens) and @top_itens.any?  %>
+      <ul class="atividades">
+        <%= render :partial => "partials/atividade/lista", :locals => {:itens => @top_itens, :mostrar_versiculo => true}%>
+      </ul>
+  <% else %>
+      <span class="textoDiscreto">Ainda não há nenhuma publicação. Seja o primeiro compartilhar!</span>
+  <% end %>
+</div>

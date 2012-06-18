@@ -1,5 +1,6 @@
+<% tamanho_foto = tamanho_foto || (mostrar_versiculo ?  :thumb : :small)  %>
 <li id="<%="#{item.class.name}_#{item.id}"%>" class="<%=item.class.name%> <%="Atividade" if classe_atividade %>" style="<%="display:none" unless classe_atividade %>" data-item-dependencia="<%=item_dependencia if defined?(item_dependencia)%>">
-	<%= link_to (image_tag item.user.foto.url(:small)), user_path(item.user), {:class => "atividadeUserFoto"} %>
+	<%= link_to (image_tag item.user.foto.url(tamanho_foto)), user_path(item.user), {:class => "atividadeUserFoto"} %>
 	<div class="atividadeContainer">
 		<%= render :partial => 'partials/user_atividade', :locals => {:item => item, :mostrar_versiculo => mostrar_versiculo}%>
 		<% if item.class.method_defined?(:comment_descricao) && item.comment_descricao != nil %>
@@ -10,7 +11,7 @@
             <span class="botoesVoto">
                 <%= render :partial => "partials/botoes_votos", :locals => {:item => item}%>
              </span>
-		    <span class="atividadeDatahora" title="<%=item.created_at%>">há <%= distance_of_time_in_words_to_now item.created_at %></span>
+            <%= link_to "há " + distance_of_time_in_words_to_now(item.created_at), item, :class => "atividadeDatahora" %>
             <%  if item.pode_excluir?(current_user) %>
                 &nbsp;-&nbsp;
                 <%= link_to content_tag(:i) + "Excluir", [item.versiculo, item], :remote => true, :confirm => 'Deseja realmente excluir esta publicação?',:method => :delete, :class => "botaoExcluirItem" %>
@@ -20,5 +21,5 @@
 </li>
 
 <% item.atividades_dependentes.each do |comment_atividade_item| %>
-  <%= render :partial => "partials/atividade/show", :locals => {:item => comment_atividade_item, :mostrar_versiculo => mostrar_versiculo, :classe_atividade => false, :item_dependencia => "#{item.class.name}_#{item.id}" }%>
+  <%= render :partial => "partials/atividade/show", :locals => {:item => comment_atividade_item, :mostrar_versiculo => mostrar_versiculo, :classe_atividade => false, :item_dependencia => "#{item.class.name}_#{item.id}", :tamanho_foto => defined?(tamanho_foto) ? tamanho_foto : :small }%>
 <% end %>

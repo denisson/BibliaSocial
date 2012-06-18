@@ -3,7 +3,7 @@
     <head>
         <title><%= (title = yield(:title)).blank? ? 'BíbliaSocial.com' : title %></title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <meta content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>" name="description" /> 
+        <meta content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>" name="description" />
         <meta property="fb:app_id" content="200389373346541"/>
         <meta property="og:type" content="website"/>
         <meta property="og:image" content="http://www.bibliasocial.com/images/icon2.png"/>
@@ -13,66 +13,62 @@
         <meta property="og:description" content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>"/> 
 		<%= csrf_meta_tag %>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssreset/cssreset-min.css">-->
         <%= stylesheet_link_tag 'jquery_ui', 'application', 'tipsy', 'colorbox/colorbox' %>
         <% if ENV['RAILS_ENV'] == 'production' %>
             <%= javascript_include_tag 'all' %>
         <% else %>
-            <%= javascript_include_tag 'jquery', 'jquery_ui', 'rails', 'jquery.tipsy', 'jquery.autosize-min', 'jquery-ui.custom.min', 'secret', 'jquery.reticence', 'jquery.livequery', 'jquery.colorbox' %>
+            <%= javascript_include_tag 'jquery', 'rails', 'jquery_ui', 'jquery.tipsy', 'jquery.autosize-min', 'secret', 'jquery-ui.custom.min', 'jquery.reticencias', 'jquery.livequery', 'jquery.colorbox', 'jquery.scrollTo', 'jquery.cookie' %>
         <% end %>
-        <% if user_signed_in? %><script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script><% end %>
+        <script type="text/javascript">//FB = null</script>
+        <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
         <%= javascript_include_tag 'fb-auto-login' if !user_signed_in? %>
-        <% if user_signed_in? and current_user.tem_facebook? %>
-            <script>
-
-
-            $(document).ready(function() {
-                FB.init({
-                    appId  : '187353061340087',
-                    status : true, // check login status
-                    cookie : true, // enable cookies to allow the server to access the session
-                    xfbml  : true  // parse XFBML
-                });
-
-                $("#botaoConvidarAmigos").click(function(event){
-                    event.preventDefault();
-                    FB.ui({ method: 'apprequests', message: 'Escolha quais amigos deseja convidar para participar da BíbliaSocial.'});
-                })
-
-
-            });
-            </script>
-        <% end %>
     </head>
-    <body>
+    <body class="<%= cookies['fullscreen'] == 'true' ? 'fullscreen' : ''%>">
         <div id="loading"><span class="text">Carregando...</span></div>
         <div id="fb-root"></div>
         <div id="top">
             <div class="wrapper clear">
-                <div id="search">
-                    <%= form_tag '/search', :method => 'get' do |f| %>
-                        <%= text_field_tag 'keywords', 'Busca' %><%= submit_tag '' %>
-                    <% end %>
-                    <%= link_to "Entrar", "/users/sign_in" if !user_signed_in? %>
-                    <%= link_to "Cadastrar", "/users/sign_up" if !user_signed_in? %>
-                    <%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %>
-                    <% #link_to "Sair", "/users/sign_out", :method => :delete if user_signed_in? and !current_user.tem_facebook? %>
-                    <%= link_to "Sair", "/users/sign_out", :method => :delete if user_signed_in?%>
-                    <%= link_to "Mural", "/mural" if user_signed_in? %>
-                    <%= link_to (image_tag current_user.foto.url(:small)), user_path(current_user) if user_signed_in? %>
-                    <%= link_to current_user.nome, user_path(current_user) if user_signed_in? %>
-                    <%= link_to "Convidar Amigos" , "#", :id => "botaoConvidarAmigos" if user_signed_in? %>
-                </div>
 
-                <h1><a href="/">BibliaSocial.com</a></h1>
+              <h1 id="logo"><a href="/">BibliaSocial.com</a></h1>
+              <div id="search">
+                  <%= form_tag '/search', :method => 'get' do |f| %>
+                      <%= text_field_tag 'keywords', 'Busca...' %><%= submit_tag '' %>
+                  <% end %>
+              </div>
+              <ul id="menu_superior" class="listaInline">
+                <% if !user_signed_in? %>
+                    <%= content_tag "li" , link_to("Entrar", "/users/sign_in")%>
+                    <%= content_tag "li", link_to("Cadastre-se", "/users/sign_up")%>
+                    <%# content_tag "li", link_to("Facebook", user_omniauth_authorize_path(:facebook))%>
+                    <li style="padding: 0px 9px;"> <%= render :partial => "partials/botao_facebook"%></li>
+                <% else %>
+                    <%
+                       menu = Hash.new
+                       menu['biblia'] = link_to("Bíblia", "/", {:title => 'Abra a Bíblia e comece a ler!'})
+                       menu['mural'] = link_to("Mural", "/mural", {:title => 'Veja as publicações de quem você segue!'})
+                       menu['perfil'] = link_to(image_tag(current_user.foto.url(:small)) + current_user.nome_curto, user_path(current_user), {:title => 'Visualize e edite seu Perfil'})
+                       menu['sair'] = link_to("Sair", "/users/sign_out", :method => :delete)
+                    %>
+                    <% menu.each do |index, link| %>
+                        <li class="<%=  (yield(:menu_selecionado) == index)? 'selected' : ''%>"> <%= link %></li>
+                    <% end %>
+                <% end %>
+              </ul>
             </div>
         </div>
-        <div id="messageContainer">
-            <span>
-            <%= flash[:notice] %>
-            <%= flash[:alert] %>
-            </span>
-            <a href="#">x</a>
-        </div>
+        <% flash_messages = String.new %>
+        <% flash.each do |name, msg| %>
+            <% flash_messages +=  content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+        <% end %>
+        <% if !flash_messages.empty? %>
+            <div id="messageContainer">
+                <a class="botaoFecharMedio" href="#"></a>
+                <div class="messageContainerText">
+                    <%= flash_messages.html_safe %>
+                </div>
+            </div>
+        <% end %>
         <div class="wrapper">
             <div id="window" class="clear">
                 <%= content_for?(:content) ? yield(:content) : yield %>
@@ -80,7 +76,16 @@
         </div>
         <%= yield :ready %>
         <script type="text/javascript">
-                var livros = <%= Livro.order('nome ASC').map(&:nome).to_json.html_safe %>;
+                var USUARIO_ESTA_LOGADO = <%= user_signed_in? ? 'true':'false' %>;
+                var URL_LOGIN = '<%= new_user_session_url %>';
+                var livros_capitulos = new Array();
+
+                <% livros = Livro.order('id ASC')%>
+                <% livros.each do |livro|%>
+                    livros_capitulos["<%= livro.id %>"] = {nome: "<%= livro.nome %>", permalink: "<%= livro.permalink %>", capitulos_count: <%= livro.capitulos.size %>, url: '<%= url_for("/" + livro.permalink) %>' }
+                <% end %>
+
+                var livros = <%= livros.map(&:nome).to_json.html_safe %>;
 
                 var accentMap = {
                     'á': 'a',
@@ -103,7 +108,7 @@
 
                 $("#search input[type=text]").autocomplete({
                     source: function(request, response) {
-                        var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
                         response($.grep(livros, function(value) {
                             value = value.label || value.value || value;
                             return matcher.test(value) || matcher.test(normalize(value));
@@ -115,15 +120,15 @@
 
 
         <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-24443328-1']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
+//            var _gaq = _gaq || [];
+//            _gaq.push(['_setAccount', 'UA-24443328-1']);
+//            _gaq.push(['_trackPageview']);
+//
+//            (function() {
+//                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+//                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+//                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+//            })();
         </script>
     </body>
 </html>

@@ -1,0 +1,12 @@
+<div class="widigetSidebar">
+  <h3>Top Versículos <%= link_to "+", @capitulo.nil? ? top_versiculos_path : top_versiculos_path + "/" + @capitulo.id.to_s, :title=>"Ver lista completa", :class => "tooltip mais" if @top_versiculos.any? %> <span class="info"><%= I18n.t("bibliasocial.top.versiculo") %></span></h3>
+  <% if defined?(@top_versiculos) and @top_versiculos.any?  %>
+      <ul class="listaInline topVersiculos">
+        <% @top_versiculos.each do |versiculo| %>
+            <li><%= link_to_versiculo versiculo %></li>
+        <% end %>
+      </ul>
+  <% else %>
+      <span class="textoDiscreto">Ainda não há nenhuma publicação. Seja o primeiro compartilhar!</span>
+  <% end %>
+</div>

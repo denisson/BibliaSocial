@@ -8,13 +8,35 @@ class Voto < ActiveRecord::Base
   before_destroy :decrementar_count
 
   def incrementar_count
-    votavel.increment!(:likes_count, 1) if like?
-    votavel.increment!(:dislikes_count,1) if dislike?
+    votavel.class.increment_counter(:likes_count, votavel.id)  if like?
+    votavel.class.increment_counter(:dislikes_count, votavel.id)  if dislike?
+    votavel.atualizar_saldo_votos
+
+    User.increment_counter(:likes_count, votavel.user_id)  if like?
+    User.increment_counter(:dislikes_count, votavel.user_id)  if dislike?
+    votavel.user.atualizar_reputacao
+
+    if !votavel.atividade.nil?
+      votavel.atividade.class.increment_counter(:likes_count, votavel.atividade.id)  if like?
+      votavel.atividade.class.increment_counter(:dislikes_count, votavel.atividade.id)  if dislike?
+      votavel.atividade.atualizar_saldo_votos
+    end
   end
 
   def decrementar_count
-    votavel.decrement!(:likes_count, 1) if like?
-    votavel.decrement!(:dislikes_count, 1) if dislike?
+    votavel.class.decrement_counter(:likes_count, votavel.id)  if like?
+    votavel.class.decrement_counter(:dislikes_count, votavel.id)  if dislike?
+    votavel.atualizar_saldo_votos
+
+    User.decrement_counter(:likes_count, votavel.user_id)  if like?
+    User.decrement_counter(:dislikes_count, votavel.user_id)  if dislike?
+    votavel.user.atualizar_reputacao
+
+    if !votavel.atividade.nil?
+      votavel.atividade.class.decrement_counter(:likes_count, votavel.atividade.id)  if like?
+      votavel.atividade.class.decrement_counter(:dislikes_count, votavel.atividade.id)  if dislike?
+      votavel.atividade.atualizar_saldo_votos
+    end
   end
 
   def like?

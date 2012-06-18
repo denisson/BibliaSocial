@@ -1,12 +1,17 @@
+<%= content_for :menu_selecionado, 'biblia' %>
+
 <div id="content" class="index">
-    <h2>Últimos Versículos Comentados</h2>
-    <%= render :partial => 'biblia_social/comentarios' %>
-	<%= link_to current_user.email, edit_user_path(current_user) if current_user != nil %>
-	<%= user_session %>
-	<%= user_signed_in? %>
-    <h2>Livros</h2>
-    <%= render :partial => 'partials/livros' %>
+    <h2>Últimas Publicações</h2>
+    <%# render :partial => 'biblia_social/comentarios' %>
+
+  <% @versiculos.each do |versiculo| %>
+    <%= render :partial => 'partials/versiculo', :locals => { :versiculo => versiculo, :i => 1, :mostrar_referencia => true } %>
+    <ul class="atividades">
+      <%= render :partial => "partials/atividade/lista", :locals => {:itens => versiculo.atividades.recentes.limit(1).map(&:item), :mostrar_versiculo => false}%>
+    </ul>
+
+  <% end %>
 </div>
 <div id="sidebar">
-
+  <%= render :partial => "partials/sidebar", :locals => {:widgets => ['indice_biblia', 'top_users', 'top_versiculos', 'top_publicacoes']}%>
 </div>

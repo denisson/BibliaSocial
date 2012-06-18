@@ -1,0 +1,11 @@
+﻿<% content_for :content do %>
+    <div id="content">
+        <%= yield %>
+    </div>
+    <div id="sidebar">
+      <%= render :partial => "partials/sidebar", :locals => {:widgets => ['indice_biblia']}%>
+    </div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>
+

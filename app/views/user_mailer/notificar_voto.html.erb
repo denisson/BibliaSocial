@@ -1,0 +1,12 @@
+<% content_for :notificacao do %>
+    <%= link_to content_tag("strong", @voto.user.nome), user_url(@voto.user), :style=>"text-decoration:none;color:#333333", :target=>"_blank"  %>
+    <%=@acao%>.
+<% end %>
+
+<% content_for :icone do %>
+	<%= image_tag (@voto.like? ? "like.png" : "dislike.png"), :style => "display:block;border:0"  %>
+<% end %>
+
+<% content_for :botao do %>
+    <%= link_to "Ver "+@item.class.label, polymorphic_url(@item, :only_path => false), :style => "color:#fff;text-decoration:none;padding:5px 13px;font-size:16px;display:block", :target=>"_blank" %>
+<% end %>

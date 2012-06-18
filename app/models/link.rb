@@ -34,6 +34,8 @@ class Link < ActiveRecord::Base
 			meta_info[:user] = link_hash[:user]
 			meta_info[:versiculo] = link_hash[:versiculo]
 			meta_info[:comment] = link_hash[:comment]
+      meta_info[:updated_at] = link_hash[:updated_at]
+      meta_info[:created_at] = link_hash[:created_at]
 			if meta_info[:type] == "Video"
 				return Video.new(meta_info)
 			else
@@ -91,7 +93,7 @@ class Link < ActiveRecord::Base
 	end
 	
 	def self.regex
-		/(https?:\/\/)?((([\da-z-]+)\.)+([a-z]{2,6}))(\:\d+)?(\/[\w\?=#&$!\*\"\'\(\)\,\;\:\%\+\.-]*)*/
+		/(https?:\/\/)?((([\da-z-]+)\.)+([a-z]{2,6}))(\:\d+)?(\/[\w\?=#&$!\*\"\'\(\,\;\:\%\+\.-]*)*/
 	end
 	
 	def self.nome_site(url)

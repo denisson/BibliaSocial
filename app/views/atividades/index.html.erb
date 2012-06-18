@@ -1,3 +1,11 @@
-﻿<span class="bordaSeta"></span>
+﻿<div class="topoSidebarFlutuante"><a href="javascript:restaurarSidebar();" title="Fechar" class="botaoFechar fecharSidebarFlutuante"></a></div>
+<span class="setaBalao">
+  <span class="setaTopo background"></span>
+  <span class="setaTopo borda"></span>
+</span>
+
 <%= render :partial => "partials/atividade/new", :locals=> {:agrupador_item => @versiculo, :comment => @comment} %>
 <%= render :partial => 'partials/atividades', :locals => {:url => lista_versiculo_atividades_path(@versiculo), :agrupador_itens => @versiculo, :itens => @itens, :mostrar_versiculo => false}%>
+<% if @itens.empty? %>
+   <span class="textoDiscreto nenhumaPublicacao"> Nenhuma publicação ainda. Seja o primeiro a publicar neste versículo! </span>
+<% end %>

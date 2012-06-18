@@ -1,37 +1,46 @@
 <%= title "Busca - BíbliaSocial.com" %>
+<%= content_for :menu_selecionado, 'biblia' %>
 
-<div id="content">
+<div id="content" class="busca">
     <h2 class="titulo clear">Busca</h2>
-    
-    <p>Sua busca por <b><%= params[:keywords] %></b> retornou <b><%= @versiculos.total_entries %></b> resultados</p>
 
-    <div class="c">
-        <%= will_paginate @versiculos, :next_label => 'Próximos', :previous_label => 'Anteriores', :inner_window => 2, :outer_window => 0 %>
-    </div>
+    <%= form_tag '/search', :method => 'get' do |f| %>
+      <%= submit_tag 'Buscar', {:class => 'botao neutro botao_interno_busca'} %>
+      <div class="palavra_chave_container">
+        <%= text_field_tag 'keywords', params[:keywords], {:id => '', :class => 'palavra_chave'} %>
+      </div>
+    <% end %>
+    <p class="quantidade_resultados">Sua busca retornou <%= @versiculos.total_entries %> versículos</p>
 
     <% @versiculos.each_with_index do |versiculo, i| %>
+
         <% @livro = versiculo.livro %>
         <% @capitulo = versiculo.capitulo %>
-        <%= render :partial => 'partials/versiculo', :locals => { :versiculo => versiculo, :i => i, :show_titulo => true } %>
+        <%= render :partial => 'partials/versiculo', :locals => { :versiculo => versiculo, :i => i, :mostrar_referencia => true } %>
     <% end %>
 
     <div class="c">
         <%= will_paginate @versiculos, :next_label => 'Próximos', :previous_label => 'Anteriores', :inner_window => 2, :outer_window => 0 %>
     </div>
 
-    <h2>Livros</h2>
-    <%= render :partial => 'partials/livros' %>
 </div>
 <div id="sidebar">
-    <h3 class="special">Facebook</h3>
-    <div id="sidebar_window">
-        <div class="title"><div class="text"></div><span>fechar <b>x</b></span></div>
-        <p id="buttons"></p>
-        <div id="facebook"></div>
-    </div>
-    <div id="sidebar_window2">
-        <div class="title"><div class="text"><b>Comentários:</b> Bíblia</div><span>fechar <b>x</b></span></div>
-        <div id="facebook2"><fb:comments href="<%= "http://www.bibliasocial.com" %>" num_posts="10" width="360"></fb:comments></div>
-        <div style="padding: 10px"><fb:like-box href="http://www.facebook.com/pages/B%C3%ADblia-Social/133077516773700" width="360" show_faces="true" border_color="" stream="false" header="false"></fb:like-box></div>
-    </div>
+  <div id="sidebar_opaco"></div>
+  <div id="sidebar_flutuante" class="sidebar"></div>
+  <div class="widigetSidebar">
+    <h3>Filtro <span class="info">Você pode filtrar por livros ou pelo testamento</span></h3>
+    <% if @filtro_testamentos.count > 0 %>
+        <ul class="filtrosBusca filtroTestamentos">
+          <% @filtro_testamentos.each_with_groupby_and_count do |versiculo, secao_id, count| %>
+            <li class="<%=(params[:secao_id] == secao_id.to_s)? 'selected' : ''%>"><a href="/search?keywords=<%=params[:keywords]%>&secao_id=<%=secao_id%>"><%= versiculo.sphinx_attributes['secao_nome'] %> <span><%= count %></span></a></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+    <ul class="filtrosBusca">
+      <% @filtro_livros.each_with_groupby_and_count do |versiculo, livro_id, count| %>
+          <li class="<%=(params[:livro_id] == livro_id.to_s)? 'selected' : ''%>"><a href="/search?keywords=<%=params[:keywords]%>&livro_id=<%=livro_id%>"><%= versiculo.sphinx_attributes['livro_nome'] %>  <span><%= count %></span></a></li>
+      <% end %>
+    </ul>
+  </div>
 </div>

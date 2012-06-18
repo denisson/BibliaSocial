@@ -1,5 +1,12 @@
+# encoding: utf-8
 class ItensController < ApplicationController
   respond_to :html, :js
+
+  def show
+    @item = model.find(params[:id])
+    render 'atividades/show'
+  end
+
   def destroy
 
     @item = model.find(params[:id])
@@ -17,6 +24,7 @@ class ItensController < ApplicationController
   def likes
     @item = model.find(params[:id])
     @users = @item.likes.map(&:user)
+    logger.info @item.likes
     @tituloDivisor = "Pessoas que gostaram"
     render 'users/lista', :layout => false
   end
@@ -24,7 +32,7 @@ class ItensController < ApplicationController
   def dislikes
     @item = model.find(params[:id])
     @users = @item.dislikes.map(&:user)
-    @tituloDivisor = "Pessoas que nao gostaram"
+    @tituloDivisor = "Pessoas que não gostaram"
     render 'users/lista', :layout => false
   end
 
@@ -41,6 +49,7 @@ class ItensController < ApplicationController
     @item = model.find(params[:id])
 
     @voto = @item.votos.create({:user => current_user, :pontuacao => pontuacao})
+    UserMailer.delay.notificar_voto(@voto) if @voto.errors.empty? # and @item.user_id != @voto.user_id
     @item.reload
     respond_with(@voto, :layout => false) do |format|
       format.html {render 'votos/votar', :layout => false}

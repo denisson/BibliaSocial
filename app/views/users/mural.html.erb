@@ -1,6 +1,22 @@
 ﻿<%= title "BíbliaSocial.com" %>
-
-<div id="content" class="index">
+<%= content_for :menu_selecionado, 'mural' %>
+<div id="content" class="mural">
     <%= render :partial => "partials/atividade/new", :locals=> {:agrupador_item => @user, :comment => @comment} %>
-    <%= render :partial => 'partials/atividades', :locals => {:url => "mural", :agrupador_itens => false, :itens => @itens, :mostrar_versiculo => true}%>
+    <%= render :partial => 'partials/atividades', :locals => {:itens => @itens, :mostrar_versiculo => true, :tamanho_foto => :thumb}%>
+    <% if @itens.empty? %>
+       <span class="textoDiscreto nenhumaPublicacao">
+         <b>Este é o seu mural!</b>
+         <br/>
+         Aqui serão mostradas as suas publicações e as de quem você segue.
+         <br/>
+         <% if current_user.segue_alguem? %>
+            Que tal seguir mais pessoas? <%=  link_to "Veja os usuários mais ativos.", top_users_path%>
+         <% else %>
+            Começe a seguir <%=  link_to "algumas pessoas", top_users_path%> para ver o que elas estão publicando!
+         <% end %>
+       </span>
+    <% end %>
+</div>
+<div id="sidebar"  class="mural">
+  <%= render :partial => "partials/sidebar", :locals => {:widgets => ['notificacoes_iniciais', 'convidar_amigos', 'indice_biblia']}%>
 </div>

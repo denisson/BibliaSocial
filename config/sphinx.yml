@@ -3,3 +3,14 @@ development:
   searchd_binary_name: searchd.exe
   indexer_binary_name: indexer.exe
   sort_mode: SPH_SORT_RELEVANCE
+  max_matches: 30000
+  indexed_models:
+    - Versiculo
+production:
+  bin_path: /usr/local/bin
+  searchd_binary_name: searchd
+  indexer_binary_name: indexer
+  sort_mode: SPH_SORT_RELEVANCE
+  max_matches: 30000
+  indexed_models:
+    - Versiculo

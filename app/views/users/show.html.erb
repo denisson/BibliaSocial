@@ -1,1 +1,4 @@
 ﻿<%= render :partial => 'partials/atividades', :locals => {:url => user_path(@user) , :agrupador_itens => @user , :itens => @itens, :mostrar_versiculo => true}%>
+<% if @itens.empty? %>
+   <span class="textoDiscreto nenhumaPublicacao"> Ainda não fiz nenhuma publicação! </span>
+<% end %>

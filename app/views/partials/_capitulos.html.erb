@@ -1,5 +1,0 @@
-<div id="capitulos">
-    <% 1.upto(@livro.capitulos_count) do |i| %>
-        <%= params[:capitulo].to_i == i ? content_tag(:span, i) : link_to(i, "/#{@livro.permalink}/#{i}") %>
-    <% end %>
-</div>

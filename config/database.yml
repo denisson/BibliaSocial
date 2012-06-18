@@ -9,7 +9,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: bibliasocial_development
+  database: bibliasocial2_development
   pool: 5
   username: root
   password:
@@ -22,7 +22,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: bibliasocial_test
+  database: bibliasocial2_test
   pool: 5
   username: root
   password:
@@ -32,9 +32,9 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: bibliasocial_production
+  database: bibliasocial2_production
   pool: 5
   username: root
-  password: 3cl1ps31
+  password:
   host: localhost
 

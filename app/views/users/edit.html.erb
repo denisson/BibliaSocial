@@ -1,13 +1,14 @@
 <h5 class="tituloDivisor">Editando Perfil</h5>
 
-<%= form_for @user, :html => { :multipart => true } do |f| %>
-  <div>
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
+<%= form_for @user_edit, :html => { :multipart => true } do |f| %>
+  <%= bibliasocial_error_messages(@user_edit) %>
+  <div class="inputText">
+    <%= f.label :nome %>
+    <%= f.text_field :nome, {:style => 'width: 98%;'} %>
   </div>
   
-  <div>
-    <%= f.label :foto, "Foto do Perfil" %><br />
+  <div class="inputText">
+    <%= f.label :foto, "Foto do Perfil" %>
     <%= f.file_field :foto %>
   </div>
 

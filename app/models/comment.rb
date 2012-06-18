@@ -38,7 +38,7 @@ class Comment < ActiveRecord::Base
 
   def criar_atividade
     if self.item == nil
-      Atividade.create({:user => self.user, :item => self, :versiculo => self.versiculo})
+      Atividade.create({:user => self.user, :item => self, :versiculo => self.versiculo, :created_at => self.created_at, :updated_at => self.updated_at})
     end
   end
   
@@ -59,13 +59,15 @@ class Comment < ActiveRecord::Base
       referencia.user = self.user
       referencia.versiculo = self.versiculo
       referencia.comment = self
+      referencia.created_at = self.created_at
+      referencia.updated_at =  self.updated_at
       referencia.save
     end
   end
   
   def criar_links(links)
     links.each do |link|
-      Link.criar({:user => self.user, :versiculo => self.versiculo, :url => link, :comment => self})
+      Link.criar({:user => self.user, :versiculo => self.versiculo, :url => link, :comment => self, :created_at => self.created_at, :updated_at => self.updated_at})
     end
   end
 
@@ -75,5 +77,9 @@ class Comment < ActiveRecord::Base
   
   def descricao_atividade_conectivo
   	""
+  end
+
+  def self.label
+    "Comentário"
   end
 end

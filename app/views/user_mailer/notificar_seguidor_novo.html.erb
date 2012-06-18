@@ -1,0 +1,43 @@
+<% content_for :notificacao do %>
+    <%= link_to content_tag("strong", @seguidor.nome), user_url(@seguidor), :style=>"text-decoration:none;color:#333333", :target=>"_blank"  %>
+    agora está seguindo você.
+<% end %>
+
+<% content_for :botao do %>
+    <a href="<%=user_url(@seguidor)%>" style="color:#fff;text-decoration:none;padding:5px 13px;font-size:16px;display:block" target="_blank">
+      Ver o perfil de <%=@seguidor.nome%>
+    </a>
+<% end %>
+
+<td valign="top" width="70%">
+  <table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top" style="padding:15px 10px 15px 15px">
+        <%= link_to (image_tag @seguidor.foto.url(:thumb)), user_url(@seguidor), :style => "text-decoration:none", :target=>"_blank"  %>
+      </td>
+      <td valign="top" style="padding:15px 15px 15px 0">
+        <div style="line-height:15px">
+          <%= link_to content_tag("strong", @seguidor.nome), user_url(@seguidor), :style=>"font-size:15px;font-weight:bold;color:#333;text-decoration:none", :target=>"_blank"  %>
+        </div>
+      </td>
+    </tr>
+  </table>
+</td>
+<td valign="top" width="30%">
+  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+      <td valign="top" style="padding:15px 15px 15px 15px;font-size:13px" nowrap>
+        <a href="<%=seguidores_user_url(@seguidor)%>" style="color:#5a7b93;text-decoration:none" target="_blank">
+          <span style="font-size:15px;font-weight:bold;color:#333;text-decoration:none"><%= @seguidor.followers.size %></span><br>
+          <%= @seguidor.followers.size == 1 ? "Seguidor" : "Seguidores" %>
+        </a>
+      </td>
+      <td valign="top" style="padding:15px 0 15px 15px;font-size:13px" nowrap>
+        <a href="<%=seguindo_user_url(@seguidor)%>" style="color:#5a7b93;text-decoration:none" target="_blank">
+          <span style="font-size:15px;font-weight:bold;color:#333;text-decoration:none"><%= @seguidor.all_following.size %></span><br>
+          Seguindo
+        </a>
+      </td>
+    </tr>
+  </table>
+</td>

@@ -1,3 +1,3 @@
 <% itens.each do |item| %>
-	<%= render :partial => "partials/atividade/show", :locals => {:item => item, :mostrar_versiculo => mostrar_versiculo, :classe_atividade => true}%>
+	<%= render :partial => "partials/atividade/show", :locals => {:item => item, :mostrar_versiculo => mostrar_versiculo, :classe_atividade => true, :tamanho_foto => defined?(tamanho_foto) ? tamanho_foto : :small}%>
 <% end %>

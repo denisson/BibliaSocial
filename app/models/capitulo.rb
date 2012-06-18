@@ -12,12 +12,25 @@ class Capitulo < ActiveRecord::Base
   validates :livro, :presence => true
   
   def anterior
-    anterior = livro.capitulos.where(['numero < ?', self.numero]).order('numero DESC').first
-    @anterior ||= anterior || (livro.anterior ? livro.anterior.capitulos.order('numero DESC').first : nil)
+    if self.numero == 1
+      anterior = livro.capitulos.where(['numero < ?', self.numero]).order('numero DESC').first
+      @anterior ||= anterior || (livro.anterior ? livro.anterior.capitulos.order('numero DESC').first : nil)
+    else
+      anterior = self.clone
+      anterior.numero -= 1
+      return anterior
+    end
+
   end
   
   def proximo
-    proximo = livro.capitulos.where(['numero > ?', self.numero]).order('numero ASC').first
-    @proximo ||= proximo || (livro.proximo ? livro.proximo.capitulos.order('numero ASC').first : nil)
+    if self.numero == self.livro.capitulos_count
+      proximo = livro.capitulos.where(['numero > ?', self.numero]).order('numero ASC').first
+      @proximo ||= proximo || (livro.proximo ? livro.proximo.capitulos.order('numero ASC').first : nil)
+    else
+      anterior = self.clone
+      anterior.numero += 1
+      return anterior
+    end
   end
 end

@@ -1,24 +1,6 @@
 (function($) {
-    $.ajaxSetup({
-        // cache: true,
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('Accept', 'text/javascript' )
-        }
-    });
-    
-    var active = null;
-    
-    $.fn.ajaxLinks = function() {
-        return $(this).unbind('click').click(function(e) {
-            if (e.which == 1) {
-                $('#loading').show();
-                $.getScript($(this).attr("href"));
-                return false;
-            }
-            return true
-        });
-    };
-    
+
+
     $.fn.defaultValue = function() {
         $(this).addClass('description').each(function() {
             var defaultValue = $(this).attr('value');
@@ -35,62 +17,94 @@
             });
         });
     };
-            
-    $.fn.showSidebar = function() {
-        $('#sidebar_window').css('top', $(this).offset().top - 65).css('border-width', '1px 1px 1px 0').animate({width: 380}, 250).find('.text').html("<b>Comentários:</b> " + $(this).data('nome'));
-        $('#facebook').html('<fb:comments href="' + $(this).data('url') + '" num_posts="10" width="360"></fb:comments>');
-        if ($(this)[0].tagName == 'P') {
-            var text = $(this).find('.text').text();
-            if (text.length > 120) text = text.substring(0, 117) + '...';
-            $('#buttons').html('<iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url=' + $(this).data('url') + '&text=' + text + '" style="width:100px; height:20px;"></iframe> <fb:like href="' + $(this).data('url') + '" send="false" width="100" height="20" show_faces="false" layout="button_count" font="arial" style="vertical-align: top"></fb:like>');
-            FB.XFBML.parse(document.getElementById('buttons'));
-        } else {
-            $('#buttons').html('');
-        }
-        FB.XFBML.parse(document.getElementById('facebook'));
-    };
-    
-    $.hideSidebar = function(callback) {
-        var sidebar = $('#sidebar_window, #sidebar_window2');
-        if (!sidebar.is(':animated')) {
-            sidebar.animate({width: 0}, 250, function() { 
-                $(sidebar).css('border-width', '0');
-                if (callback) callback();
-            });
-        }
-        active = null;
-    };
-    
-    $.fn.processReady = function() {
-        $(this).find("a.ajax, .ajax a").ajaxLinks();
-        
-        $(this).find('.versiculo, .titulo').click(function() {
-            var versiculo = this;
-            if (active == null || active != this) {
-                $.hideSidebar(function() {
-                    $(versiculo).showSidebar();
-                    active = versiculo;
-                });
+
+    $.fn.indiceBiblia = function(livro_selecionado_id, num_capitulo_selecionado, options){
+        var defaults = {flutuante:false, ativador:null}
+        options = $.extend({}, defaults, options);
+        var escolhaLivroCapitulo =  null;
+        var escolhaLivro =  null;
+        var escolhaVersiculo =  null;
+        var elementoLivroSelecionado = null;
+        var numero_capitulo_selecionado = num_capitulo_selecionado;
+
+        $(this).html("");
+        escolhaLivroCapitulo =  $(this).addClass("escolhaLivroCapitulo");
+
+        var titulos = $('<div>').append($('<h4 class="tituloEscolha livroEscolha">Livro</h4>')).append($('<h4 class="tituloEscolha capituloEscolha">Capítulo</h4>'));
+        titulos.appendTo(escolhaLivroCapitulo);
+        escolhaLivro = $('<ul class="escolhaLivro scroll"></ul>').appendTo(escolhaLivroCapitulo);
+        escolhaVersiculo = $('<ul class="escolhaVersiculo scroll"></ul>').appendTo(escolhaLivroCapitulo);
+        for (livro_id in livros_capitulos){
+            livro = livros_capitulos[livro_id];
+            if (livro != undefined){
+                li = $('<li><a href="'+livro.url+'" data-livro-id="'+livro_id+'"> '+livro.nome+' </a></li>');
+                escolhaLivro.append(li);
+                if (livro_id == livro_selecionado_id){
+                    elementoLivroSelecionado = li;
+                }
             }
+        }
+
+
+        escolhaLivro.find('a').click(function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            var livro_id = $(this).attr("data-livro-id");
+            escolhaLivro.find('li').removeClass("selected");
+            $(this).parent("li").addClass("selected");
+            var livro = livros_capitulos[livro_id];
+            escolhaVersiculo.html("");
+            for (var i=1; i <= livro.capitulos_count; i++){
+                var class_selected = (numero_capitulo_selecionado == i )? 'selected':'';
+                var li_link = $('<li class="'+class_selected+'"> <a href="/'+livro.permalink+'/'+i+'" class="">'+i+'</a></li>');
+                li_link.find('a').click(function(){
+                    escolhaVersiculo.find("li").removeClass("selected");
+                    $(this).parent('li').addClass("selected");
+                });
+
+                escolhaVersiculo.append(li_link);
+            }
+            escolhaVersiculo.hide().fadeIn();
+            numero_capitulo_selecionado = 0;
+
         });
-          
-        /*$(this).find('.comment_count').each(function() {
-            var count = this;
-            var url = $(this).parents('.versiculo, .titulo').data('url').replace(/www\./, '');
-            $.getJSON('http://graph.facebook.com/?ids=' + url + '&callback=?', function(json) {
-                var comments = json[url]["comments"];
-                $(count).text(comments ? comments : 0);
+//        $(".escolhaVersiculo a").livequery(function(){
+//            $(this).live("click", function(event){
+//                $(this).parent('li').addClass("selected");
+//            });
+//        });
+
+        if (options.flutuante && options.ativador != null){
+            options.ativador.click(function(event){
+                event.preventDefault();
+                event.stopPropagation();
+                escolhaLivroCapitulo.toggle();
+                escolhaLivro.scrollTo(elementoLivroSelecionado,{over: -1});
+                elementoLivroSelecionado.find("a").click();
             });
+            $('html').click(function() {
+                if (escolhaLivroCapitulo.is(":visible")) {
+                    escolhaLivroCapitulo.hide();
+                }
+            });
+        }
+        escolhaLivroCapitulo.click(function() {
+            event.stopPropagation();
         });
-		*/
-        
-        return $(this);
-    };
+
+        if(!options.flutuante){
+            escolhaLivro.scrollTo(elementoLivroSelecionado,{over: -1});
+            elementoLivroSelecionado.find("a").click();
+        }
+    }
 
 
     $(document).ready(function() {
 
         //$('.reticencias').reticence({reduceMode: "char"});
+        $('.reticencias').livequery(function(){
+                    $(this).reticencias();
+        });
 
         //$('html').processReady();
         
@@ -113,25 +127,43 @@
 
 
 
-        $('.atividadesFiltros  a[title], a.countLikeItem').livequery(function(){
+        $('.atividadesFiltros  a[title], a.countLikeItem, .tooltip[title]').livequery(function(){
             $(this).tipsy({fade: false, gravity: 'n', opacity:1});
         });
-        $('.botoesItens a[title]').livequery(function(){
+        $('.botoesItens a[title], a.fecharSidebarFlutuante').livequery(function(){
             $(this).tipsy({fade: false, gravity: 's', opacity:1});
         });
         $('a.countLikeItem').livequery(function(){
             $(this).colorbox({opacity:0, initialWidth:360, initialHeight:100, fixed:true, close:'Fechar', maxHeight:'70%', scrolling:false});
         });
 
-        $('ul.botoesItens a').live('click', function(event){
+        $('a.linkVersiculo').live('click', function(event){
+            var versiculo_id = $(this).attr('data-versiculo-id');
+            var elemento_versiculo = $("#"+versiculo_id)
+            if (elemento_versiculo.size() > 0){
+                event.preventDefault();
+                $.scrollTo(elemento_versiculo, {duration:250, over: -1,onAfter:function(){
+                    elemento_versiculo.effect("highlight", {}, 2000);
+                }});
+            }
+        });
+
+
+        $('ul.botoesItens li a').live('click', function(event){
             event.preventDefault();
             $('.stringItemContainer').show();
+            $('ul.botoesItens li').removeClass("selected");
+            $(this).parent('li').addClass("selected");
+            $('#stringItem').attr('placeholder', $(this).attr('data-placeholder'));
+            $('#stringItem').attr('value', '');
+            $('#stringItem').focus();
+            $('#itemType').attr('value', $(this).attr('data-item-type'));
+        });
+        $('.fecharStringItem').live('click', function(event){
+            event.preventDefault();
+            $('.stringItemContainer').hide();
             $('ul.botoesItens a').removeClass("selected");
-            $(this).addClass("selected");
-            $('#stringItem').attr('placeholder', $(this).attr('data-placeholder'))
-            $('#stringItem').attr('value', '')
-            $('#stringItem').focus()
-            $('#itemType').attr('value', $(this).attr('data-item-type'))
+            $('#stringItem').attr('value', '');
         });
         $('.atividadesForm textarea').livequery(function(){
             $(this).autosize();
@@ -158,6 +190,40 @@
             $('#messageContainer').hide();
         });
 
+		if($('body').hasClass("fullscreen")){		
+			$('#botaoFullscreen').attr('title', 'Sair do modo Tela Cheia');
+		}
+
+        $('#botaoFullscreen').click(function(event){
+            event.preventDefault();
+            $('body').toggleClass("fullscreen");
+			if($('body').hasClass("fullscreen")){
+				$.cookie('fullscreen', true , {path: '/'});
+				$(this).attr('title', 'Sair do modo Tela Cheia');
+				restaurarSidebar();
+			}else{
+				$.cookie('fullscreen', false, {path: '/'});
+				$(this).attr('title', 'Tela Cheia');
+			}
+        });
+		
+        $('#aumentarTamanhoFonte').click(function(event){
+            event.preventDefault();
+			$('#content article').css('fontSize', parseInt($('#content article').css('fontSize').replace('px', '')) + 2)
+        });
+		
+		$('#diminuirTamanhoFonte').click(function(event){
+            event.preventDefault();
+			$('#content article').css('fontSize', parseInt($('#content article').css('fontSize').replace('px', '')) - 2)
+        });
+
+        $('a.precisaDeLogin').live("ajax:before", function(evt, xhr, settings){
+            if (!USUARIO_ESTA_LOGADO){
+                window.location = URL_LOGIN;
+                return false;
+            }
+        })
+
         $('ul.atividadesFiltros li a')
             /*
             .live("ajax:before", function(evt, xhr, settings){
@@ -174,50 +240,29 @@
                 $('ul.atividadesFiltros li').removeClass("selected");
                 $(this).parent().addClass("selected");
                 //todo:refatorar
-                $('.atividades li').hide().removeClass("first");
-                $('.atividades li.'+ $(this).attr("data-filtro")).show().first().addClass("first");
-                $('.atividades li.'+ $(this).attr("data-filtro")).show().first().addClass("first");
+                $('.atividades.filtravel li').hide().removeClass("first");
+                $('.atividades.filtravel li.'+ $(this).attr("data-filtro")).show().first().addClass("first");
+                $('.atividades.filtravel li.'+ $(this).attr("data-filtro")).show().first().addClass("first");
             });
-
-//          $('a[data-remote]').bind("ajax:error", function(evt, xhr, status, error){
-//              var errors, errorText;
-//
-//              try {
-//                // Populate errorText with the comment errors
-//                errors = $.parseJSON(xhr.responseText);
-//              } catch(err) {
-//                // If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
-//                errors = {message: "Please reload the page and try again"};
-//              }
-//
-//              // Build an unordered list from the list of errors
-//              errorText = "There were errors with the submission: \n<ul>";
-//
-//              for ( error in errors ) {
-//                errorText += "<li>" + error + ': ' + errors[error] + "</li> ";
-//              }
-//
-//              errorText += "</ul>";
-//
-//              // Insert error list into form
-//              $('#messageContainer').html(errorText);
-//        });
 
         $('p.versiculo a[data-remote]')
             .live("click", function(){
-                $('.versiculo').removeClass("selected");
-
+                var versiculo = $(this).parents('.versiculo');
+                hideSidebarFlutuante();
+                versiculo.addClass("selected");
+				if($('body').hasClass('fullscreen')){
+					$('#botaoFullscreen').click();
+				}
             })
             .live("ajax:before", function(evt, xhr, settings){
                 $(this).parents('.versiculo').addClass("loading");
             })
             .live('ajax:complete', function(evt, xhr, status){
                 var versiculo = $(this).parents('.versiculo');
-                versiculo.addClass("selected");
-                $('#sidebar').html(xhr.responseText);
-                $('#sidebar').css('top',versiculo.offset().top - 115) ;
+                $('#sidebar_flutuante').html(xhr.responseText);
+                $('#sidebar_flutuante').css('top',versiculo.offset().top - 60) ;
                 versiculo.removeClass("loading");
-                $('#sidebar').show();
+                showSidebarFlutuante();
             });
         $('a.botaoExcluirItem')
             .live("ajax:before", function(evt, xhr, settings){
@@ -227,8 +272,10 @@
                 var item = $(this).parents("li");
                 item.effect("slide", { direction: "up", mode:"hide" }, 300, function(){$(this).remove()});
                 var id_item = item.attr('id');
-                $('.atividades li[data-item-dependencia='+ id_item +']').remove();
-                $('.atividades li').not(':hidden').not(item).first().addClass("first");
+                $('.atividades.filtravel li[data-item-dependencia='+ id_item +']').remove();
+                var itens_restantes = $('.atividades.filtravel li').not(':hidden').not(item);
+                itens_restantes.first().addClass("first");
+                if (itens_restantes.size() == 0) $('.nenhumaPublicacao').show();
             })
             .live("ajax:error", function(evt, xhr, status, error){
                 $(this).parents('li').removeClass("apagado");
@@ -278,6 +325,22 @@
 })(jQuery);
 
 function showMessage(message){
-    $('#messageContainer span').html(message);
-    $('#messageContainer').show();
+//    $('#messageContainer span').html(message);
+//    $('#messageContainer').show();
+    window.alert(message);
+}
+
+function showSidebarFlutuante(){
+    $('#sidebar_flutuante').show();
+    $('#sidebar_opaco').show().css('height', $('#window').height() + 1);
+}
+
+function hideSidebarFlutuante(){
+    $('#sidebar_flutuante').hide();
+    $('p.versiculo.selected').removeClass("selected");
+}
+
+function restaurarSidebar(){
+    hideSidebarFlutuante();
+    $('#sidebar_opaco').hide();
 }

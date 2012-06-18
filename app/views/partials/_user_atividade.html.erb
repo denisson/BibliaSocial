@@ -3,6 +3,6 @@
     <%= item.descricao_atividade %>
     <% if mostrar_versiculo and item.versiculo != nil %>
         <%= item.descricao_atividade_conectivo%>
-        <%= link_to item.versiculo.ref, item.versiculo.url %>
+        <%= link_to_versiculo item.versiculo %>
     <% end %>
 </div>

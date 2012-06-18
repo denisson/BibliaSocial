@@ -10,7 +10,7 @@ class Versiculo < ActiveRecord::Base
   has_many :citacoes, :foreign_key => "versiculo_citado_id"
   has_many :links
   has_many :videos
-  has_many :atividades
+  has_many :atividades, :order => "created_at DESC"
   
   validates :numero, :presence => true, :numericality => true
   validates :texto, :presence => true
@@ -19,12 +19,16 @@ class Versiculo < ActiveRecord::Base
   validates :livro, :presence => true
   validates :capitulo, :presence => true
   
-  scope :default_includes, includes(:capitulo, :livro)
+  scope :default_includes, joins(:capitulo, :livro)
   scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo)}
+  scope :top, where("atividades_count > 0").order("atividades_count DESC")
 	
   define_index do
     # fields
     indexes texto
+    has livro_id, secao_id
+    has livro.nome, :as => :livro_nome
+    has secao.nome, :as => :secao_nome
   end
   
   def self.buscar(keywords)

@@ -1,46 +1,47 @@
 	<ul class="atividadesFiltros">
 		<li class="filtro Atividade selected">
-			<a href="<%= url%>" title="Tudo" data-filtro="Atividade">
+			<a href="#" title="Tudo" data-filtro="Atividade" class="botaoAtividade">
 				<i></i>
-				<span id="atividadeContador"><%= agrupador_itens.atividades.size.quantos if agrupador_itens%></span>
+				<span id="atividadeContador"><%= agrupador_itens.atividades.count.quantos if defined?(agrupador_itens)%></span>
 			</a>
 		</li>
 		<li class="filtro Comment">
-			<a href="<%= url + "?filtro=Comment"%>" title="Somente Comentários"  data-filtro="Comment">
+			<a href="<%= "?filtro=Comment"%>" title="Somente Comentários"  data-filtro="Comment"  class="botaoComment">
 				<i></i>
-				<span id="commentContador"><%= agrupador_itens.comments.size.quantos  if agrupador_itens%></span>
+				<span id="commentContador"><%= agrupador_itens.comments.size.quantos  if defined?(agrupador_itens)%></span>
 			</a>
 		</li>
 		<li class="filtro Video">
-			<a href="<%= url + "?filtro=Video"%>" title="Somente Vídeos"  data-filtro="Video">
+			<a href="<%= "?filtro=Video"%>" title="Somente Vídeos"  data-filtro="Video" class="botaoVideo">
 				<i></i>
-				<span id="videoContador"><%= agrupador_itens.videos.size.quantos  if agrupador_itens%></span>
+				<span id="videoContador"><%= agrupador_itens.videos.size.quantos  if defined?(agrupador_itens)%></span>
 			</a>
 		</li>
 		<li class="filtro Link">
-			<a href="<%= url + "?filtro=Link"%>" title="Somente Links"  data-filtro="Link">
+			<a href="<%= "?filtro=Link"%>" title="Somente Links"  data-filtro="Link" class="botaoLink">
 				<i></i>
-				<span id="linkContador"><%= agrupador_itens.links.size.quantos  if agrupador_itens%></span>
+				<span id="linkContador"><%= agrupador_itens.links.size.quantos  if defined?(agrupador_itens)%></span>
 			</a>
 		</li>
 		<li class="filtro Referencia">
-			<a href="<%= url + "?filtro=Referencia"%>" title="Somente Referências"  data-filtro="Referencia">
+			<a href="<%= "?filtro=Referencia"%>" title="Somente Referências"  data-filtro="Referencia" class="botaoReferencia">
 				<i></i>
-				<span id="referenciaContador"><%= agrupador_itens.referencias.size.quantos if agrupador_itens%></span>
+				<span id="referenciaContador"><%= agrupador_itens.referencias.size.quantos if defined?(agrupador_itens)%></span>
 			</a>
 		</li>
-		<% if agrupador_itens and agrupador_itens.class.method_defined?(:citacoes) %>
+		<% if defined?(agrupador_itens) and agrupador_itens.class.method_defined?(:citacoes) %>
 		<li class="filtro Citacao">
-			<a href="<%= url + "?filtro=Citacao"%>" title="Somente Citações"  data-filtro="Citacao">
+			<a href="<%= "?filtro=Citacao"%>" title="Somente Citações"  data-filtro="Citacao" class="botaoCitacao">
 				<i></i>
-				<span id="citacaoContador"><%= agrupador_itens.citacoes.size.quantos  if agrupador_itens %></span>
+				<span id="citacaoContador"><%= agrupador_itens.citacoes.size.quantos  if defined?(agrupador_itens) %></span>
 			</a>
 		</li>
 		<% end %>
 	</ul>
+
 	<div class="cuboLeft"></div>
 	<div class="cuboRight"></div>
 
-<ul class="atividades">
-    <%= render :partial => "partials/atividade/lista", :locals => {:itens => itens, :mostrar_versiculo => mostrar_versiculo}%>
+<ul class="atividades filtravel">
+    <%= render :partial => "partials/atividade/lista", :locals => {:itens => itens, :mostrar_versiculo => mostrar_versiculo, :tamanho_foto => defined?(tamanho_foto) ? tamanho_foto : :small}%>
 </ul>

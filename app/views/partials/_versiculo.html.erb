@@ -1,8 +1,10 @@
- <p id="<%=versiculo.id%>" class="versiculo clear<%= ' odd' if i % 2 == 1 %>" data-nome="<%= "#{versiculo.livro.nome} #{versiculo.capitulo.numero}:#{versiculo.numero}" %>" data-url="<%= "http://www.bibliasocial.com/#{versiculo.livro.permalink}/#{versiculo.capitulo.numero}/#{versiculo.numero}" %>">
-    <%= link_to(versiculo.numero, "/#{versiculo.livro.permalink}/#{versiculo.capitulo.numero}/#{versiculo.numero}") unless defined?(show_titulo) %> 
-    <span class="text"><%= '"' if defined?(show_aspas) %><%= highlight(versiculo.texto) %><%= '"' if defined?(show_aspas) %></span>
-    <a href="<%= versiculo_atividades_path(versiculo)%>" class="comment_count" data-remote=true>
+ <p id="<%=versiculo.id%>" class="versiculo clear<%= ' odd' if i % 2 == 1 %>">
+    <%= link_to versiculo.numero, versiculo.url, :class=>'numero' if defined?(mostrar_num_versiculo) and mostrar_num_versiculo %>
+    <a href="<%= versiculo_atividades_path(versiculo)%>" title="Ver publicações sobre este versículo" class="comment_count botaoComment <%=versiculo.atividades.size > 0 ? 'destaque' : ''%>" data-remote=true>
         <i></i>
         <span><%= versiculo.atividades.size%></span>
     </a>
+    
+	<span class="text"><%= '"' if defined?(show_aspas) %><%= highlight(versiculo.texto) %><%= '"' if defined?(show_aspas) %></span>
+    <%= link_to "#{versiculo.livro.nome} #{versiculo.capitulo.numero}:#{versiculo.numero}", "/#{versiculo.livro.permalink}/#{versiculo.capitulo.numero}/#{versiculo.numero}", {:class=> "referencia"} if defined?(mostrar_referencia) and mostrar_referencia %>
 </p>

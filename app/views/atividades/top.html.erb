@@ -1,0 +1,14 @@
+﻿<div id="content">
+  <h5 class="tituloDivisor">Top Publicações <span class="info"><%= I18n.t("bibliasocial.top.publicacoes") %></span></h5>
+
+  <ul class="atividades">
+    <%= render :partial => "partials/atividade/lista", :locals => {:itens => @atividades.map(&:item), :mostrar_versiculo => true}%>
+  </ul>
+  <div class="c">
+      <%= will_paginate @atividades, :next_label => 'Próximos', :previous_label => 'Anteriores', :inner_window => 2, :outer_window => 0 %>
+  </div>
+</div>
+<div id="sidebar">
+  <%= render :partial => "partials/sidebar", :locals => {:widgets => ['indice_biblia']}%>
+</div>
+
