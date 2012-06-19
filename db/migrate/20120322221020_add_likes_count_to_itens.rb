@@ -51,19 +51,19 @@ class AddLikesCountToItens < ActiveRecord::Migration
 
   def self.down
     remove_column :comments, :likes_count
-    remove_column :comments, :dislikes_count
-    remove_column :comments, :saldo_votos
+ 	remove_column :comments, :dislikes_count
+	remove_column :comments, :saldo_votos
     remove_column :links, :likes_count
-    remove_column :links, :dislikes_count
-    remove_column :links, :saldo_votos
+ 	remove_column :links, :dislikes_count
+	remove_column :links, :saldo_votos
     remove_column :videos, :likes_count
-    remove_column :videos, :dislikes_count
-    remove_column :videos, :saldo_votos
+ 	remove_column :videos, :dislikes_count
+	remove_column :videos, :saldo_votos
     remove_column :referencias, :likes_count
-    remove_column :referencias, :dislikes_count
-    remove_column :referencias, :saldo_votos
+ 	remove_column :referencias, :dislikes_count
+	remove_column :referencias, :saldo_votos
     remove_column :atividades, :likes_count
-    remove_column :atividades, :dislikes_count
-    remove_column :atividades, :saldo_votos
+ 	remove_column :atividades, :dislikes_count
+	remove_column :atividades, :saldo_votos
   end
 end
