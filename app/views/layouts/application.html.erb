@@ -13,15 +13,24 @@
         <meta property="og:description" content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>"/> 
 		<%= csrf_meta_tag %>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.1/build/cssreset/cssreset-min.css">-->
         <%= stylesheet_link_tag 'jquery_ui', 'application', 'tipsy', 'colorbox/colorbox' %>
         <% if ENV['RAILS_ENV'] == 'production' %>
             <%= javascript_include_tag 'all' %>
         <% else %>
             <%= javascript_include_tag 'jquery', 'rails', 'jquery_ui', 'jquery.tipsy', 'jquery.autosize-min', 'secret', 'jquery-ui.custom.min', 'jquery.reticencias', 'jquery.livequery', 'jquery.colorbox', 'jquery.scrollTo', 'jquery.cookie' %>
         <% end %>
-        <script type="text/javascript">//FB = null</script>
+        <script type="text/javascript">FB = null</script>
         <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+        <script type="text/javascript">
+          if (FB){
+              FB.init({
+                  appId  : '<%= Bibliasocial::Application.config.facebook_app_id %>',
+                  status : true, // check login status
+                  cookie : true, // enable cookies to allow the server to access the session
+                  xfbml  : true  // parse XFBML
+              });
+          }
+        </script>
         <%= javascript_include_tag 'fb-auto-login' if !user_signed_in? %>
     </head>
     <body class="<%= cookies['fullscreen'] == 'true' ? 'fullscreen' : ''%>">

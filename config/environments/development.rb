@@ -32,5 +32,8 @@ Bibliasocial::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+  #facebook app_id
+  config.facebook_app_id = 187353061340087
 end
 

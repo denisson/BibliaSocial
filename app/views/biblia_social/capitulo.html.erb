@@ -1,22 +1,19 @@
 <%= title "#{@livro.nome} #{@capitulo.numero} - BíbliaSocial.com" %>
 <%= content_for :menu_selecionado, 'biblia' %>
 
-<% if @versiculo != nil %>
-    <%= description @versiculo.texto %>
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-//          $("#<%= @versiculo.id%> .comment_count").focus().click();
-      })
-
-    </script>
-<% end %>
 <script type="text/javascript">
     $(document).ready(function(){
         $('#indiceBibliaFlutuante').indiceBiblia(<%= @livro.id %>, <%= @capitulo.numero %>, {flutuante:true, ativador:$('#livroCapituloAtual')});
         $('#sidebar_opaco').css('height', $('#window').height());
+        <% if @versiculo != nil %>
+          <%= description @versiculo.texto %>
+          var elemento_versiculo = $("#<%= @versiculo.id%> .comment_count");
+          elemento_versiculo.click();
+          $.scrollTo(elemento_versiculo, {duration:250, over: -5});
+        <% end %>
     });
 </script>
+
 <style type="text/css">
   /* -----------------------------
     --- Full Screen

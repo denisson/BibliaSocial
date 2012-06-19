@@ -1,5 +1,5 @@
 ﻿class BibliaSocialController < ApplicationController
-  caches_page :livro, :capitulo, :versiculo
+  #caches_page :livro, :capitulo, :versiculo
     
   #before_filter :find_biblia
   

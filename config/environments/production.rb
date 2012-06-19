@@ -1,6 +1,18 @@
 Bibliasocial::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => 'bibliasocial.com' }
+  config.action_mailer.asset_host = "http://bibliasocial.com"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => 'localhost',
+    :domain => 'www.victorcisneiros.com',
+    :port => 25,
+    :authentication => :plain,
+    :enable_starttls_auto => false
+  }
+
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -46,4 +58,7 @@ Bibliasocial::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  #facebook app_id
+  config.facebook_app_id = 200389373346541
 end

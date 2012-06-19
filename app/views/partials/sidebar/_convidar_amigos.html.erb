@@ -2,18 +2,12 @@
     <script>
         $(document).ready(function() {
             $("#botaoConvidarAmigos").click(function(event){
-                if (!FB._initialized){
-                    FB.init({
-                        appId  : '187353061340087',
-                        channelUrl : '//localhost:3000/channel.html', // Channel File
-                        status : true, // check login status
-                        cookie : true, // enable cookies to allow the server to access the session
-                        xfbml  : true  // parse XFBML
-                    });
-                }
-
                 event.preventDefault();
-                FB.ui({ method: 'apprequests', message: 'Escolha quais amigos deseja convidar para participar da BíbliaSocial.'});
+                if (FB){
+                    FB.ui({ method: 'apprequests', message: 'Escolha quais amigos deseja convidar para participar da BíbliaSocial.'});
+                }else{
+                    window.alert("Não foi possível estabelecer uma conexão com http://facebook.com");
+                }
             });
         });
     </script>
