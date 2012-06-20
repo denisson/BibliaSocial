@@ -6,8 +6,8 @@ Bibliasocial::Application.configure do
   config.action_mailer.asset_host = "http://bibliasocial.com"
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => 'localhost',
-    :domain => 'www.victorcisneiros.com',
+    #:address => 'localhost',
+    #:domain => 'www.victorcisneiros.com',
     :port => 25,
     :authentication => :plain,
     :enable_starttls_auto => false

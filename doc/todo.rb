@@ -27,6 +27,11 @@ Adicionar Selected a bibliasocial.com
 Quando o usuário clicar em Bíblia, abrir o ultimo capítulo que ele estava lendo
 
 --Problemas (para colocar em beta)--
+Email de like está todo errado!!
+  - Texto embaixo é do twitter
+  - Links estão enviando para localhost
+  - Layout precisa ser adaptado para a aparência do site
+end
 #COnvidar amigos do facebook
     - Testar para saber na prática como funciona (não está funcionando)
 #Lembrar de testar o envio dos emails (Não consegui falar com victor)
