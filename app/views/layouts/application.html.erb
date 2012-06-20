@@ -14,11 +14,11 @@
 		<%= csrf_meta_tag %>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <%= stylesheet_link_tag 'jquery_ui', 'application', 'tipsy', 'colorbox/colorbox' %>
-        <% if ENV['RAILS_ENV'] == 'production' %>
-            <%= javascript_include_tag 'all' %>
-        <% else %>
-            <%= javascript_include_tag 'jquery', 'rails', 'jquery_ui', 'jquery.tipsy', 'jquery.autosize-min', 'secret', 'jquery-ui.custom.min', 'jquery.reticencias', 'jquery.livequery', 'jquery.colorbox', 'jquery.scrollTo', 'jquery.cookie' %>
-        <% end %>
+        <%# if ENV['RAILS_ENV'] == 'production' %>
+            <%# javascript_include_tag 'all' %>
+        <%# else %>
+            <%= javascript_include_tag 'jquery', 'rails', 'jquery_ui', 'jquery.tipsy', 'jquery.autosize-min', 'secret', 'jquery-ui.custom.min', 'jquery.reticencias', 'jquery.livequery', 'jquery.colorbox', 'jquery.scrollTo', 'jquery.cookie', :cache => true %>
+        <%# end %>
         <script type="text/javascript">FB = null</script>
         <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
         <script type="text/javascript">
