@@ -18,7 +18,7 @@ class Atividade < ActiveRecord::Base
   after_destroy :atualizar_reputacao_user
 
   def atualizar_saldo_votos
-    self.update_attributes!(:saldo_votos => "(likes_count - dislikes_count)")
+    Atividade.where(:id => self.id).update_all("saldo_votos = likes_count - dislikes_count")
   end
 
   def atualizar_reputacao_user

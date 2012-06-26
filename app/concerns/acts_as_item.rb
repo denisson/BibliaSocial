@@ -75,7 +75,7 @@ module ActsAsItem
       end
 
       def atualizar_saldo_votos
-        self.update_attributes!(:saldo_votos => "(likes_count - dislikes_count)")
+        self.class.where(:id => self.id).update_all("saldo_votos = likes_count - dislikes_count")
       end
 
     end

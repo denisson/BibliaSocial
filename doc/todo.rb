@@ -34,6 +34,8 @@ Email de like está todo errado!!
 end
 #COnvidar amigos do facebook
     - Testar para saber na prática como funciona (não está funcionando)
+Email está ruim (quand dá like ou quando segue)
+saldo_votos não está funcionando
 #Lembrar de testar o envio dos emails (Não consegui falar com victor)
 #Melhorar Busca
 #Otimizar performance. Criar índices. Fazer joins.     (em produção já está bem melhor!)
