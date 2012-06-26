@@ -10,8 +10,11 @@ $(document).ready(function() {
         // and signed request each expire
         var uid = response.authResponse.userID;
         var accessToken = response.authResponse.accessToken;
-        $.colorbox({html:'<div class="conectandoFacebook"><a class="bs_fb_button" href="#"><span class="bs_fb_button_text">Conectando ao Facebook ...</span></a></div>'});
-        window.location = '/users/auth/facebook';
+        $.colorbox({html:'<div class="conectandoFacebook"><a class="bs_fb_button" href="#"><span class="bs_fb_button_text">Conectando ao Facebook ...</span></a></div>',
+            onComplete: function(){
+                window.location = '/users/auth/facebook';
+            }
+        });
 
       /* deixei aqui só para ter a referência
       } else if (response.status === 'not_authorized') {

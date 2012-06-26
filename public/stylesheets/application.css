@@ -34,6 +34,7 @@ h4{font-size: 14px;}
     #menu_superior li.selected{background-color: #C52F24;}
     #menu_superior li img{margin: 4px 5px 4px 0px;}
     #menu_superior li a{vertical-align: top;padding: 0px 9px;height: 40px;display: block;}
+    #menu_superior li span{vertical-align: top}
 
 #window { background-color: #FFF; margin-bottom: 20px; border: solid 1px #EEE; border-width: 0px 1px 1px 1px;}
 #content { float: left; width: 558px; padding: 20px; border-right: solid 2px #EEE;}

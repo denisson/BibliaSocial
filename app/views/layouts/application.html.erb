@@ -56,7 +56,7 @@
                        menu = Hash.new
                        menu['biblia'] = link_to("Bíblia", "/", {:title => 'Abra a Bíblia e comece a ler!'})
                        menu['mural'] = link_to("Mural", "/mural", {:title => 'Veja as publicações de quem você segue!'})
-                       menu['perfil'] = link_to(image_tag(current_user.foto.url(:small)) + current_user.nome_curto, user_path(current_user), {:title => 'Visualize e edite seu Perfil'})
+                       menu['perfil'] = link_to(image_tag(current_user.foto.url(:small), {:alt => ''}) + content_tag('span', current_user.nome_curto), user_path(current_user), {:title => 'Visualize e edite seu Perfil'})
                        menu['sair'] = link_to("Sair", "/users/sign_out", :method => :delete)
                     %>
                     <% menu.each do |index, link| %>
