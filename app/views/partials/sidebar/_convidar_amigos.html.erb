@@ -4,7 +4,7 @@
             $("#botaoConvidarAmigos").click(function(event){
                 event.preventDefault();
                 if (FB){
-                    FB.ui({ method: 'apprequests', message: 'Escolha quais amigos deseja convidar para participar da BíbliaSocial.'});
+                    FB.ui({ method: 'apprequests', message: 'Vamos ler a Bíblia juntos na BíbliaSocial!'});
                 }else{
                     window.alert("Não foi possível estabelecer uma conexão com http://facebook.com");
                 }
