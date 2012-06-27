@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85406b5a-101d-4f8b-938f-c16a905056f4" name="Default" comment="">
+    <list default="true" id="85406b5a-101d-4f8b-938f-c16a905056f4" name="Default" comment="Mudando texto do convite do facebook&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/searchd.production.pid" afterPath="$PROJECT_DIR$/log/searchd.production.pid" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/sidebar/_convidar_amigos.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/sidebar/_convidar_amigos.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/todo.rb" afterPath="$PROJECT_DIR$/doc/todo.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/user_mailer.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/user_mailer.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user_mailer/notificar_seguidor_novo.html.erb" afterPath="$PROJECT_DIR$/app/views/user_mailer/notificar_seguidor_novo.html.erb" />
     </list>
     <list id="29883faa-c7ca-444d-bc57-3a058605ab7d" name="Rejected commit: Default" comment="Várias modificações que não foram comitadas ao longo do tempo" />
     <ignored path="bibliasocial.iws" />
@@ -32,37 +32,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="todo.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/doc/todo.rb">
+      <file leaf-file-name="notificar_seguidor_novo.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/user_mailer/notificar_seguidor_novo.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="58" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.0">
+            <state line="35" column="72" selection-start="1764" selection-end="1764" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_convidar_amigos.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/partials/sidebar/_convidar_amigos.html.erb">
+      <file leaf-file-name="notificar_voto.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/user_mailer/notificar_voto.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="103" selection-start="337" selection-end="337" vertical-scroll-proportion="0.19465649">
+            <state line="3" column="36" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="voto.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/voto.rb">
+      <file leaf-file-name="user_mailer.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/user_mailer.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="22" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
+            <state line="13" column="66" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="acts_as_item.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/concerns/acts_as_item.rb">
+      <file leaf-file-name="itens_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/itens_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="8" selection-start="2050" selection-end="2139" vertical-scroll-proportion="0.0">
+            <state line="50" column="14" selection-start="1160" selection-end="1160" vertical-scroll-proportion="0.57726467">
               <folding />
             </state>
           </provider>
@@ -135,8 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
         <option value="$PROJECT_DIR$/public/javascripts/jquery.reticencias.js" />
         <option value="$PROJECT_DIR$/app/views/biblia_social/index.html.erb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
@@ -151,6 +149,8 @@
         <option value="$PROJECT_DIR$/app/models/atividade.rb" />
         <option value="$PROJECT_DIR$/doc/todo.rb" />
         <option value="$PROJECT_DIR$/app/views/partials/sidebar/_convidar_amigos.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/notificar_seguidor_novo.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/user_mailer.html.erb" />
       </list>
     </option>
   </component>
@@ -204,6 +204,26 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bibliasocial" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -235,6 +255,10 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -250,28 +274,66 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="concerns" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user_mailer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="RailsProjectView">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bibliasocial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bibliasocial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bibliasocial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bibliasocial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bibliasocial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mailers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -643,7 +705,11 @@
       <created>1340747231878</created>
       <updated>1340747231878</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Mudando texto do convite do facebook&#10;">
+      <created>1340747246366</created>
+      <updated>1340747246366</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -674,7 +740,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32730263" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35432473" sideWeight="0.3930921" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36722305" sideWeight="0.3930921" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -751,21 +817,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="701" selection-end="887" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/biblia_social/capitulo.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="10" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/biblia_social_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="41" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.7618182" />
@@ -776,19 +827,43 @@
         <state line="18" column="49" selection-start="471" selection-end="471" vertical-scroll-proportion="0.55636364" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/itens_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="14" selection-start="1160" selection-end="1160" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/voto.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="22" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/doc/todo.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="58" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/partials/sidebar/_convidar_amigos.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="33" selection-start="807" selection-end="807" vertical-scroll-proportion="-11.115385" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/concerns/acts_as_item.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="8" selection-start="2050" selection-end="2139" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/notificar_seguidor_novo.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="72" selection-start="1764" selection-end="1764" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user_mailer/notificar_voto.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="36" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/user_mailer.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="66" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
@@ -821,16 +896,9 @@
         <state line="36" column="44" selection-start="1611" selection-end="1611" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/todo.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/itens_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="58" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/partials/sidebar/_convidar_amigos.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="103" selection-start="337" selection-end="337" vertical-scroll-proportion="0.19465649">
+        <state line="50" column="14" selection-start="1160" selection-end="1160" vertical-scroll-proportion="0.57726467">
           <folding />
         </state>
       </provider>
