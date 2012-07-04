@@ -33,11 +33,15 @@ Email de like está todo errado!!
   - Layout precisa ser adaptado para a aparência do site
 end
 #COnvidar amigos do facebook
-    - Testar para saber na prática como funciona (não está funcionando)
-Email está ruim (quand dá like ou quando segue)
+#    - Testar para saber na prática como funciona (não está funcionando)
+#Email está ruim (quand dá like ou quando segue)
 #saldo_votos não está funcionando
 
 Quando publicar o comentário, redimensionar o campo para o tamanho original
+O texto ao lado direito do vídeo está com problemas:
+    na hora de pegar do site, ele está vindo com erro de acentuação
+    está tendo problema de alinhamento no IE e no Firefox
+Na página inicial, não mostrar Citações
 #Lembrar de testar o envio dos emails (Não consegui falar com victor)
 #Melhorar Busca
 #Otimizar performance. Criar índices. Fazer joins.     (em produção já está bem melhor!)

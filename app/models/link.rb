@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 require "open-uri"
 require "acts_as_item"
 
@@ -49,7 +51,7 @@ class Link < ActiveRecord::Base
 	def self.get_meta_info(url)
 		begin
 			#tenta abrir um link especificado
-			page = Nokogiri::HTML(open(url))
+			page = Nokogiri::HTML(open(url).read)
     rescue Exception => e
 			return {:type => "Link", :url => url, :titulo => nome_site(url)}
 	  end

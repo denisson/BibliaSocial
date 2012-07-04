@@ -49,14 +49,14 @@ h4{font-size: 14px;}
     #sidebar .cuboRight{ float:right; border-right: 6px solid transparent;border-top: 5px solid #CCC;margin-right: -27px;}
 #sidebar.users, #sidebar.mural{ padding-top: 0px;}
 
-#sidebar #sidebar_flutuante{position:absolute; display:none; border: solid 1px #8EC1DA; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; background-color: white; left: 10px;}
+#sidebar #sidebar_flutuante{position:absolute; display:none; border: solid 1px #8EC1DA; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; background-color: white; left: 10px; z-index: 3}
 #sidebar #sidebar_flutuante .topoSidebarFlutuante{text-align: right;line-height: 9px;margin-top: -15px;margin-right: -15px;margin-bottom: 6px;}
 #sidebar #sidebar_flutuante .topoSidebarFlutuante a{padding: 0 5px;font-size: 9px;}
 #sidebar #sidebar_flutuante .setaBalao{float: left;left: -32px;position: relative;top: 11px;}
 #sidebar #sidebar_flutuante .setaBalao .background{border-right: 10px solid white;position: absolute;border-top: 9px solid transparent;top: -10px;z-index: 1;left: 2px;}
 #sidebar #sidebar_flutuante .setaBalao .borda{border-right: 11px solid #8EC1DA;position: absolute;border-top: 10px solid transparent;top: -10px;}
 
-#sidebar #sidebar_opaco{display:none; position:absolute; background: #FAFAFA; opacity: 0.9; bottom: 0px; top: 0px; left: -1px; right: -1px;}
+#sidebar #sidebar_opaco{display:none; position:absolute; background: #FAFAFA; opacity: 0.9; bottom: 0px; top: 0px; left: -1px; right: -1px; z-index: 2}
 
 #sidebar_window, #sidebar_window2 { border: 1px solid #c4d4dc; border-width: 0; background: #fff; position: absolute; left: 2px; top: 0; overflow: hidden; width: 0 }
     #sidebar_window .title, #sidebar_window2 .title { background: #f4f4f4; line-height: 30px; text-align: right; padding: 0 10px; white-space: nowrap }

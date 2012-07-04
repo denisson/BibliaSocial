@@ -3,14 +3,14 @@
     <head>
         <title><%= (title = yield(:title)).blank? ? 'BíbliaSocial.com' : title %></title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <meta content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>" name="description" />
+        <meta content="<%= (description = yield(:description)).blank? ? 'Leitura compartilhada da Bìblia. Tudo aqui gira em torno da Palavra de Deus: Comentários, links, vídeos e pessoas.' : description %>" name="description" />
         <meta property="fb:app_id" content="200389373346541"/>
         <meta property="og:type" content="website"/>
         <meta property="og:image" content="http://www.bibliasocial.com/images/icon2.png"/>
         <meta property="og:site_name" content="Bíblia Social"/>
         <meta property="og:title" content="<%= (title = yield(:title)).blank? ? 'BíbliaSocial.com' : title %>"/>
         <meta property="og:url" content="<%= request.url %>"/>
-        <meta property="og:description" content="<%= (description = yield(:description)).blank? ? 'Versão Online da Bíblia com integração com Facebook e Twitter' : description %>"/> 
+        <meta property="og:description" content="<%= (description = yield(:description)).blank? ? 'Leitura compartilhada da Bìblia. Tudo aqui gira em torno da Palavra de Deus: Comentários, links, vídeos e pessoas.' : description %>"/>
 		<%= csrf_meta_tag %>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <%= stylesheet_link_tag 'jquery_ui', 'application', 'tipsy', 'colorbox/colorbox' %>

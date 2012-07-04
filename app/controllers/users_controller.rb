@@ -32,9 +32,9 @@
     @user = User.find(params[:id])
     @filtro =  params[:filtro]
     if @filtro == nil
-      @itens = Atividade.where(:user_id => @user.id).recentes.map(&:item)
+      @itens = Atividade.publicacoes.where(:user_id => @user.id).recentes.map(&:item)
     else
-      @itens = @filtro.constantize.recentes.where(:user_id => @user)
+      @itens = @filtro.constantize.publicacoes.recentes.where(:user_id => @user)
     end
     sidebar
   end

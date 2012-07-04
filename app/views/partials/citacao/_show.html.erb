@@ -1,4 +1,4 @@
-<%= render :partial => "partials/comment/show", :locals => {:item => item.comentario}%>
+<%= render :partial => "partials/comment/show", :locals => {:item => item.comment} unless item.comment.nil? %>
 <div class="atividadeInfo referenciaInfo">
   <% if item.versiculo_origem != nil  %>
       <%= link_to item.pretty_ref, item.versiculo_origem.url, {:class => "atividadeTitulo"} %>

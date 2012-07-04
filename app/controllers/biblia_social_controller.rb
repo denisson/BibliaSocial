@@ -6,7 +6,8 @@
   def index
     @versiculos = Versiculo.where('atividades.item_type != "Citacao"').joins(:atividades).group('versiculo_id').order('max(atividades.created_at) DESC').limit(3)
     top
-
+    logger.debug "request.env.inspect"
+    logger.debug request.env.inspect
     respond_to do |format|
       format.html
       format.js
