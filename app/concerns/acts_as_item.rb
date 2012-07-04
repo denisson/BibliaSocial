@@ -19,6 +19,7 @@ module ActsAsItem
         include ActsAsItem::NoCommentInstanceMethods
 
         belongs_to :comment, :counter_cache => true
+        belongs_to :versiculo, :counter_cache => true
 
         has_one :comment_descricao, :as => :item, :class_name => "Comment"
 
@@ -32,7 +33,6 @@ module ActsAsItem
         include ActsAsItem::InstanceMethods
 
         belongs_to :user
-        belongs_to :versiculo, :counter_cache => true
 
         has_many :votos, :as => :votavel, :dependent => :delete_all
         has_many :likes, :class_name => 'Voto', :as => :votavel, :conditions => "pontuacao = 1"

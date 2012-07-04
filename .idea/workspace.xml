@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85406b5a-101d-4f8b-938f-c16a905056f4" name="Default" comment="">
+    <list default="true" id="85406b5a-101d-4f8b-938f-c16a905056f4" name="Default" comment="Quando colocava um vídeo, link ou referência com um comentário, o comment_count do versículo estava sendo incrementado. Corrigi esse problema agora">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/searchd.production.pid" afterPath="$PROJECT_DIR$/log/searchd.production.pid" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/biblia_social_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/biblia_social_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/link.rb" afterPath="$PROJECT_DIR$/app/models/link.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/partials/citacao/_show.html.erb" afterPath="$PROJECT_DIR$/app/views/partials/citacao/_show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/todo.rb" afterPath="$PROJECT_DIR$/doc/todo.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/application.css" afterPath="$PROJECT_DIR$/public/stylesheets/application.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/concerns/acts_as_item.rb" afterPath="$PROJECT_DIR$/app/concerns/acts_as_item.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/comment.rb" afterPath="$PROJECT_DIR$/app/models/comment.rb" />
     </list>
     <list id="29883faa-c7ca-444d-bc57-3a058605ab7d" name="Rejected commit: Default" comment="Várias modificações que não foram comitadas ao longo do tempo" />
     <ignored path="bibliasocial.iws" />
@@ -37,37 +32,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="video.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/video.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="130" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="link.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="link.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/link.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="93" selection-start="1545" selection-end="1545" vertical-scroll-proportion="0.49571183">
+            <state line="69" column="82" selection-start="1996" selection-end="1996" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="development.log" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/development.log">
+      <file leaf-file-name="comment.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="634" column="38" selection-start="57035" selection-end="57035" vertical-scroll-proportion="0.0">
+            <state line="6" column="23" selection-start="127" selection-end="127" vertical-scroll-proportion="0.18545455">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data.rake" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/tasks/data.rake">
+      <file leaf-file-name="versiculo.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/versiculo.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="70" selection-start="2131" selection-end="2141" vertical-scroll-proportion="0.0">
+            <state line="7" column="0" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="acts_as_item.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/concerns/acts_as_item.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="105" column="60" selection-start="2743" selection-end="2743" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -134,9 +129,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/config/environments/production.rb" />
         <option value="$PROJECT_DIR$/public/javascripts/fb-auto-login.js" />
-        <option value="$PROJECT_DIR$/app/concerns/acts_as_item.rb" />
         <option value="$PROJECT_DIR$/app/models/atividade.rb" />
         <option value="$PROJECT_DIR$/app/views/partials/sidebar/_convidar_amigos.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/notificar_seguidor_novo.html.erb" />
@@ -150,6 +143,8 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/log/development.log" />
         <option value="$PROJECT_DIR$/app/models/link.rb" />
+        <option value="$PROJECT_DIR$/app/concerns/acts_as_item.rb" />
+        <option value="$PROJECT_DIR$/app/models/comment.rb" />
       </list>
     </option>
   </component>
@@ -203,16 +198,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -365,6 +350,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="bibliasocial" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -748,7 +743,11 @@
       <created>1340755745548</created>
       <updated>1340755745548</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="COrreções de pequenos bugs&#10;">
+      <created>1341363572324</created>
+      <updated>1341363572324</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -778,9 +777,8 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.6704918" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22861843" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24013157" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23975721" sideWeight="0.75986844" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24810319" sideWeight="0.75986844" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -789,6 +787,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24013157" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -833,7 +832,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="corrigindo layout dos emails enviados quando alguém segue ou quando alguém curte&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="COrreções de pequenos bugs&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -852,26 +851,12 @@
     <MESSAGE value="Corrigindo problema do saldo_votos que não estava atualizando&#10;" />
     <MESSAGE value="Mudando texto do convite do facebook&#10;" />
     <MESSAGE value="corrigindo layout dos emails enviados quando alguém segue ou quando alguém curte&#10;" />
+    <MESSAGE value="COrreções de pequenos bugs&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="51" selection-start="1824" selection-end="1824" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/todo.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="39" selection-start="2318" selection-end="2318" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/atividade.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="20" selection-start="342" selection-end="353" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="46" selection-start="2139" selection-end="2139" vertical-scroll-proportion="0.0" />
@@ -887,24 +872,39 @@
         <state line="33" column="38" selection-start="878" selection-end="878" vertical-scroll-proportion="1.3231132" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/concerns/acts_as_item.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="6" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/video.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="130" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/development.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="634" column="38" selection-start="57035" selection-end="57035" vertical-scroll-proportion="0.0" />
+        <state line="848" column="38" selection-start="76117" selection-end="76117" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/data.rake">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="70" selection-start="2131" selection-end="2141" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/video.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/voto.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="7" selection-start="194" selection-end="1613" vertical-scroll-proportion="0.6980462" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/link.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="82" selection-start="1996" selection-end="1996" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/versiculo.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/concerns/acts_as_item.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="60" selection-start="2743" selection-end="2743" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/application.css">
@@ -914,16 +914,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/partials/comment/_show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="26" selection-start="109" selection-end="113" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="2" column="26" selection-start="109" selection-end="113" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/partials/citacao/_show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="41" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="8" column="41" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/fb-auto-login.js">
@@ -936,9 +932,9 @@
         <state line="36" column="44" selection-start="1611" selection-end="1611" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/link.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="93" selection-start="1545" selection-end="1545" vertical-scroll-proportion="0.49571183">
+        <state line="6" column="23" selection-start="127" selection-end="127" vertical-scroll-proportion="0.18545455">
           <folding />
         </state>
       </provider>

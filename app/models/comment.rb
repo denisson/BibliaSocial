@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   include ActsAsItem
   acts_as_item_comment
 
+  belongs_to :versiculo
   belongs_to :item, :polymorphic => true
   
   has_many :referencias, :dependent => :destroy
@@ -15,6 +16,16 @@ class Comment < ActiveRecord::Base
 
   scope :where_versiculo , lambda { |versiculo| where(:versiculo_id => versiculo, :item_id => nil)}
 
+  after_create :incrementar_count
+  before_destroy :decrementar_count
+
+  def incrementar_count
+    versiculo.class.increment_counter(:comments_count, versiculo.id) if item.nil?
+  end
+
+  def decrementar_count
+    versiculo.class.decrement_counter(:comments_count, versiculo.id) if item.nil?
+  end
 
   #def before_destroy
   #  if referencias.size > 0
