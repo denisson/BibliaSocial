@@ -1,7 +1,7 @@
 <% @versiculos.each do |versiculo| %>
   <%= render :partial => 'partials/versiculo', :locals => { :versiculo => versiculo, :i => 1, :mostrar_referencia => true } %>
   <ul class="atividades">
-    <%= render :partial => "partials/atividade/lista", :locals => {:itens => versiculo.atividades.recentes.limit(1).map(&:item), :mostrar_versiculo => false}%>
+    <%= render :partial => "partials/atividade/lista", :locals => {:itens => versiculo.atividades.where('item_type != "Citacao"').recentes.limit(1).map(&:item), :mostrar_versiculo => false}%>
   </ul>
 
 <% end %>
