@@ -63,6 +63,7 @@ Bibliasocial::Application.routes.draw do
   get 'versiculos/top/:capitulo_id', :to => 'versiculos#top', :as => :top_versiculos_capitulo
 
   get 'search', :to => 'biblia_social#search'
+  get 'ultimas_publicacoes', :to => 'biblia_social#ultimas_publicacoes'
   get ':livro', :to => 'biblia_social#livro'
   get ':livro/:capitulo', :to => 'biblia_social#capitulo'
   get ':livro/:capitulo/:versiculo', :to => 'biblia_social#versiculo'

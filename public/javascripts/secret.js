@@ -224,6 +224,11 @@
             }
         })
 
+        $('.exibirMais a')
+            .live("ajax:before", function(evt, xhr, settings){
+                $(this).parents().addClass("loading");
+            });
+
         $('ul.atividadesFiltros li a')
             /*
             .live("ajax:before", function(evt, xhr, settings){

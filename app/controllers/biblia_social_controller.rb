@@ -4,14 +4,26 @@
   #before_filter :find_biblia
   
   def index
-    @versiculos = Versiculo.where('atividades.item_type != "Citacao"').joins(:atividades).group('versiculo_id').order('max(atividades.created_at) DESC').limit(3)
+    consulta_ultimas_publicacoes
     top
-    logger.debug "request.env.inspect"
-    logger.debug request.env.inspect
+
     respond_to do |format|
       format.html
+    end
+  end
+
+  def ultimas_publicacoes
+    consulta_ultimas_publicacoes
+
+    respond_to do |format|
       format.js
     end
+  end
+
+  def consulta_ultimas_publicacoes
+    params[:page] = 1 if params[:page].nil?
+    @versiculos = Versiculo.where('atividades.item_type != "Citacao"').joins(:atividades).group('versiculo_id').order('max(atividades.created_at) DESC').paginate(:page => params[:page], :per_page => 3)
+    @next_page = @versiculos.current_page + 1
   end
   
   def livro

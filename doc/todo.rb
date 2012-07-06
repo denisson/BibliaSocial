@@ -42,6 +42,8 @@ O texto ao lado direito do vídeo está com problemas:
     na hora de pegar do site, ele está vindo com erro de acentuação
     está tendo problema de alinhamento no IE e no Firefox
 Na página inicial, não mostrar Citações
+Tentar dar uma margem embaixo do sidebar flutuante, pois quando o versículo é muito embaixo fica ruim (Ex>: http://www.bibliasocial.com/romanos/2/29)
+Quando adiciona uma referência mais de uma vez no texto, está criando várias referências.
 #Lembrar de testar o envio dos emails (Não consegui falar com victor)
 #Melhorar Busca
 #Otimizar performance. Criar índices. Fazer joins.     (em produção já está bem melhor!)

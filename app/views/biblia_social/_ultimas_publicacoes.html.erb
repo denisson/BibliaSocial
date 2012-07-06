@@ -1,0 +1,14 @@
+<% @versiculos.each do |versiculo| %>
+  <%= render :partial => 'partials/versiculo', :locals => { :versiculo => versiculo, :i => 1, :mostrar_referencia => true } %>
+  <ul class="atividades">
+    <%= render :partial => "partials/atividade/lista", :locals => {:itens => versiculo.atividades.recentes.limit(1).map(&:item), :mostrar_versiculo => false}%>
+  </ul>
+
+<% end %>
+
+<% if @next_page <= @versiculos.total_pages  %>
+    <span class="exibirMais">
+      <%=  link_to "Mais Publicações", ultimas_publicacoes_path + "?page=" + @next_page.to_s, :remote => true %>
+      <%=  image_tag "/stylesheets/images/loader.gif" %>
+    </span>
+<% end %>

@@ -1,8 +1,0 @@
-<div id="comentarios">
-    <% @versiculos.each_with_index do |versiculo, i| %>
-        <%= render :partial => 'partials/versiculo', :locals => { :versiculo => versiculo, :i => i, :show_titulo => true, :show_aspas => true } %>
-    <% end %>
-    <div class="ajax c">
-        <%= will_paginate @versiculos, :next_label => 'Próximos', :previous_label => 'Anteriores', :inner_window => 2, :outer_window => 0 %>
-    </div>
-</div>

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85406b5a-101d-4f8b-938f-c16a905056f4" name="Default" comment="Quando colocava um vídeo, link ou referência com um comentário, o comment_count do versículo estava sendo incrementado. Corrigi esse problema agora">
+    <list default="true" id="85406b5a-101d-4f8b-938f-c16a905056f4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/biblia_social/ultimas_publicacoes.js.erb" />
+      <change type="MOVED" beforePath="C:\wamp\www\bibliasocial\app\views\biblia_social\_comentarios.html.erb" afterPath="$PROJECT_DIR$/app/views/biblia_social/_ultimas_publicacoes.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/searchd.production.pid" afterPath="$PROJECT_DIR$/log/searchd.production.pid" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/concerns/acts_as_item.rb" afterPath="$PROJECT_DIR$/app/concerns/acts_as_item.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/comment.rb" afterPath="$PROJECT_DIR$/app/models/comment.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/biblia_social_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/biblia_social_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/biblia_social/index.html.erb" afterPath="$PROJECT_DIR$/app/views/biblia_social/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/todo.rb" afterPath="$PROJECT_DIR$/doc/todo.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/secret.js" afterPath="$PROJECT_DIR$/public/javascripts/secret.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/application.css" afterPath="$PROJECT_DIR$/public/stylesheets/application.css" />
     </list>
     <list id="29883faa-c7ca-444d-bc57-3a058605ab7d" name="Rejected commit: Default" comment="Várias modificações que não foram comitadas ao longo do tempo" />
     <ignored path="bibliasocial.iws" />
@@ -32,73 +38,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="link.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/link.rb">
+      <file leaf-file-name="_ultimas_publicacoes.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/biblia_social/_ultimas_publicacoes.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="82" selection-start="1996" selection-end="1996" vertical-scroll-proportion="0.0">
+            <state line="9" column="34" selection-start="448" selection-end="448" vertical-scroll-proportion="0.29198474">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comment.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
+      <file leaf-file-name="biblia_social_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/biblia_social_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="23" selection-start="127" selection-end="127" vertical-scroll-proportion="0.18545455">
+            <state line="25" column="14" selection-start="653" selection-end="663" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="versiculo.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/versiculo.rb">
+      <file leaf-file-name="active_record.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Ruby/lib/ruby/gems/1.9.1/gems/will_paginate-3.0.2/lib/will_paginate/active_record.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+            <state line="135" column="25" selection-start="3980" selection-end="3993" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="acts_as_item.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/concerns/acts_as_item.rb">
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="60" selection-start="2743" selection-end="2743" vertical-scroll-proportion="0.0">
+            <state line="65" column="26" selection-start="1892" selection-end="1911" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/application.css">
+      <file leaf-file-name="index.js.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/biblia_social/index.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="0" selection-start="2998" selection-end="2998" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_show.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/partials/comment/_show.html.erb">
+      <file leaf-file-name="ultimas_publicacoes.js.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/biblia_social/ultimas_publicacoes.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="26" selection-start="109" selection-end="113" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_show.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/partials/citacao/_show.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="41" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fb-auto-login.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/fb-auto-login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="54" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0">
+            <state line="3" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -107,7 +95,34 @@
       <file leaf-file-name="secret.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/secret.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="44" selection-start="1611" selection-end="1611" vertical-scroll-proportion="0.0">
+            <state line="228" column="55" selection-start="9064" selection-end="9064" vertical-scroll-proportion="-11.24">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/application.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="108" column="36" selection-start="7820" selection-end="7820" vertical-scroll-proportion="-9.72">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="top.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/atividades/top.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="138" selection-start="325" selection-end="463" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/biblia_social/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="20" selection-start="134" selection-end="134" vertical-scroll-proportion="-2.6153846">
               <folding />
             </state>
           </provider>
@@ -129,22 +144,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/javascripts/fb-auto-login.js" />
-        <option value="$PROJECT_DIR$/app/models/atividade.rb" />
-        <option value="$PROJECT_DIR$/app/views/partials/sidebar/_convidar_amigos.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/user_mailer/notificar_seguidor_novo.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/user_mailer.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/biblia_social_controller.rb" />
-        <option value="$PROJECT_DIR$/public/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/views/partials/comment/_show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/partials/citacao/_show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-        <option value="$PROJECT_DIR$/doc/todo.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/log/development.log" />
         <option value="$PROJECT_DIR$/app/models/link.rb" />
         <option value="$PROJECT_DIR$/app/concerns/acts_as_item.rb" />
         <option value="$PROJECT_DIR$/app/models/comment.rb" />
+        <option value="$PROJECT_DIR$/doc/todo.rb" />
+        <option value="$PROJECT_DIR$/app/views/biblia_social/index.html.erb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/biblia_social_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/biblia_social/ultimas_publicacoes.js.erb" />
+        <option value="$PROJECT_DIR$/public/javascripts/secret.js" />
+        <option value="$PROJECT_DIR$/public/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/app/views/biblia_social/_ultimas_publicacoes.html.erb" />
       </list>
     </option>
   </component>
@@ -198,6 +213,26 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bibliasocial" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -214,152 +249,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="bibliasocial" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tasks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user_mailer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mailers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bibliasocial" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -381,24 +270,24 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="156" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="160" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="807" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="813" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="807" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="156" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="156" />
     <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="156" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\bibliasocial\app\views\biblia_social" />
       <recent name="C:\wamp\www\bibliasocial\public\images" />
       <recent name="C:\wamp\www\bibliasocial\public\javascripts" />
       <recent name="C:\wamp\www\bibliasocial\db\migrate" />
       <recent name="C:\wamp\www\bibliasocial\config\locales" />
-      <recent name="C:\wamp\www\bibliasocial\public\stylesheets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp\www\bibliasocial\app\views" />
@@ -514,6 +403,15 @@
         <option name="RakeTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method>
+        <option name="RakeTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -541,15 +439,6 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method>
-        <option name="RakeTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
       <method>
         <option name="RakeTask" enabled="false" />
       </method>
@@ -747,7 +636,11 @@
       <created>1341363572324</created>
       <updated>1341363572324</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Quando colocava um vídeo, link ou referência com um comentário, o comment_count do versículo estava sendo incrementado. Corrigi esse problema agora">
+      <created>1341440858468</created>
+      <updated>1341440858468</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -778,7 +671,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22861843" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24810319" sideWeight="0.75986844" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34218514" sideWeight="0.0" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -832,7 +725,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="COrreções de pequenos bugs&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Colocando a opção de ver mais publicações na página inicial" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -852,89 +745,103 @@
     <MESSAGE value="Mudando texto do convite do facebook&#10;" />
     <MESSAGE value="corrigindo layout dos emails enviados quando alguém segue ou quando alguém curte&#10;" />
     <MESSAGE value="COrreções de pequenos bugs&#10;" />
+    <MESSAGE value="Quando colocava um vídeo, link ou referência com um comentário, o comment_count do versículo estava sendo incrementado. Corrigi esse problema agora" />
+    <MESSAGE value="Colocando a opção de ver mais publicações na página inicial" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+    <entry file="file://C:/Ruby/lib/ruby/gems/1.9.1/gems/will_paginate-3.0.2/lib/will_paginate/view_helpers/action_view.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="46" selection-start="2139" selection-end="2139" vertical-scroll-proportion="0.0" />
+        <state line="26" column="79" selection-start="996" selection-end="996" vertical-scroll-proportion="-3.0073664" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/votos_controller.rb">
+    <entry file="file://C:/Ruby/lib/ruby/gems/1.9.1/gems/will_paginate-3.0.2/lib/will_paginate/view_helpers/link_renderer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="21" selection-start="1610" selection-end="1621" vertical-scroll-proportion="0.8890909" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby/lib/ruby/gems/1.9.1/gems/will_paginate-3.0.2/lib/will_paginate/view_helpers.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="19" selection-start="4352" selection-end="4352" vertical-scroll-proportion="0.6909091" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby/lib/ruby/1.9.1/delegate.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="355" column="4" selection-start="9102" selection-end="9102" vertical-scroll-proportion="-0.30195382" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby/lib/ruby/1.9.1/forwardable.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="7" selection-start="3620" selection-end="3620" vertical-scroll-proportion="-3.3179395" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby/lib/ruby/gems/1.9.1/gems/will_paginate-3.0.2/lib/will_paginate/page_number.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="15" selection-start="341" selection-end="341" vertical-scroll-proportion="0.3623446" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/biblia_social_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="14" selection-start="653" selection-end="663" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="26" selection-start="1892" selection-end="1911" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/atividades/top.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="138" selection-start="325" selection-end="463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/biblia_social/index.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/biblia_social/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="38" selection-start="878" selection-end="878" vertical-scroll-proportion="1.3231132" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/development.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="848" column="38" selection-start="76117" selection-end="76117" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/data.rake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="70" selection-start="2131" selection-end="2141" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/video.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/voto.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="7" selection-start="194" selection-end="1613" vertical-scroll-proportion="0.6980462" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/link.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="82" selection-start="1996" selection-end="1996" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/versiculo.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/concerns/acts_as_item.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="60" selection-start="2743" selection-end="2743" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/application.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="2998" selection-end="2998" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/partials/comment/_show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="26" selection-start="109" selection-end="113" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/partials/citacao/_show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="41" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/fb-auto-login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="54" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0" />
+        <state line="4" column="20" selection-start="134" selection-end="134" vertical-scroll-proportion="-2.6153846">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/secret.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="44" selection-start="1611" selection-end="1611" vertical-scroll-proportion="0.0" />
+        <state line="228" column="55" selection-start="9064" selection-end="9064" vertical-scroll-proportion="-11.24">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/comment.rb">
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/application.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="23" selection-start="127" selection-end="127" vertical-scroll-proportion="0.18545455">
+        <state line="108" column="36" selection-start="7820" selection-end="7820" vertical-scroll-proportion="-9.72">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/biblia_social/ultimas_publicacoes.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby/lib/ruby/gems/1.9.1/gems/will_paginate-3.0.2/lib/will_paginate/active_record.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="25" selection-start="3980" selection-end="3993" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/biblia_social/_ultimas_publicacoes.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="34" selection-start="448" selection-end="448" vertical-scroll-proportion="0.29198474">
           <folding />
         </state>
       </provider>
