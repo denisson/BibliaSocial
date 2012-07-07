@@ -1,7 +1,7 @@
 <% if defined?(@top_users) and @top_users.any?  %>
     <div class="widigetSidebar">
       <h3>Top Usuários <%= link_to "+", top_users_path, :title=>"Ver lista completa", :class => "tooltip mais" if @top_users.any? %> <span class="info"><%= I18n.t("bibliasocial.top.usuarios") %></span></h3>
-      <ul class="listaInline topUsuarios">
+      <ul class="listaInline topUsuarios listaFotosUsers">
         <% @top_users.each do |user| %>
             <li><%= link_to (image_tag user.foto.url(:small)), user_path(user), {:class => "tooltip", :title=>user.nome} %></li>
         <% end %>

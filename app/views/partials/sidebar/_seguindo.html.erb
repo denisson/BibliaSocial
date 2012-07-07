@@ -1,7 +1,7 @@
 <div class="widigetSidebar">
   <h3>Seguindo <%= link_to "+", seguindo_user_path(@user), :title=>"Ver lista completa", :class => "tooltip mais" if @seguindo.any? %> <span class="info">Pessoas que eu estou seguindo</span></h3>
   <% if @seguindo.any?  %>
-      <ul class="listaInline">
+      <ul class="listaInline listaFotosUsers">
         <% @seguindo.each do |user| %>
             <li><%= link_to (image_tag user.foto.url(:small)), user_path(user), {:class => "tooltip", :title=>user.nome} %></li>
         <% end %>

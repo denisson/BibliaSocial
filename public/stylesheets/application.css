@@ -178,7 +178,7 @@ body.fullscreen .titulo #botaoFullscreen:hover i{background-position: -18px -153
 
 .topVersiculos{line-height: 25px; margin: 0px -10px;}
 .topVersiculos li{padding: 5px; background-color: #D5E9F6; margin: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;border-radius: 5px;}
-.topUsuarios li{padding-right: 1px;}
+.listaFotosUsers li{padding-right: 1px;}
 
 /*----- Índice Bíblia -------*/
 #livroCapituloAtual{padding: 0px 6px; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;}
